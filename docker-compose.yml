@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      DB_HOST: db
+      DB_PORT: 5432
+    networks:
+      - mynetwork
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    command: >
+      sh -c "
+            python manage.py makemigrations &&
+            python manage.py migrate &&
+            python manage.py createadmin &&
+            python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./server:/server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+    environment:
+      - DATABASE_URL=postgres://myuser:mypassword@db:5432/mydatabase
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - ADMIN_USER=admin_user
+      - ADMIN_PASSWORD=secure_password
+      - ADMIN_EMAIL=admin@gmail.com
+
+networks:
+  mynetwork:
+
+volumes:
+  postgres_data:
