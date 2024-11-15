@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
+import Footer from "./components/Footer"
 function App() {
   
-
   return (
     <>
       <h1 className="text-2xl">
@@ -10,6 +10,7 @@ function App() {
       <Button variant="contained" color="primary" className="text-lg p-4">
         ¡Hola, Material UI y Tailwind juntos!
       </Button>
+      <Footer/>
     </>
   )
 }
