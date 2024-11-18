@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import Contacto from "./pages/Contacto"
 import MortgageCalculator from "./components/MortgageCalculator"
 import EnhancedMortgageCalculator from "./components/EnhancedMortgageCalculator"
+import PaymentAdminMortgageCalculator from "./components/PaymentAdminMortgageCalculator"
 
 function App() {
   
@@ -13,6 +14,7 @@ function App() {
       <Route path="/contacto" element={<Contacto/>}/>
       <Route path="/calculator" element={<MortgageCalculator/>}/>
       <Route path="/adelantoCapital" element={<EnhancedMortgageCalculator/>}/>
+      <Route path="/pagos" element={<PaymentAdminMortgageCalculator/>}/>
     </Routes>
     
   )
