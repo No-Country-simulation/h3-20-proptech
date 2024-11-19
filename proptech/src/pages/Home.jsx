@@ -1,19 +1,16 @@
-import Footer from "../components/Footer"
-import Button from '@mui/material/Button';
+
+import Navbar from "../components/Navbar";
+import Content from "../components/Content";
+import Footer from "../components/Footer";
 
 function Home() {
-  
-    return (
-      <>
-        <h1 className="text-2xl">
-          Home
-        </h1>
-        <Button variant="contained" color="primary" className="text-lg p-4">
-          ¡Hola, Material UI y Tailwind juntos!
-        </Button>
-        <Footer/>
-      </>
-    )
-  }
+  return (
+    <>
+      <Navbar/>
+      <Content/>
+      <Footer/>
+    </>
+  );
+}
 
-export default Home
+export default Home;
