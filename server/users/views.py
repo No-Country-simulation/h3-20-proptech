@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 
-from .serializers import RegisterSerializer, UserSerializer
+from .models import PersonalInformationToValidate
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer
 
 User = get_user_model()
 
@@ -21,3 +22,17 @@ class RegisterView(generics.CreateAPIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }, status=status.HTTP_201_CREATED)
+        
+        
+class RegisterWithKYC(generics.CreateAPIView):
+    def get(self, request):
+        queryset = PersonalInformationToValidate.objects.all()
+        serializer = RegisterWithKYCSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = RegisterWithKYCSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response( status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
