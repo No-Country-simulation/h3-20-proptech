@@ -5,6 +5,7 @@ import MortgageCalculator from "./components/MortgageCalculator"
 import EnhancedMortgageCalculator from "./components/EnhancedMortgageCalculator"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ErrorPage from "./pages/ErrorPage"
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Route path="/adelantoCapital" element={<EnhancedMortgageCalculator/>}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 }
