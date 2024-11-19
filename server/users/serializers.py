@@ -58,6 +58,7 @@ class RegisterWithKYCSerializer(serializers.Serializer):
     
     def to_representation(self, instance):
         representation = {
+            'user_id' : instance.user.pk,
             'username' : instance.user.username,
             'email' : instance.user.email,
             'front_id' : instance.front_id.url,
