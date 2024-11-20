@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'core',
     'users',
+    'investments',
+    'loans',
 ]
 
 REST_FRAMEWORK = {

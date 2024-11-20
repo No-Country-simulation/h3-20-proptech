@@ -6,6 +6,8 @@ class User(AbstractUser):
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(unique=True)
     validated = models.BooleanField(default=False)
+    is_guarantor = models.BooleanField(default=False)
+    garants = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='guarantor')
 
 
 class PersonalInformationToValidate(models.Model):
