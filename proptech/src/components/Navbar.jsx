@@ -31,15 +31,43 @@ function Navbar() {
           <div className="hidden flex-none lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
-
-              <li>
+              {/* <li>
                 <Link to="/calculator">Calculadora</Link>
               </li>
-
               <li>
                 <Link to="/adelantoCapital">Calculadora 2</Link>
-              </li>
-            
+              </li> */}
+
+  {/* Dropdown for Calculadoras */}
+  <li className="dropdown">
+    <div tabIndex={0} className="dropdown-toggle cursor-pointer">
+      Calculadoras
+    </div>
+    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+      <li>
+        <Link to="/calculator">Calculadora</Link>
+      </li>
+      <li>
+        <Link to="/adelantoCapital">Calculadora 2</Link>
+      </li>
+    </ul>
+  </li>
+
+  {/* Dropdown for Información */}
+  <li className="dropdown">
+    <div tabIndex={0} className="dropdown-toggle cursor-pointer">
+      Información
+    </div>
+    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+      <li>
+        <Link to="/cuil">CUIL</Link>
+      </li>
+      <li>
+        <Link to="/deudas">Deudas</Link>
+      </li>
+    </ul>
+  </li>
+
               <li>
                 <Link to="/login" className="mr-2">Login</Link>
               </li>
