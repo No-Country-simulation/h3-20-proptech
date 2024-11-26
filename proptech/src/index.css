@@ -4,7 +4,7 @@
 
 /** theme styles */
 body {
-    @apply bg-base-200 text-text-primary;
+    @apply bg-base-100 text-text-primary;
   }
   
   .navbar {
@@ -16,11 +16,11 @@ body {
   }
   
   .btn-primary {
-    @apply bg-primary text-tertiary hover:bg-primary/90;
+    @apply bg-primary text-white hover:bg-primary/90;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-tertiary hover:bg-secondary/90;
+    @apply bg-secondary text-white hover:bg-secondary/90;
   }
   
   .btn-tertiary {

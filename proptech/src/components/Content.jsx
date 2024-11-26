@@ -4,17 +4,23 @@ import Cuil from "./Cuil"
 
 function Content() {
     return (
-        <div className="bg-base-200 p-4">
+        <div className=" p-4">
             <section className="hero bg-base-300 text-center py-10">
-                <h2 className="text-4xl font-bold text-text-primary">Invertí con nosotros</h2>
+            <div className="max-w-md">
+                <h2 className="text-3xl font-bold text-text-primary">Invertí con nosotros</h2>
                 <p className="text-text-common py-6">
                     Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
                 </p>
+                <div className='flex px-2'>
+                    <button className="py-2 btn-tertiary text-white rounded">Calcula tus ganancias</button>
+                                   
                 <button className="btn btn-primary">Get Started</button>
+                </div>
+                </div>
             </section>
-            <section className="bg-white  text-center py-10">
+            <section className="bg-base-200  text-center py-10">
                 <div className="max-w-md">
-                    <h2 className="text-4xl font-bold">SECCION: Impulsando el mercado</h2>
+                    <h2 className="text-3xl font-bold">SECCION: Impulsando el mercado</h2>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
@@ -26,13 +32,13 @@ function Content() {
 
             <section>
                 <div className="max-w-md">
-                    <h2 className="text-4xl font-bold">SECCION: Quienes somos</h2>
+                    <h2 className="text-3xl font-bold">SECCION: Quienes somos</h2>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
                         a id nisi.
                     </p>
-                    <h2 className="text-4xl font-bold"> Nuestros aliados</h2>
+                    <h2 className="text-3xl font-bold"> Nuestros aliados</h2>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
@@ -42,7 +48,7 @@ function Content() {
             </section>
 
             <section>
-                <div className=" bg-background-mortgage p-6 rounded-lg shadow-lg">
+                <div className=" p-6 rounded-lg shadow-lg">
                     <div >
                         <h2 className="text-2xl font-bold text-text-primary text-center">Calculá, financiá, financiate.</h2>
                     </div>
@@ -51,6 +57,12 @@ function Content() {
                         <EnhancedMortgageCalculator />
 
                     </div>
+                </div>
+            </section>
+            <section className="bg-base-200  text-center py-10">
+                <div className="max-w-md text-center">
+                    <h2 className="text-2xl font-bold">Si estás interesado, solicita una pre aprobación.</h2>
+                <button className="btn btn-primary">Solicitar preaprobacion</button>
                 </div>
             </section>
 
