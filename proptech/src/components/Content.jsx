@@ -1,21 +1,19 @@
 import MortgageCalculator from "./MortgageCalculator"
 import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator"
-import Cuil from "./Cuil"
 
 function Content() {
     return (
         <div className=" p-4">
             <section className="hero bg-base-300 text-center py-10">
-            <div className="max-w-md">
-                <h2 className="text-3xl font-bold text-text-primary">Invertí con nosotros</h2>
-                <p className="text-text-common py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-                </p>
-                <div className='flex px-2'>
-                    <button className="py-2 btn-tertiary text-white rounded">Calcula tus ganancias</button>
-                                   
-                <button className="btn btn-primary">Get Started</button>
-                </div>
+                <div className="max-w-md">
+                    <h2 className="text-3xl font-bold text-text-primary">Invertí con nosotros</h2>
+                    <p className="text-text-common py-6">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
+                    </p>
+                    <div className='flex px-2'>
+                        <button className="py-2 btn-tertiary text-white rounded">Calcula tu ganancia</button>
+                        <button className="btn btn-primary">Registrate</button>
+                    </div>
                 </div>
             </section>
             <section className="bg-base-200  text-center py-10">
@@ -62,7 +60,7 @@ function Content() {
             <section className="bg-base-200  text-center py-10">
                 <div className="max-w-md text-center">
                     <h2 className="text-2xl font-bold">Si estás interesado, solicita una pre aprobación.</h2>
-                <button className="btn btn-primary">Solicitar preaprobacion</button>
+                    <button className="btn btn-primary">Solicitar preaprobacion</button>
                 </div>
             </section>
 
