@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/** theme styles */
+body {
+    @apply bg-base-200 text-text-primary;
+  }
+  
+  .navbar {
+    @apply bg-background-navbar text-text-white;
+  }
+  
+  .footer {
+    @apply bg-background-footer text-text-white;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-tertiary hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-tertiary hover:bg-secondary/90;
+  }
+  
+  .btn-tertiary {
+    @apply bg-tertiary text-secondary hover:bg-tertiary/90;
+  }
