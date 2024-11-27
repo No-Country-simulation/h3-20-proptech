@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import LogoFinancia from "../assets/LogoFinancia.png";
 // import Context from "../../context/Context";
 
 const Login = () => {
@@ -16,7 +17,6 @@ const Login = () => {
       console.log("error", error);
     }
   });
-
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -24,7 +24,7 @@ const Login = () => {
           <div className="card-body items-center text-center">
             <h2 className="card-title">
               <img
-                src=""
+                src={LogoFinancia}
                 alt="Protech logo"
                 className="lg:max-h-[40rem] lg:w-full"
               />
@@ -70,7 +70,10 @@ const Login = () => {
                   <div className="text-sm mt-2"></div>
                 </div>
               </div>
-              <a className="text-sm text-l text-start -m-10 ml-3" href="#">
+              <a
+                className="text-sm text-l text-start -m-10 ml-3 text-info"
+                href="#"
+              >
                 ¿Olvidó su contraseña?
               </a>
               <div className="flex flex-col gap-4 card-actions">
