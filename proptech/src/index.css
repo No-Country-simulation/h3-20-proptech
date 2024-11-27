@@ -2,27 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/** theme styles */
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
 body {
-    @apply bg-base-100 text-text-primary;
-  }
-  
-  .navbar {
-    @apply bg-background-navbar text-text-white;
-  }
-  
-  .footer {
-    @apply bg-background-footer text-text-white;
-  }
-  
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
-  }
-  
-  .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary/90;
-  }
-  
-  .btn-tertiary {
-    @apply bg-tertiary text-secondary hover:bg-tertiary/90;
-  }
+  @apply bg-base-100 text-text-primary;
+}
+
+.navbar {
+  @apply bg-background-navbar text-text-white;
+}
+
+.footer {
+  @apply bg-background-footer text-text-white;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary/90 rounded-button px-4 py-2;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-secondary/90 rounded-button px-4 py-2;
+}
+
+.btn-tertiary {
+  @apply bg-tertiary text-secondary hover:bg-tertiary/90 rounded-button px-4 py-2;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 border border-tertiary rounded-button bg-inherit text-text-primary;
+}
+
+.input-field:focus {
+  @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus;
+}

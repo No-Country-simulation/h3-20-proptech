@@ -78,7 +78,7 @@ function Navbar() {
                             <li>
                                 <button className="btn-primary">
 
-                                <Link to="/login" className="mr-2">Login</Link>
+                                <Link to="/login" className="mr-2">Inicia sesión</Link>
                                 </button>
                             </li>
                             <li>
