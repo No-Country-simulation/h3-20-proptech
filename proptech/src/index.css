@@ -39,30 +39,3 @@ body {
 .input-field:focus {
   @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus;
 }
-
-
-
-/** theme styles */
-/* body {
-    @apply bg-base-100 text-text-primary;
-  }
-  
-  .navbar {
-    @apply bg-background-navbar text-text-white;
-  }
-  
-  .footer {
-    @apply bg-background-footer text-text-white;
-  }
-  
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
-  }
-  
-  .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary/90;
-  }
-  
-  .btn-tertiary {
-    @apply bg-tertiary text-secondary hover:bg-tertiary/90;
-  } */
