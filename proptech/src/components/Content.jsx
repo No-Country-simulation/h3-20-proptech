@@ -1,5 +1,6 @@
 import MortgageCalculator from "./MortgageCalculator"
 import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator"
+import InvestorReturnCalculator from "./InvestorReturnCalculator";
 
 function Content() {
     return (
@@ -52,7 +53,7 @@ function Content() {
                     </div>
                     <div className="flex">
                         <MortgageCalculator />
-                        <EnhancedMortgageCalculator />
+                        <InvestorReturnCalculator />
 
                     </div>
                 </div>
