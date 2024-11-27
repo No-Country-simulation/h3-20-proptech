@@ -54,6 +54,14 @@ function MortgageCalculator() {
         setLoanDetails(details);
     };
 
+    const clearFields = () => {
+        setPrincipal('');
+        setAnnualRate('');
+        setTerm('');
+        setMonthlyPayment(''); 
+        setLoanDetails('');
+    };
+
     return (
         <div className="max-w-md mx-auto p-6 bg-inherit shadow-md rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Calculadora de pagos</h2>
@@ -81,7 +89,7 @@ function MortgageCalculator() {
                     className="input-field"
                 />
                 <div className="flex px-2 space-x-4">
-                    <button className="btn-tertiary w-full">Borrar campos</button>
+                    <button className="btn-tertiary w-full" onClick={clearFields}>Borrar campos</button>
                     <button onClick={calculateMortgage} className="btn-primary w-full">
                         Calcular
                     </button>
