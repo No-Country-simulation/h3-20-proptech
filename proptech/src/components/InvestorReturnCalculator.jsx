@@ -141,15 +141,9 @@ function InvestorReturnCalculator() {
                 </div>
             </div>
 
-            {/* Display Monthly Return */}
-            <div className="mt-6">
-                <h3 className="text-xl font-semibold">
-                    Retiro Mensual: ${monthlyReturn}
-                </h3>
-            </div>
-
             {results.length > 0 && (
                 <div className="mt-6">
+                    <h3 className="text-xl font-semibold">Retiro Mensual: ${monthlyReturn}</h3>
                     <h3 className="text-xl font-semibold">Detalles de Retornos:</h3>
                     <table className="w-full mt-2 border-collapse">
                         <thead>
