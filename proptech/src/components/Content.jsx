@@ -48,7 +48,7 @@ function Content() {
             <section>
                 <div className=" p-6 rounded-lg shadow-lg">
                     <div >
-                        <h2 className="text-2xl font-bold text-text-primary text-center">Calculá, financiá, financiate.</h2>
+                        <h2 className="text-3xl font-bold text-text-primary text-center">Calculá, financiá, financiate.</h2>
                     </div>
                     <div className="flex">
                         <MortgageCalculator />
@@ -60,7 +60,7 @@ function Content() {
             <section className="bg-base-200  text-center py-10">
                 <div className="max-w-md text-center">
                     <h2 className="text-2xl font-bold">Si estás interesado, solicita una pre aprobación.</h2>
-                    <button className="btn btn-primary">Solicitar preaprobacion</button>
+                    <button className="btn-primary w-full">Solicitar preaprobacion</button>
                 </div>
             </section>
 

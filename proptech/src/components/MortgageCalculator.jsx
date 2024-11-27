@@ -59,38 +59,33 @@ function MortgageCalculator() {
             <h2 className="text-2xl font-bold mb-4">Calculadora de pagos</h2>
             <div className="space-y-4">
 
-                    <input
-                        type="number"
-                        placeholder="Capital ($)"  //Principal Amount ($)
-                        value={principal}
-                        onChange={(e) => setPrincipal(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
-                    />
-                    <input
-                        type="number"
-                        placeholder="Tasa de Interes anual (%)"  //Annual Interest Rate (%)
-                        value={annualRate}
-                        onChange={(e) => setAnnualRate(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
-                    />
-                    <input
-                        type="number"
-                        placeholder="Plazo en años"  //Loan Term (Years)
-                        value={term}
-                        onChange={(e) => setTerm(e.target.value)}
-                        className="w-full px-4 py-2 border rounded"
-                    />
-
-                <div className='flex px-2'>
-                    <button className="w-full py-2 btn-tertiary text-white rounded">Borrar campos</button>
-                    <button
-                        onClick={calculateMortgage}
-                        className="w-full py-2 btn-primary text-white rounded"
-                    >
+                <input
+                    type="number"
+                    placeholder="Ingresa el capital que necesitas"
+                    value={principal}
+                    onChange={(e) => setPrincipal(e.target.value)}
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    placeholder="Tasa de Interes anual (%)"
+                    value={annualRate}
+                    onChange={(e) => setAnnualRate(e.target.value)}
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    placeholder="Ingresa plazo en años"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
+                    className="input-field"
+                />
+                <div className="flex px-2 space-x-4">
+                    <button className="btn-tertiary w-full">Borrar campos</button>
+                    <button onClick={calculateMortgage} className="btn-primary w-full">
                         Calcular
                     </button>
                 </div>
-
             </div>
 
             {monthlyPayment && (

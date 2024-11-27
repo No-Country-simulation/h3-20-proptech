@@ -62,41 +62,41 @@ function EnhancedMortgageCalculator() {
                     placeholder="Capital ($))"
                     value={principal}
                     onChange={(e) => setPrincipal(e.target.value)}
-                    className="w-full px-4 py-2 border rounded"
+                    className="input-field"
                 />
                 <input
                     type="number"
                     placeholder="Tasa de Interes anual (%)"
                     value={annualRate}
                     onChange={(e) => setAnnualRate(e.target.value)}
-                    className="w-full px-4 py-2 border rounded"
+                    className="input-field"
                 />
                 <input
                     type="number"
                     placeholder="Plazo en años"
                     value={term}
                     onChange={(e) => setTerm(e.target.value)}
-                    className="w-full px-4 py-2 border rounded"
+                    className="input-field"
                 />
                 <input
                     type="number"
                     placeholder="Adelanto de Capital ($)"  //Partial Payment Amount ($)
                     value={partialPayment}
                     onChange={(e) => setPartialPayment(e.target.value)}
-                    className="w-full px-4 py-2 border rounded"
+                    className="input-field"
                 />
                 <input
                     type="number"
                     placeholder="Mes de Adelnto de Capital"  //Month for Partial Payment
                     value={partialPaymentMonth}
                     onChange={(e) => setPartialPaymentMonth(e.target.value)}
-                    className="w-full px-4 py-2 border rounded"
+                    className="input-field"
                 />
-                <div className='flex px-2 '>
-                    <button className=" w-full py-2 btn-tertiary text-white rounded">Borrar campos</button>
+                <div className='flex px-2 space-x-4'>
+                    <button className="btn-tertiary w-full">Borrar campos</button>
                     <button
                         onClick={calculateMortgage}
-                        className=" w-full py-2 btn-primary text-white rounded"
+                        className="btn-primary w-full"
                     >
                         Calcular
                     </button>
