@@ -16,6 +16,7 @@ class User(AbstractUser):
     identification = models.PositiveBigIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=None, null=True, blank=True)
     validated = models.BooleanField(default=False)
+    income = models.PositiveIntegerField(default=None, null=True, blank=True)
     score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=None, editable=False)
     is_guarantor = models.BooleanField(default=False)
     garants = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='guarantor')
