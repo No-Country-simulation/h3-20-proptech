@@ -15,6 +15,7 @@ class Loan(models.Model):
     original_total_due = models.PositiveIntegerField()
     actual_total_due = models.PositiveIntegerField()
     interest_rate = models.PositiveSmallIntegerField()
+    total_payments = models.PositiveSmallIntegerField()
     start_date = models.DateField()
     end_date = models.DateField()
     state = models.CharField(max_length=2, choices=STATE_CHOICES, default='N')
