@@ -70,3 +70,10 @@ class RegisterWithKYCSerializer(serializers.Serializer):
         }
        
         return representation
+    
+    
+class UpdatePersonalDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['identification', 'first_name', 'last_name']
+      
