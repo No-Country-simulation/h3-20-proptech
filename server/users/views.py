@@ -1,10 +1,12 @@
 from rest_framework import generics, status
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 
 from .models import PersonalInformationToValidate
-from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer
 
 User = get_user_model()
 
@@ -52,3 +54,17 @@ class ValidateUserView(generics.CreateAPIView):
         user_to_validate.validated = True
         
         return Response(status=status.HTTP_200_OK)
+
+
+class UpdatePersonalDataView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def patch(self, request, *args, **kwargs):
+        user = request.user
+        serializer = UpdatePersonalDataSerializer(instance=user, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Updated succesfully'}, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
