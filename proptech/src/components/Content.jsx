@@ -1,6 +1,7 @@
 import MortgageCalculator from "./MortgageCalculator";
 import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator";
 import InvestorReturnCalculator from "./InvestorReturnCalculator";
+
 import Stats from "./Stats";
 
 function Content() {
@@ -46,6 +47,38 @@ function Content() {
           </p>
         </div>
       </section>
+
+            <section>
+                <h2 className="text-3xl font-bold">CSS test section</h2>
+                <div class="tab-container items-center">
+                    <button class="tab active">Personal</button>
+                    <button class="tab">Garante uno</button>
+                    <button class="tab">Garante dos</button>
+                </div>
+                <div>
+                <label className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            className="checkbox"
+                        />
+                        <span>checkbox</span>
+                        </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            className="checkbox-custom "
+                        />
+                        <span>checkbox-custom</span>
+                    </label>
+                </div>
+                <div className="flex">
+                <button className="btn-primary">Primary</button>
+                <button className="btn-secondary">Secondary</button>
+                <button className="btn-tertiary">Tertiary</button>
+                </div>
+
+            </section>
+
 
       <section>
         <div className=" p-6 rounded-lg shadow-lg">
