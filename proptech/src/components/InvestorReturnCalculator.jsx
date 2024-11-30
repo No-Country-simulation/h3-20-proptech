@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Checkbox from '@mui/material/Checkbox';
 
 function InvestorReturnCalculator() {
     const [principal, setPrincipal] = useState('');
@@ -8,6 +9,17 @@ function InvestorReturnCalculator() {
     const [reinvestReturns, setReinvestReturns] = useState(false);
     const [results, setResults] = useState([]);
     const [monthlyReturn, setMonthlyReturn] = useState(0); // To display in h3
+
+    const [errors, setErrors] = useState({ principal: false, annualRate: false, term: false });
+    const validateInput = () => {
+        const newErrors = {
+            principal: !/^\d+$/.test(principal),
+            annualRate: !/^\d+(\.\d+)?$/.test(annualRate),
+            term: !/^\d+$/.test(term),
+        };
+        setErrors(newErrors);
+        return !Object.values(newErrors).some((error) => error);
+    };
 
     const calculateReturns = () => {
         const principalAmount = parseFloat(principal);
@@ -62,16 +74,18 @@ function InvestorReturnCalculator() {
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-inherit shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Calculadora de Retornos de Capital</h2>
-            <div className="space-y-4">
+        <div className="max-w-md mx-auto p-6 bg-inherit border-2 border-secondary shadow-md rounded-xl focus-within:shadow-primary">
+            <h2 className="text-2xl font-bold mb-4 text-center text-text-primary">Calculá tu ganancia</h2>
+            <div className="space-y-4 ">
+                <label className="font-bold text-text-primary mb-1">Capital</label>
                 <input
                     type="number"
-                    placeholder="Capital Inicial ($)"
+                    placeholder="Ingresa el capital que necesitas"
                     value={principal}
                     onChange={(e) => setPrincipal(e.target.value)}
-                    className="input-field"
+                    className="input-field "
                 />
+                <label className='font-bold text-text-primary mb-1'>Tasa de Interes anual</label>
                 <input
                     type="number"
                     placeholder="Tasa de Interés Anual (%)"
@@ -79,7 +93,7 @@ function InvestorReturnCalculator() {
                     onChange={(e) => setAnnualRate(e.target.value)}
                     className="input-field"
                 />
-
+                <label className='font-bold text-text-primary mb-1'>Plazo en {termType === 'years' ? "años" : "meses"}</label>
                 <div className='flex space-x-4'>
                     <div>
                         <input
@@ -98,7 +112,7 @@ function InvestorReturnCalculator() {
                                 value="years"
                                 checked={termType === 'years'}
                                 onChange={(e) => setTermType(e.target.value)}
-                                className="mr-2"
+                                className="mr-2 checkbox-custom "
                             />
                             Años
                         </label>
@@ -109,7 +123,7 @@ function InvestorReturnCalculator() {
                                 value="months"
                                 checked={termType === 'months'}
                                 onChange={(e) => setTermType(e.target.value)}
-                                className="mr-2"
+                                className="mr-2 checkbox-custom"
                             />
                             Meses
                         </label>
@@ -121,7 +135,8 @@ function InvestorReturnCalculator() {
                         type="checkbox"
                         checked={reinvestReturns}
                         onChange={(e) => setReinvestReturns(e.target.checked)}
-                        className="mr-2"
+                        className="mr-2 checkbox-custom"
+                    // className="rounded-checkbox border-2 border-[#042C31] bg-[#DD5E30] text-[#042C31]"
                     />
                     <label>Reinvertir retornos mensuales</label>
                 </div>
