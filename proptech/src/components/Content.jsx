@@ -90,7 +90,7 @@ function Content() {
                         <h2 className="text-3xl font-bold text-text-primary text-center">Calculá, financiá, financiate.</h2>
                     </div>
                     <div className="flex">
-                        <MortgageCalculator />
+                        {/* <MortgageCalculator /> */}
                         <InvestorReturnCalculator />
 
                     </div>

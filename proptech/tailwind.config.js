@@ -41,6 +41,8 @@ module.exports = {
           secondary: '#DD5E30',
           disabled: '#93A4A6',
           white: '#FFFFFF',
+          message:'#042C31',
+          messageError: '#DD5E30', 
         },
         tab: {
             fill: '#F1F6FD', // Tab background color

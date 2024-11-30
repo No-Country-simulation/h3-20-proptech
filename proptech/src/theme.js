@@ -13,6 +13,8 @@ const theme = createTheme({
     text: {
       primary: '#042C31',
       secondary: '#DD5E30',
+      message:'#042C31',
+      messageError: '#DD5E30', 
       disabled: '#93A4A6',
     },
     background: {
