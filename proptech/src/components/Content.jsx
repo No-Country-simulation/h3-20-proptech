@@ -1,6 +1,8 @@
 import MortgageCalculator from "./MortgageCalculator"
 import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator"
 import InvestorReturnCalculator from "./InvestorReturnCalculator";
+import Checkbox from '@mui/material/Checkbox';
+import { Input } from "@mui/material";
 
 function Content() {
     return (
@@ -12,8 +14,8 @@ function Content() {
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
                     </p>
                     <div className='flex px-2'>
-                        <button className="py-2 btn-tertiary text-white rounded">Calcula tu ganancia</button>
-                        <button className="btn btn-primary">Registrate</button>
+                        <button className="py-2 btn-tertiary rounded">Calcula tu ganancia</button>
+                        <button className=" btn-primary">Registrate</button>
                     </div>
                 </div>
             </section>
@@ -25,7 +27,7 @@ function Content() {
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
                         a id nisi.
                     </p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button className=" btn-primary">Get Started</button>
                 </div>
             </section>
 
@@ -37,6 +39,7 @@ function Content() {
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
                         a id nisi.
                     </p>
+
                     <h2 className="text-3xl font-bold"> Nuestros aliados</h2>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
@@ -45,6 +48,41 @@ function Content() {
                     </p>
                 </div>
             </section>
+
+
+
+            <section>
+                <h2 className="text-3xl font-bold">CSS test section</h2>
+                <div class="tab-container items-center">
+                    <button class="tab active">Personal</button>
+                    <button class="tab">Garante uno</button>
+                    <button class="tab">Garante dos</button>
+                </div>
+                <div>
+                <label className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            className="checkbox"
+                        />
+                        <span>checkbox</span>
+                        </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            className="checkbox-custom "
+                        />
+                        <span>checkbox-custom</span>
+                    </label>
+                </div>
+                <div className="flex">
+                <button className="btn-primary">Primary</button>
+                <button className="btn-secondary">Secondary</button>
+                <button className="btn-tertiary">Tertiary</button>
+                </div>
+
+            </section>
+
+
 
             <section>
                 <div className=" p-6 rounded-lg shadow-lg">
