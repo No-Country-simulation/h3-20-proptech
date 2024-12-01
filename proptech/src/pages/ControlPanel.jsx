@@ -1,8 +1,10 @@
 import Grafica from "../components/Grafica";
+import UserNavbar from "../components/UserNavbar";
 
 function ControlPanel() {
   return (  
     <>
+  <UserNavbar/>
   <section className="p-6">
     <div className="flex gap-6">
       {/* Sección izquierda (Descripción y Balance Total) */}
