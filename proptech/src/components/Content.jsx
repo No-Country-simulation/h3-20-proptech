@@ -3,6 +3,7 @@ import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator";
 import InvestorReturnCalculator from "./InvestorReturnCalculator";
 
 import Stats from "./Stats";
+import InfoCards from "./InfoCards";
 
 function Content() {
   return (
@@ -24,7 +25,7 @@ function Content() {
         </div>
       </section>
       
-      <section className="bg-base-200  text-center py-10 w-full">
+      <section className="text-center py-10 w-full">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold">SECCION: Impulsando el mercado</h2>
           <Stats />
@@ -32,13 +33,17 @@ function Content() {
       </section>
 
       <section>
-        <div className="max-w-md">
+        <div className="bg-base-200 w-full text-center py-10">
           <h2 className="text-3xl font-bold">SECCION: Quienes somos</h2>
+          <div className="flex">
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
+          <img src="" alt="foto" />
+          </div>
+          <InfoCards/>
           <h2 className="text-3xl font-bold"> Nuestros aliados</h2>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda

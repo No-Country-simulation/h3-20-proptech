@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import ErrorPage from "./pages/ErrorPage"
 import DeudasTable from "./components/DeudasTable"
 import InvestorReturnCalculator from "./components/InvestorReturnCalculator"
+import ControlPanel from "./pages/ControlPanel"
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <Route path="/deudas" element={<DeudasTable/>}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      
+      <Route path="/controlpanel" element={<ControlPanel />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

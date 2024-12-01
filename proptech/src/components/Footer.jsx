@@ -1,3 +1,8 @@
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import XIcon from '@mui/icons-material/X';
+
 function Footer() {
     return (
     // <footer className="footer bg-base-200 text-base-content p-10">
@@ -5,10 +10,10 @@ function Footer() {
     <aside className="ml-16">
         <p>Logo</p>
         <div className="flex">
-            <img src="" alt="Instagram" />
-            <img src="" alt="upholt" />
-            <img src="" alt="Twitter" />
-            <img src="" alt="Youtube" />
+            <InstagramIcon />
+            <XIcon style={{ fontSize: '24px' }}/>
+            <YouTubeIcon style={{ fontSize: '24px' }}/>
+            <FacebookIcon style={{ fontSize: '24px' }}/>
         </div>
     </aside>
     <nav>
