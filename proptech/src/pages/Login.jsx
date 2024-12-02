@@ -1,93 +1,150 @@
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import LogoFinancia from "../assets/LogoFinancia.png";
-// import Context from "../../context/Context";
+import LogoFinancia from "../assets/logo.png";
+import { useEffect, useState } from "react";
 
 const Login = () => {
-  // const { loginUser } = useContext(Context);
+  const [principal, setPrincipal] = useState("");
+  const [annualRate, setAnnualRate] = useState("");
+  const [term, setTerm] = useState("");
 
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = handleSubmit((data) => {
-    console.log("DATA::", data);
-    const { email, password } = data;
-    try {
-      // await loginUser(email, password);
-    } catch (error) {
-      console.log("error", error);
-    }
+  const [errors, setErrors] = useState({
+    principal: null,
+    annualRate: null,
+    term: null,
+  }); // null: no validation yet, true: invalid, false: valid
+  const [focus, setFocus] = useState({
+    principal: false,
+    annualRate: false,
+    term: false,
   });
+
+  useEffect(
+    () => {
+      // console.log("Updated principal:", principal, "Updated annualRate:", annualRate, "Updated term:", term);
+    },
+    [principal],
+    [annualRate],
+    [term]
+  );
+
+  const validateField = (field, value) => {
+    if (field === "principal") return !/^\d+$/.test(value);
+    if (field === "annualRate") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "term") return !/^\d+$/.test(value);
+    return false;
+  };
+
+  const handleInputChange = (field, value) => {
+    // Update the state
+    if (field === "principal") setPrincipal(value);
+    if (field === "annualRate") setAnnualRate(value);
+    if (field === "term") setTerm(value);
+
+    // Validate the field
+    const isValid = !validateField(field, value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [field]: !value ? true : !isValid,
+    }));
+  };
+
+  const handleFocus = (field) => {
+    setFocus((prevFocus) => ({ ...prevFocus, [field]: true }));
+  };
+
+  const handleBlur = (field) => {
+    setFocus((prevFocus) => ({ ...prevFocus, [field]: false }));
+  };
+
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="card w-96 bg-white shadow-lg rounded-lg">
           <div className="card-body items-center text-center">
-            <h2 className="card-title">
+            <span className="card-title flex justify-center items-center">
               <img
                 src={LogoFinancia}
                 alt="Protech logo"
-                className="lg:max-h-[40rem] lg:w-full"
+                className="lg:max-h-[20rem] text-[color:#042C31] lg:w-1/2"
               />
-            </h2>
+            </span>
             <p className="text-gray-500">
               Inicie sesión en su cuenta para aprovechar todas las
               funcionalidades de la plataforma.
             </p>
 
-            <form onSubmit={onSubmit} className="flex flex-col gap-9">
+            <form onSubmit="" className="flex flex-col gap-9">
               <div className="flex flex-col gap-5 pb-3">
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 font-worksans"
-                  >
+                  <label className="font-bold text-text-primary mb-2">
                     Correo electrónico
                   </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.principal === true
+                        ? "text-text-messageError"
+                        : errors.principal === false && focus.principal
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    Capital a solicitar en pesos.
+                  </p>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="ejemplo@ejemplo.com"
-                    className="w-11/12 mt-1 px-4 py-2 bg-base-200 border border-primary rounded-md focus:outline-none focus:border-primary"
-                    {...register("email", { required: true })}
+                    type="text"
+                    placeholder="Ingrese su email"
+                    value={principal}
+                    onChange={(e) =>
+                      handleInputChange("principal", e.target.value)
+                    }
+                    onBlur={() => handleBlur("principal")}
+                    onFocus={() => handleFocus("principal")}
+                    className="input-field "
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="password"
-                    className="block text-gray-700 font-worksans"
-                  >
+                  <label className="font-bold text-text-primary mb-2">
                     Contraseña
                   </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.principal === true
+                        ? "text-text-messageError"
+                        : errors.principal === false && focus.principal
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    Capital a solicitar en pesos.
+                  </p>
                   <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="********"
-                    className="w-11/12 mt-1 px-4 py-2 bg-base-200 border border-primary rounded-md focus:outline-none focus:border-primary"
-                    {...register("password", { required: true })}
+                    type="text"
+                    placeholder="Ingrese su password"
+                    value={principal}
+                    onChange={(e) =>
+                      handleInputChange("principal", e.target.value)
+                    }
+                    onBlur={() => handleBlur("principal")}
+                    onFocus={() => handleFocus("principal")}
+                    className="input-field "
                   />
-                  <div className="text-sm mt-2"></div>
                 </div>
               </div>
               <a
-                className="text-sm text-l text-start -m-10 ml-3 text-info"
+                className="text-sm text-l text-start -m-10 ml-3 mt-1 mb-1 text-info"
                 href="#"
               >
                 ¿Olvidó su contraseña?
               </a>
               <div className="flex flex-col gap-4 card-actions">
                 <div className="flex justify-start gap-2 items-center">
-                  <button
-                    type="submit"
-                    className="btn bg-primary ml-3 mt-4 font-semibold text-white text-[#1c0505b3]"
-                  >
+                  <button type="submit" className="btn-primary w-full">
                     Iniciar sesión
                   </button>
-                  <div className="text-sm text-center mt-5 ml-4">
-                    ¿No tienes una cuenta?{" "}
+                  <div className="text-sm text-center ml-4">
+                    ¿Sin cuenta?{" "}
                     <Link className="text-sm mx-2 text-primary" to="/register">
-                      Registro
+                      Registrase
                     </Link>
                   </div>
                 </div>
