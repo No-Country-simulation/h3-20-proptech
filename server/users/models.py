@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
 
 from .utils.credit_score import get_user_score
+from .utils.cuit_generator import get_cuit
 
 # Create your models here.
 class User(AbstractUser):
@@ -29,8 +30,8 @@ class User(AbstractUser):
         
         
     def save(self, *args, **kwargs):
-        if self.identification:
-            self.score = get_user_score(self.identification)
+        if self.identification and self.gender:
+            self.score = get_user_score(get_cuit(self.identification, self.gender))
         else:
             self.score = 0
         super().save(*args, **kwargs)
