@@ -1,6 +1,7 @@
 import MortgageCalculator from "./MortgageCalculator"
 import EnhancedMortgageCalculator from "./EnhancedMortgageCalculator"
 import InvestorReturnCalculator from "./InvestorReturnCalculator";
+import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import { Input } from "@mui/material";
 
@@ -99,7 +100,9 @@ function Content() {
             <section className="bg-base-200  text-center py-10">
                 <div className="max-w-md text-center">
                     <h2 className="text-2xl font-bold">Si estás interesado, solicita una pre aprobación.</h2>
+                    <Link to="/solicitar">
                     <button className="btn-primary w-full">Solicitar preaprobacion</button>
+                    </Link>
                 </div>
             </section>
 
