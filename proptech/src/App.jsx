@@ -5,6 +5,7 @@ import MortgageCalculator from "./components/MortgageCalculator"
 import EnhancedMortgageCalculator from "./components/EnhancedMortgageCalculator"
 import PaymentAdminMortgageCalculator from "./components/PaymentAdminMortgageCalculator"
 import Cuil from "./components/Cuil"
+import Cuil2 from "./components/Cuil2"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ErrorPage from "./pages/ErrorPage"
@@ -23,6 +24,7 @@ function App() {
       <Route path="/pagos" element={<PaymentAdminMortgageCalculator/>}/>
       <Route path="/inversion" element={<InvestorReturnCalculator/>}/>
       <Route path="/cuil" element={<Cuil/>}/>
+      <Route path="/cuil2" element={<Cuil2/>}/>
       <Route path="/deudas" element={<DeudasTable/>}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

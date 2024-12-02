@@ -126,8 +126,26 @@ const theme = createTheme({
           },
         },
       },
-
-
+      MuiTable: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#F8D6D3",
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          head: {
+            backgroundColor: "#430E12",
+            color: "white",
+            fontWeight: "bold",
+          },
+          body: {
+            color: "#CE494B",
+          },
+        },
+      },
+      
   },
 });
 

@@ -82,6 +82,40 @@ body {
     @apply px-4 py-1 bg-inherit text-secondary;
   }
 
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: wrap;
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .tooltip-container:hover .tooltip-text {
+    left: 10%;
+    transform: translateX(-50%);
+    transform: translateY(50%);
+  }
+
 .tab-container {
     display: flex;
     justify-content: space-between;
