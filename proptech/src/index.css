@@ -47,7 +47,7 @@ body {
   }
   
   .input-field {
-    @apply w-full px-4 py-2 border border-tertiary rounded-button bg-inherit text-text-primary;
+    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
   }
   .input-field:focus {
     @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary;
@@ -60,6 +60,26 @@ body {
   }
   .input-field-disabled {
     @apply bg-wireframe-white border-wireframe-300 text-wireframe-300;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-wireframe-300;
+  }
+  .select-field:focus {
+    @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary text-text-primary;
+  }
+
+  .p {
+    @apply py-1 bg-inherit text-text-p;
+  }
+  .p-message {
+    @apply px-4 py-1 bg-inherit text-wireframe-300;
+  }
+  .p-messageError {
+    @apply px-4 py-1 bg-inherit text-primary;
+  }
+  .p-messageOk {
+    @apply px-4 py-1 bg-inherit text-secondary;
   }
 
 .tab-container {

@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import ErrorPage from "./pages/ErrorPage"
 import DeudasTable from "./components/DeudasTable"
 import InvestorReturnCalculator from "./components/InvestorReturnCalculator"
+import ComoSolicitarTuCredito from "./components/ComoSolicitarTuCredito"
+import TieneDeudas from "./components/TieneDeudas"
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
       <Route path="/deudas" element={<DeudasTable/>}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      
+      <Route path="/solicitar" element={<ComoSolicitarTuCredito/>} />
+      <Route path="/tieneDeudas" element={<TieneDeudas/>} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
