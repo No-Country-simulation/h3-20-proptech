@@ -3,42 +3,37 @@ import LogoFinancia from "../assets/logo.png";
 import { useEffect, useState } from "react";
 
 const Login = () => {
-  const [principal, setPrincipal] = useState("");
-  const [annualRate, setAnnualRate] = useState("");
-  const [term, setTerm] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [errors, setErrors] = useState({
-    principal: null,
-    annualRate: null,
-    term: null,
+    email: null,
+    password: null,
   }); // null: no validation yet, true: invalid, false: valid
   const [focus, setFocus] = useState({
-    principal: false,
-    annualRate: false,
+    email: false,
+    password: false,
     term: false,
   });
 
   useEffect(
     () => {
-      // console.log("Updated principal:", principal, "Updated annualRate:", annualRate, "Updated term:", term);
+      // console.log("Updated email:", email, "Updated password:", password);
     },
-    [principal],
-    [annualRate],
-    [term]
+    [email],
+    [password]
   );
 
   const validateField = (field, value) => {
-    if (field === "principal") return !/^\d+$/.test(value);
-    if (field === "annualRate") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "term") return !/^\d+$/.test(value);
+    if (field === "email") return !/^\d+$/.test(value);
+    if (field === "password") return !/^\d+(\.\d+)?$/.test(value);
     return false;
   };
 
   const handleInputChange = (field, value) => {
     // Update the state
-    if (field === "principal") setPrincipal(value);
-    if (field === "annualRate") setAnnualRate(value);
-    if (field === "term") setTerm(value);
+    if (field === "email") setEmail(value);
+    if (field === "password") setPassword(value);
 
     // Validate the field
     const isValid = !validateField(field, value);
@@ -81,9 +76,9 @@ const Login = () => {
                   </label>
                   <p
                     className={`text-sm mt-1 ${
-                      errors.principal === true
+                      errors.email === true
                         ? "text-text-messageError"
-                        : errors.principal === false && focus.principal
+                        : errors.email === false && focus.email
                         ? "text-text-message"
                         : "hidden"
                     }`}
@@ -93,12 +88,10 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder="Ingrese su email"
-                    value={principal}
-                    onChange={(e) =>
-                      handleInputChange("principal", e.target.value)
-                    }
-                    onBlur={() => handleBlur("principal")}
-                    onFocus={() => handleFocus("principal")}
+                    value={email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    onBlur={() => handleBlur("email")}
+                    onFocus={() => handleFocus("email")}
                     className="input-field "
                   />
                 </div>
@@ -108,9 +101,9 @@ const Login = () => {
                   </label>
                   <p
                     className={`text-sm mt-1 ${
-                      errors.principal === true
+                      errors.password === true
                         ? "text-text-messageError"
-                        : errors.principal === false && focus.principal
+                        : errors.password === false && focus.password
                         ? "text-text-message"
                         : "hidden"
                     }`}
@@ -120,12 +113,12 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder="Ingrese su password"
-                    value={principal}
+                    value={password}
                     onChange={(e) =>
-                      handleInputChange("principal", e.target.value)
+                      handleInputChange("password", e.target.value)
                     }
-                    onBlur={() => handleBlur("principal")}
-                    onFocus={() => handleFocus("principal")}
+                    onBlur={() => handleBlur("password")}
+                    onFocus={() => handleFocus("password")}
                     className="input-field "
                   />
                 </div>
