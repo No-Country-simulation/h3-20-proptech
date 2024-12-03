@@ -13,7 +13,7 @@ class User(AbstractUser):
         ('F', 'female'),
     ]
     username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, null=True)
     identification = models.PositiveBigIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=None, null=True, blank=True)
     validated = models.BooleanField(default=False)
