@@ -1,43 +1,25 @@
 import { Link } from "react-router-dom";
-import LogoFinancia from "../assets/logo.png";
+import happyFamily from "../assets/familia-feliz.png";
 import { useEffect, useState } from "react";
 
 const Register = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [re_password, setRe_Password] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-
   const [validated, setValidated] = useState(false);
   const [isActive, setIsActive] = useState(false);
-
-  /*id 	integer	
-    name o nick	string	
-    emal	string	
-    password	string	
-    validated	boolean	
-    active	boolean
-  */
 
   const [errors, setErrors] = useState({
     email: null,
     password: null,
-    re_password: null,
-    firstName: null,
-    lastName: null,
-    phone: null,
+    name: null,
     validated: null,
     isActive: null,
   }); // null: no validation yet, true: invalid, false: valid
   const [focus, setFocus] = useState({
     email: false,
     password: false,
-    re_password: false,
-    firstName: false,
-    lastName: false,
-    phone: false,
+    name: false,
     validated: false,
     isActive: false,
   });
@@ -48,10 +30,7 @@ const Register = () => {
     },
     [email],
     [password],
-    [re_password],
-    [firstName],
-    [lastName],
-    [phone],
+    [name],
     [validated],
     [isActive]
   );
@@ -59,10 +38,7 @@ const Register = () => {
   const validateField = (field, value) => {
     if (field === "email") return !/^\d+$/.test(value);
     if (field === "password") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "re_password") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "firstName") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "lastName") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "phone") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "name") return !/^\d+(\.\d+)?$/.test(value);
     if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
     if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
     return false;
@@ -72,12 +48,9 @@ const Register = () => {
     // Update the state
     if (field === "email") setEmail(value);
     if (field === "password") setPassword(value);
-    if (field === "re_password") setRe_Password(value);
-    if (field === "firstName") setFirstName(value);
-    if (field === "lastName") setLastName(value);
-    if (field === "phone") setPhone(value);
-    if (field === "validated") setPhone(value);
-    if (field === "isActive") setPhone(value);
+    if (field === "name") setPassword(value);
+    if (field === "validated") setPassword(value);
+    if (field === "isActive") setPassword(value);
 
     // Validate the field
     const isValid = !validateField(field, value);
@@ -97,222 +70,163 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="card w-120 bg-white shadow-lg rounded-lg">
-          <div className="card-body items-center text-center">
-            <span className="card-title flex justify-center items-center">
-              <img
-                src={LogoFinancia}
-                alt="Protech logo"
-                className="lg:max-h-[40rem] lg:w-1/2"
-              />
-            </span>
-            <p className="text-gray-500">
-              Registrese en nuestra plataforma y aprovecha todas las
-              funcionalidades de la plataforma.
+      <div className="grid grid-cols-12 h-screen">
+        <div className="col-span-7 relative">
+          <img
+            src={happyFamily}
+            alt="Descripción de la imagen"
+            className="w-screen h-screen object-cover rounded-br-[50px]"
+          />
+          <div className="absolute bottom-16 ml-[15%] ">
+            <p className="text-white text-5xl font-bold">
+              El futuro que
+              <br /> deseas está a tu <br />
+              alcance.
             </p>
+          </div>
+        </div>
+        <div className="col-span-5 content-center">
+          <p className="text-2xl font-bold text-center">
+            Tu futuro comienza ahora{" "}
+          </p>
+          <div className="w-[60%] mt-5 mx-auto">
+            <p className="text-center">
+              Por favor, completá tus datos para crear tu cuenta. Si necesitas
+              ayuda durante el proceso, no dudes en contactarnos.
+            </p>
+          </div>
 
-            <form onSubmit="" className="flex flex-col gap-9 mt-6">
-              <div className="grid grid-cols-2 gap-6 items-center">
-                {/* Column 1 */}
-                <div className="flex flex-col items-center text-center">
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Correo electrónico
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.email === true
-                          ? "text-text-messageError"
-                          : errors.email === false && focus.email
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="text"
-                      placeholder="Ingrese su email"
-                      value={email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      onBlur={() => handleBlur("email")}
-                      onFocus={() => handleFocus("email")}
-                      className="input-field "
-                    />
-                  </div>
-
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Primer nombre
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.firstName === true
-                          ? "text-text-messageError"
-                          : errors.firstName === false && focus.firstName
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="text"
-                      placeholder="Ingrese su nombre"
-                      value={firstName}
-                      onChange={(e) =>
-                        handleInputChange("firstName", e.target.value)
-                      }
-                      onBlur={() => handleBlur("firstName")}
-                      onFocus={() => handleFocus("firstName")}
-                      className="input-field "
-                    />
-                  </div>
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Contraseña
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.password === true
-                          ? "text-text-messageError"
-                          : errors.password === false && focus.email
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="password"
-                      placeholder="Ingrese su contraseña"
-                      value={email}
-                      onChange={(e) =>
-                        handleInputChange("password", e.target.value)
-                      }
-                      onBlur={() => handleBlur("password")}
-                      onFocus={() => handleFocus("password")}
-                      className="input-field "
-                    />
-                  </div>
-                </div>
-                {/* End column 1 */}
-
-                {/* Column 2 */}
-                <div className="flex flex-col items-center text-center">
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Contacto{" "}
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.phone === true
-                          ? "text-text-messageError"
-                          : errors.phone === false && focus.phone
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="tel"
-                      placeholder="Ingrese su contacto"
-                      value={phone}
-                      onChange={(e) =>
-                        handleInputChange("phone", e.target.value)
-                      }
-                      onBlur={() => handleBlur("phone")}
-                      onFocus={() => handleFocus("phone")}
-                      className="input-field "
-                    />
-                  </div>
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Apellidos
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.lastName === true
-                          ? "text-text-messageError"
-                          : errors.lastName === false && focus.lastName
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="text"
-                      placeholder="Ingrese sus apellidos"
-                      value={lastName}
-                      onChange={(e) =>
-                        handleInputChange("lastName", e.target.value)
-                      }
-                      onBlur={() => handleBlur("lastName")}
-                      onFocus={() => handleFocus("lastName")}
-                      className="input-field "
-                    />
-                  </div>
-                  <div>
-                    <label className="font-bold text-text-primary mb-2">
-                      Repetir contraseña
-                    </label>
-                    <p
-                      className={`text-sm mt-1 ${
-                        errors.re_password === true
-                          ? "text-text-messageError"
-                          : errors.re_password === false && focus.re_password
-                          ? "text-text-message"
-                          : "hidden"
-                      }`}
-                    >
-                      Capital a solicitar en pesos.
-                    </p>
-                    <input
-                      type="password"
-                      placeholder="Vuelva a ingresar su contraseña"
-                      value={re_password}
-                      onChange={(e) =>
-                        handleInputChange("re_password", e.target.value)
-                      }
-                      onBlur={() => handleBlur("re_password")}
-                      onFocus={() => handleFocus("re_password")}
-                      className="input-field "
-                    />
-                  </div>
-                </div>
-                {/* End column 2 */}
-              </div>
-
-              <div className="flex flex-col gap-4 card-actions">
-                <div className="form-control">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Estoy de acuerdo</span>
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox checkbox-primary ml-4"
-                    />
+          {/* Form */}
+          <div className="w-[70%] mx-auto mt-7">
+            <form onSubmit="" className="flex flex-col gap-9">
+              <div className="flex flex-col gap-5 pb-3">
+                <div>
+                  <label className="font-bold text-text-primary mb-2">
+                    Email
                   </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.email === true
+                        ? "text-text-messageError"
+                        : errors.email === false && focus.email
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    Capital a solicitar en pesos.
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="jonathan@gmail.com"
+                    value={email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    onBlur={() => handleBlur("email")}
+                    onFocus={() => handleFocus("email")}
+                    className="input-field "
+                  />
                 </div>
-                <div className="flex justify-start gap-2 items-center">
-                  <button type="submit" className="btn-primary w-full">
-                    Registrar
-                  </button>
-                  <div className="text-sm text-center mt-1 ml-4">
-                    ¿Ya tienes una cuenta?{" "}
-                    <Link className="text-sm mx-2 text-primary" to="/login">
-                      Login
-                    </Link>
+
+                <div>
+                  <label className="font-bold text-text-primary mb-2">
+                    Nombre
+                  </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.name === true
+                        ? "text-text-messageError"
+                        : errors.name === false && focus.name
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    Capital a solicitar en pesos.
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="jonathan"
+                    value={name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    onBlur={() => handleBlur("name")}
+                    onFocus={() => handleFocus("name")}
+                    className="input-field "
+                  />
+                </div>
+
+                <div>
+                  <label className="font-bold text-text-primary mb-2">
+                    Password
+                  </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.password === true
+                        ? "text-text-messageError"
+                        : errors.password === false && focus.password
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    Capital a solicitar en pesos.
+                  </p>
+                  <input
+                    type="password"
+                    placeholder="********"
+                    value={password}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
+                    onBlur={() => handleBlur("password")}
+                    onFocus={() => handleFocus("password")}
+                    className="input-field "
+                  />
+                </div>
+                <div className="grid grid-cols-12">
+                  <div className="col-span-6">
+                    <label className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        className="checkbox-custom"
+                        value={isActive}
+                        checked={isActive}
+                        onChange={(e) => setIsActive(e.target.value)}
+                      />
+                      <span>Activo</span>
+                    </label>
+                  </div>
+                  <div className="col-span-6">
+                    <label className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        className="checkbox-custom"
+                        value={validated}
+                        checked={validated}
+                        onChange={(e) => setValidated(e.target.value)}
+                      />
+                      <span>Validado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4 card-actions">
+                <div className="flex justify-start gap-4 items-center">
+                  <div className="grid grid-cols-12">
+                    <div className="col-span-6">
+                      <button type="submit" className="btn-primary w-full ">
+                        Registrar
+                      </button>
+                    </div>
+                    <div className="col-span-6">
+                      <div className="text-sm text-center ml-4">
+                        <Link className="text-sm mx-2 text-primary" to="/login">
+                          Login
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </form>
           </div>
+          {/* End Form */}
         </div>
       </div>
     </>
