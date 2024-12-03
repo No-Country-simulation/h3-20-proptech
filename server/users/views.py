@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 
 from .models import PersonalInformationToValidate
-from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer
 
 User = get_user_model()
 
@@ -68,3 +68,17 @@ class UpdatePersonalDataView(APIView):
             return Response({'message': 'Updated succesfully'}, status=status.HTTP_200_OK)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class AddGarantorView(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        user = request.user
+        serializer = AddGarantorSerializer(data=request.data, context={'original_user':user})
+        
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        serializer.save()
+        return Response({'message': 'Garantor added succesfully'}, status=status.HTTP_200_OK)

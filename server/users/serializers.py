@@ -95,6 +95,8 @@ class AddGarantorSerializer(serializers.Serializer):
      
     @transaction.atomic
     def create(self, validated_data):
+        original_user = self.context.get('original_user')
+        
         user = User.objects.create_user(
             username=validated_data['first_name'] + validated_data['last_name'],
             email=None,
@@ -103,7 +105,8 @@ class AddGarantorSerializer(serializers.Serializer):
             last_name=validated_data['last_name'],
             gender=validated_data['gender'],
             identification=validated_data['identification'],
-            is_guarantor=True
+            is_guarantor=True,
+            garants=original_user
         )
         personal_data = PersonalInformationToValidate.objects.create(
             user = user,

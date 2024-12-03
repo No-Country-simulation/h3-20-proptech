@@ -40,6 +40,7 @@ services:
       - ADMIN_USER=admin_user
       - ADMIN_PASSWORD=secure_password
       - ADMIN_EMAIL=admin@gmail.com
+      - ALLOWED_HOSTS=localhost
 
 networks:
   mynetwork:
