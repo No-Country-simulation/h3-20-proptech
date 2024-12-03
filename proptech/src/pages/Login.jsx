@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogoFinancia from "../assets/logo.png";
+import happyFamily from "../assets/familia-feliz.png";
 import { useEffect, useState } from "react";
 
 const Login = () => {
@@ -53,26 +53,40 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="card w-96 bg-white shadow-lg rounded-lg">
-          <div className="card-body items-center text-center">
-            <span className="card-title flex justify-center items-center">
-              <img
-                src={LogoFinancia}
-                alt="Protech logo"
-                className="lg:max-h-[20rem] text-[color:#042C31] lg:w-1/2"
-              />
-            </span>
-            <p className="text-gray-500">
-              Inicie sesión en su cuenta para aprovechar todas las
-              funcionalidades de la plataforma.
+      <div className="grid grid-cols-12 h-screen">
+        <div className="col-span-7 relative">
+          <img
+            src={happyFamily}
+            alt="Descripción de la imagen"
+            className="w-screen h-screen object-cover rounded-br-[50px]"
+          />
+          <div className="absolute bottom-16 ml-[15%] ">
+            <p className="text-white text-5xl font-bold">
+              El futuro que
+              <br /> deseas está a tu <br />
+              alcance.
             </p>
+          </div>
+        </div>
+        <div className="col-span-5 content-center">
+          <p className="text-2xl font-bold text-center">
+            Tu futuro comienza ahora{" "}
+          </p>
+          <div className="w-[60%] mt-5 mx-auto">
+            <p className="text-center">
+              Por favor, ingresá los datos que recibiste en el correo
+              electrónico para que podamos iniciar el trámite de tu crédito. Si
+              necesitas ayuda durante el proceso, no dudes en contactarnos.
+            </p>
+          </div>
 
+          {/* Form */}
+          <div className="w-[70%] mx-auto mt-7">
             <form onSubmit="" className="flex flex-col gap-9">
               <div className="flex flex-col gap-5 pb-3">
                 <div>
                   <label className="font-bold text-text-primary mb-2">
-                    Correo electrónico
+                    Email
                   </label>
                   <p
                     className={`text-sm mt-1 ${
@@ -87,7 +101,7 @@ const Login = () => {
                   </p>
                   <input
                     type="text"
-                    placeholder="Ingrese su email"
+                    placeholder="jonathan@gmail.com"
                     value={email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     onBlur={() => handleBlur("email")}
@@ -97,7 +111,7 @@ const Login = () => {
                 </div>
                 <div>
                   <label className="font-bold text-text-primary mb-2">
-                    Contraseña
+                    Password
                   </label>
                   <p
                     className={`text-sm mt-1 ${
@@ -111,8 +125,8 @@ const Login = () => {
                     Capital a solicitar en pesos.
                   </p>
                   <input
-                    type="text"
-                    placeholder="Ingrese su password"
+                    type="password"
+                    placeholder="********"
                     value={password}
                     onChange={(e) =>
                       handleInputChange("password", e.target.value)
@@ -130,8 +144,8 @@ const Login = () => {
                 ¿Olvidó su contraseña?
               </a>
               <div className="flex flex-col gap-4 card-actions">
-                <div className="flex justify-start gap-2 items-center">
-                  <button type="submit" className="btn-primary w-full">
+                <div className="flex justify-start gap-4 items-center">
+                  <button type="submit" className="btn-primary w-full ">
                     Iniciar sesión
                   </button>
                   <div className="text-sm text-center ml-4">
@@ -144,6 +158,8 @@ const Login = () => {
               </div>
             </form>
           </div>
+
+          {/* End Form */}
         </div>
       </div>
     </>

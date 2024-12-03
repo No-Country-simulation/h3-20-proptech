@@ -10,6 +10,17 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
 
+  const [validated, setValidated] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  /*id 	integer	
+    name o nick	string	
+    emal	string	
+    password	string	
+    validated	boolean	
+    active	boolean
+  */
+
   const [errors, setErrors] = useState({
     email: null,
     password: null,
@@ -17,6 +28,8 @@ const Register = () => {
     firstName: null,
     lastName: null,
     phone: null,
+    validated: null,
+    isActive: null,
   }); // null: no validation yet, true: invalid, false: valid
   const [focus, setFocus] = useState({
     email: false,
@@ -25,6 +38,8 @@ const Register = () => {
     firstName: false,
     lastName: false,
     phone: false,
+    validated: false,
+    isActive: false,
   });
 
   useEffect(
@@ -36,7 +51,9 @@ const Register = () => {
     [re_password],
     [firstName],
     [lastName],
-    [phone]
+    [phone],
+    [validated],
+    [isActive]
   );
 
   const validateField = (field, value) => {
@@ -46,6 +63,8 @@ const Register = () => {
     if (field === "firstName") return !/^\d+(\.\d+)?$/.test(value);
     if (field === "lastName") return !/^\d+(\.\d+)?$/.test(value);
     if (field === "phone") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
     return false;
   };
 
@@ -57,6 +76,8 @@ const Register = () => {
     if (field === "firstName") setFirstName(value);
     if (field === "lastName") setLastName(value);
     if (field === "phone") setPhone(value);
+    if (field === "validated") setPhone(value);
+    if (field === "isActive") setPhone(value);
 
     // Validate the field
     const isValid = !validateField(field, value);
