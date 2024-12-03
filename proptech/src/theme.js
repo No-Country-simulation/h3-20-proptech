@@ -1,3 +1,4 @@
+//************* version 3 ok ************** */
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -43,13 +44,14 @@ const theme = createTheme({
 
   },
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif', // Updated font family for label
+    fontFamily: 'Inter, Roboto, Arial, sans-serif', // Updated font family for label
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '0.375rem',
+          borderRadius: '2rem',
+          border: '1px solid #ccc',
           textTransform: 'none',
           '&:hover': {
             borderColor: '#F29877', // Hover color for primary
@@ -65,7 +67,7 @@ const theme = createTheme({
     MuiInputBase: {
       styleOverrides: {
         root: {
-          borderRadius: '0.375rem',
+          borderRadius: '0.5rem',
           border: '1px solid #042C31',
           padding: '8px',
           backgroundColor: '#E6EAEA',
@@ -124,59 +126,119 @@ const theme = createTheme({
           },
         },
       },
-
-
+      MuiTable: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#F8D6D3",
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          head: {
+            backgroundColor: "#430E12",
+            color: "white",
+            fontWeight: "bold",
+          },
+          body: {
+            color: "#CE494B",
+          },
+        },
+      },
+      
   },
 });
 
 export default theme;
 
 
-//******************* global settings v2 ok **** */
-// src/theme.js
+//*************** version 4 mui tailwind compatible KO  */
 // import { createTheme } from '@mui/material/styles';
+// import sharedStyles from './sharedStyles';
 
 // const theme = createTheme({
 //   palette: {
+//     base: {
+//         main: sharedStyles.colors.base,
+//         contrastText: '#FFFFFF',
+//     },
+//     wireframe: {
+//     main: sharedStyles.colors.wireframe,
+//     contrastText: '#FFFFFF',
+//     },
 //     primary: {
-//       main: '#DD5E30',
-//       contrastText: '#E6EAEA',
-//     },
+//     main: sharedStyles.colors.primary,
+//     contrastText: '#FFFFFF',
+//     },          
 //     secondary: {
-//       main: '#042C31',
-//       contrastText: '#E6EAEA',
+//       main: sharedStyles.colors.secondary,
+//       contrastText: '#FFFFFF',
 //     },
-//     text: {
-//       primary: '#042C31',
-//       common: '#17555C',
-//       white: '#FFFFFF',
-//       gray200: '#E6EAEA'
-//     },
+//     tertiary: {
+//         main: sharedStyles.colors.tertiary,
+//         contrastText: '#FFFFFF',
+//       },
+//       surfaceFocus: {
+//         main: sharedStyles.colors.surfaceFocus,
+//       },
+//       surfaceError: {
+//         main: sharedStyles.colors.surfaceError,
+//       },
+//       white: {
+//         main: sharedStyles.colors.white,
+//       },
+
+//     // text: {
+//     //   primary: sharedStyles.colors.textPrimary,
+//     //   secondary: sharedStyles.colors.textSecondary,
+//     //   disabled: sharedStyles.colors.textDisabled,
+//     // },
 //     background: {
-//       default: '#E6EAEA',
-//       paper: '#E6EAEA',
-//     },
+//         main: sharedStyles.colors.background,
+//         contrastText: '#FFFFFF',
+//       },   
+//       text: {
+//         main: sharedStyles.colors.text,
+//         contrastText: '#FFFFFF',
+//       }, 
+//       radio: {
+//         main: sharedStyles.colors.radio,
+//         contrastText: '#FFFFFF',
+//       }, 
 //   },
 //   typography: {
-//     fontFamily: 'Arial, sans-serif',
+//     fontFamily: 'Roboto, Arial, sans-serif',
 //   },
 //   components: {
 //     MuiButton: {
 //       styleOverrides: {
 //         root: {
-//           borderRadius: '0.375rem',
+//           borderRadius: sharedStyles.borderRadius.button,
 //           textTransform: 'none',
+//           '&:hover': {
+//             backgroundColor: sharedStyles.colors.secondary,
+//           },
 //         },
 //       },
 //     },
 //     MuiInputBase: {
 //       styleOverrides: {
 //         root: {
-//           borderRadius: '0.375rem',
-//           border: '1px solid #042C31',
-//           padding: '8px',
-//           backgroundColor: '#E6EAEA',
-//           color: '#042C31',
+//           borderRadius: sharedStyles.borderRadius.input,
+//           borderColor: sharedStyles.colors.primary,
+//           '&:focus': {
+//             borderColor: sharedStyles.colors.secondary,
+//           },
+//         },
+//       },
+//     },
+//     MuiCheckbox: {
+//       styleOverrides: {
+//         root: {
+//           color: sharedStyles.colors.checkboxBorderTrue,
+//           '&.Mui-checked': {
+//             color: sharedStyles.colors.checkboxFillTrue,
+//           },
 //         },
 //       },
 //     },
@@ -184,3 +246,7 @@ export default theme;
 // });
 
 // export default theme;
+
+
+
+

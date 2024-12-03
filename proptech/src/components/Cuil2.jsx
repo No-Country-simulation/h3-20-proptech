@@ -5,7 +5,7 @@ import TieneDeudas from "./TieneDeudas";
 
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
-const Cuil = () => {
+const Cuil2 = () => {
   const [dni, setDni] = useState("");
   const [xx, setXx] = useState(20); // Default to "M"
   const [result, setResult] = useState("");
@@ -53,8 +53,8 @@ const Cuil = () => {
     setCuilNumber(cuil);
   };
 
-  const toggleDeudas = (calculatedCuil) => {
-    navigate("/tieneDeudas", { state: { deudor: calculatedCuil  } });
+  const toggleDeudas = () => {
+    setShowDeudas(!showDeudas);
   };
 
   return (
@@ -129,13 +129,13 @@ const Cuil = () => {
           )}
 </div>
           {/* Display DeudasTable if showDeudas is true */}
-          {showDeudas && cuilNumber && <TieneDeudas deudor={cuilNumber} />}
+          {showDeudas && cuilNumber && <DeudasTable deudor={cuilNumber} />}
 
       </div>
   );
 };
 
-export default Cuil;
+export default Cuil2;
 
 //******************** version 2 *********** */
 // import React, { useState } from "react";
