@@ -14,6 +14,13 @@ import InvestorReturnCalculator from "./components/InvestorReturnCalculator"
 import ComoSolicitarTuCredito from "./components/ComoSolicitarTuCredito"
 import TieneDeudas from "./components/TieneDeudas"
 import ControlPanel from "./pages/ControlPanel"
+import Preaprobacion from "./pages/Preaprobacion"
+import PreaprobacionDatosPersonales from "./pages/PreaprobacionDatosPersonales"
+import PreaprobacionDatosServicios from "./pages/PreaprobacionDatosServicios"
+import PreaprobacionGarante from "./pages/PreaprobacionGarante"
+import PreaprobacionGaranteDatos from "./pages/PreaprobacionGaranteDatos"
+import PreaprobacionGaranteServicios from "./pages/PreaprobacionGaranteServicios"
+import PreaprobacionFin from "./pages/PreaprobacionFin"
 
 function App() {
   return (
@@ -32,6 +39,13 @@ function App() {
       <Route path="/solicitar" element={<ComoSolicitarTuCredito/>} />
       <Route path="/tieneDeudas" element={<TieneDeudas/>} />
       <Route path="/controlpanel" element={<ControlPanel />} />
+      <Route path="/preaprobacion" element={<Preaprobacion />} />
+      <Route path="/preaprobacionDatosPersonales" element={<PreaprobacionDatosPersonales />} />
+      <Route path="/preaprobacionDatosServicios" element={<PreaprobacionDatosServicios />} />
+      <Route path="/preaprobacionGarante" element={<PreaprobacionGarante/>}/>
+      <Route path="/preaprobacionGaranteDatos" element={<PreaprobacionGaranteDatos/>}/>
+      <Route path="/preaprobacionGaranteServicios" element={<PreaprobacionGaranteServicios/>}/>
+      <Route path="/preaprobacionFin" element={<PreaprobacionFin/>}/>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
