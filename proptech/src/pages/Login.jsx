@@ -74,7 +74,8 @@ const Login = () => {
           </p>
           <div className="w-[60%] mt-5 mx-auto">
             <p className="text-center">
-              Por favor, ingresá tus datos de acceso para iniciar sesión. Si
+              Por favor, ingresá los datos que recibiste en el correo
+              electrónico para que podamos iniciar el trámite de tu crédito. Si
               necesitas ayuda durante el proceso, no dudes en contactarnos.
             </p>
           </div>
