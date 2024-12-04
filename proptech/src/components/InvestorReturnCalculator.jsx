@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from "react";
 
 function InvestorReturnCalculator() {
     const [principal, setPrincipal] = useState('');
@@ -9,7 +10,46 @@ function InvestorReturnCalculator() {
     const [results, setResults] = useState([]);
     const [monthlyReturn, setMonthlyReturn] = useState(0); // To display in h3
 
+    const [errors, setErrors] = useState({ principal: null, annualRate: null, term: null }); // null: no validation yet, true: invalid, false: valid
+    const [focus, setFocus] = useState({ principal: false, annualRate: false, term: false });
+
+    useEffect(() => {
+        // console.log("Updated principal:", principal, "Updated annualRate:", annualRate, "Updated term:", term);
+    }, [principal], [annualRate], [term]);
+
+    const validateField = (field, value) => {
+        if (field === "principal") return !/^\d+$/.test(value);
+        if (field === "annualRate") return !/^\d+(\.\d+)?$/.test(value);
+        if (field === "term") return !/^\d+$/.test(value);
+        return false;
+    };
+    const handleInputChange = (field, value) => {
+        // Update the state
+        if (field === "principal") setPrincipal(value);
+        if (field === "annualRate") setAnnualRate(value);
+        if (field === "term") setTerm(value);
+
+        // Validate the field
+        const isValid = !validateField(field, value);
+        setErrors((prevErrors) => ({ ...prevErrors, [field]: !value ? true : !isValid }));
+
+    };
+
+    const handleFocus = (field) => {
+        setFocus((prevFocus) => ({ ...prevFocus, [field]: true }));
+    };
+
+    const handleBlur = (field) => {
+        setFocus((prevFocus) => ({ ...prevFocus, [field]: false }));
+    };
+
     const calculateReturns = () => {
+        const allValid = !Object.values(errors).some((error) => error === true || error === null);
+
+        if (!allValid) {
+            alert("Por favor corrija los campos inválidos.");
+            return;
+        }
         const principalAmount = parseFloat(principal);
         const monthlyInterestRate = parseFloat(annualRate) / 100 / 12;
         const numberOfPayments =
@@ -59,61 +99,107 @@ function InvestorReturnCalculator() {
         setResults([]);
         setMonthlyReturn(0); // Reset displayed return
         setTermType('years'); // Reset term type to default
+        setErrors({ principal: false, annualRate: false, term: false });
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-inherit shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Calculadora de Retornos de Capital</h2>
+        <div className="min-w-[40vw] mx-auto p-6 bg-inherit border-2 border-secondary shadow-md rounded-xl focus-within:shadow-primary">
+            <h2 className="text-2xl font-bold mb-4 text-center text-text-primary w-full">Calculá tu ganancia</h2>
             <div className="space-y-4">
-                <input
-                    type="number"
-                    placeholder="Capital Inicial ($)"
-                    value={principal}
-                    onChange={(e) => setPrincipal(e.target.value)}
-                    className="input-field"
-                />
-                <input
-                    type="number"
-                    placeholder="Tasa de Interés Anual (%)"
-                    value={annualRate}
-                    onChange={(e) => setAnnualRate(e.target.value)}
-                    className="input-field"
-                />
+                <div >
+                    <label className="font-bold text-text-primary mb-1">Capital</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.principal === true
+                            ? "p-messageError"
+                            : errors.principal === false && focus.principal
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Capital a solicitar en pesos.
+                    </p>
+                    <input
+                        type="number"
+                        placeholder="Ingresa el capital que necesitas"
+                        value={principal}
+                        onChange={(e) => handleInputChange("principal", e.target.value)}
+                        onBlur={() => handleBlur("principal")}
+                        onFocus={() => handleFocus("principal")}
+                        className="input-field "
+                    />
+                </div>
+                <div>
+                    <label className='font-bold text-text-primary mb-1'>Tasa de Interes anual</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.annualRate === true
+                            ? "p-messageError"
+                            : focus.annualRate && errors.annualRate === false
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Tasa de interes expresada en (%)
+                    </p>
+                    <input
+                        type="number"
+                        placeholder="Tasa de Interés Anual (%)"
+                        value={annualRate}
+                        onChange={(e) => handleInputChange("annualRate", e.target.value)}
+                        onBlur={() => handleBlur("annualRate")}
+                        onFocus={() => handleFocus("annualRate")}
+                        className="input-field"
+                    />
+                </div>
+                <div>
+                    <label className='font-bold text-text-primary mb-1'>Plazo en {termType === 'years' ? "años" : "meses"}</label>
+                            <p
+                                className={`text-sm mt-1 ${errors.term === true
+                                    ? "p-messageError"
+                                    : focus.term && errors.term === false
+                                        ? "p-messageOk"
+                                        : "p-message"
+                                    }`}
+                            > Elija plazo en años o meses
+                            </p>
+                    <div className='space-y-2'>
+                        <div>
+                            <input
+                                type="number"
+                                placeholder={termType === 'years' ? "Plazo en años" : "Plazo en meses"}
+                                value={term}
+                                onChange={(e) => handleInputChange("term", e.target.value)}
+                                onBlur={() => handleBlur("term")}
+                                onFocus={() => handleFocus("term")}
+                                className="input-field"
+                            />
+                        </div>
 
-                <div className='flex space-x-4'>
-                    <div>
-                        <input
-                            type="number"
-                            placeholder={termType === 'years' ? "Plazo en años" : "Plazo en meses"}
-                            value={term}
-                            onChange={(e) => setTerm(e.target.value)}
-                            className="input-field"
-                        />
+                        <div className="justify-end items-center flex space-x-2">
+                            <label className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="termType"
+                                    value="years"
+                                    checked={termType === 'years'}
+                                    onChange={(e) => setTermType(e.target.value)}
+                                    className="mr-2 checkbox-custom "
+                                />
+                                Años
+                            </label>
+                            <label className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="termType"
+                                    value="months"
+                                    checked={termType === 'months'}
+                                    onChange={(e) => setTermType(e.target.value)}
+                                    className="mr-2 checkbox-custom"
+                                />
+                                Meses
+                            </label>
+                        </div>
                     </div>
-                    <div className="items-center ">
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="termType"
-                                value="years"
-                                checked={termType === 'years'}
-                                onChange={(e) => setTermType(e.target.value)}
-                                className="mr-2"
-                            />
-                            Años
-                        </label>
-                        <label className="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="termType"
-                                value="months"
-                                checked={termType === 'months'}
-                                onChange={(e) => setTermType(e.target.value)}
-                                className="mr-2"
-                            />
-                            Meses
-                        </label>
-                    </div>
+
                 </div>
 
                 <div className="flex items-center">
@@ -121,7 +207,7 @@ function InvestorReturnCalculator() {
                         type="checkbox"
                         checked={reinvestReturns}
                         onChange={(e) => setReinvestReturns(e.target.checked)}
-                        className="mr-2"
+                        className="mr-2 checkbox-custom"
                     />
                     <label>Reinvertir retornos mensuales</label>
                 </div>
@@ -165,6 +251,7 @@ function InvestorReturnCalculator() {
                     </table>
                 </div>
             )}
+
         </div>
     );
 }

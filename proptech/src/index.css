@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* src/index.css */
 @tailwind base;
 @tailwind components;
@@ -9,6 +5,229 @@
 
 /* Custom styles */
 body {
+    @apply bg-base-100 text-text-primary;
+  }
+  
+  .navbar {
+    @apply bg-background-navbar text-text-white;
+  }
+  
+  .footer {
+    @apply bg-background-footer text-white;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white border-2 border-primary rounded-button px-4 py-2 transition-all;
+  }
+  .btn-primary:hover {
+    @apply border-[#F29877];
+  }
+  .btn-primary:disabled {
+    @apply bg-wireframe-300 text-wireframe-200 border-wireframe-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-primary border-2 border-secondary rounded-button px-4 py-2 transition-all;
+  }
+  .btn-secondary:hover {
+    @apply text-white border-secondary;
+  }
+  .btn-secondary:disabled {
+    @apply bg-wireframe-white text-wireframe-200 border-wireframe-100;
+  }
+
+  .btn-tertiary {
+    @apply bg-tertiary text-secondary border-2 border-secondary rounded-button px-4 py-2 transition-all;
+  }
+  .btn-tertiary:hover {
+    @apply border-wireframe-300;
+  }
+  .btn-tertiary:disabled {
+    @apply bg-wireframe-white text-wireframe-200 border-wireframe-100;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
+  }
+  .input-field:focus {
+    @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary;
+  }
+  .input-field-error {
+    @apply bg-surfaceError border-[#CE494B] text-[#8D242C];
+  }
+  .input-field-error:focus {
+    @apply outline-none border border-none ring-2 ring-[#CE494B] bg-surfaceError;
+  }
+  .input-field-disabled {
+    @apply bg-wireframe-white border-wireframe-300 text-wireframe-300;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-wireframe-300;
+  }
+  .select-field:focus {
+    @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary text-text-primary;
+  }
+
+  .p {
+    @apply py-1 bg-inherit text-text-p;
+  }
+  .p-message {
+    @apply px-4 py-1 bg-inherit text-wireframe-300;
+  }
+  .p-messageError {
+    @apply px-4 py-1 bg-inherit text-primary;
+  }
+  .p-messageOk {
+    @apply px-4 py-1 bg-inherit text-secondary;
+  }
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    width: 400px;
+    background-color: #fff;
+    color: #042C31;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: wrap;
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .tooltip-container:hover .tooltip-text {
+    left: 10%;
+    transform: translateX(-50%);
+    transform: translateY(50%);
+  }
+
+.tab-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    background-color: #f2f8ff; /* Light blue background */
+    border: 1px solid #3d6ed1; /* Blue border */
+    border-radius: 2rem; /* Rounded corners */
+    padding: 0.2rem 1rem;
+    width: 100%; /* Adjust as needed */
+    max-width: 400px; /* Set a max width */
+    margin: 2rem auto; /* Center it horizontally */
+    box-sizing: border-box;
+}
+.tab {
+    flex: 1; /* Evenly distribute width */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #93A4A6; /* Light gray color for inactive tabs */
+    background: transparent; /* No background */
+    border: none; /* Remove default button styles */
+    outline: none; /* Remove focus outline */
+    cursor: pointer;
+    padding: 0.2rem 1;
+    transition: color 0.3s;
+}
+.tab.active {
+    font-weight: 700; /* Bold text for active tab */
+    color: #dd5e30; /* Orange-red color for active tab */
+}
+.tab:hover:not(.active) {
+    color: #6c8db8; /* Hover effect for inactive tabs */
+}
+
+/* Checkbox */
+[data-theme] .checkbox {
+all: unset; 
+}
+.checkbox-custom {
+    appearance: none; /* Remove the browser default checkbox styles */
+    width: 1.5rem; /* Width of checkbox */
+    height: 1.5rem; /* Height of checkbox */
+    border: 2px solid #93A4A6; /* Default border (unchecked) */
+    border-radius: 0.25rem; /* Slightly rounded corners */
+    background-color: transparent; /* Transparent by default */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+    .checkbox-custom:checked {
+    background-color: #DD5E30; /* Orange-red background when checked */
+    border-color: #042C31; /* Dark blue border */
+    }
+    .checkbox-custom:checked::after {
+    content: ''; /* Pseudo-element for the checkmark */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%) rotate(45deg); /* Position the checkmark */
+    width: 0.4rem;
+    height: 0.8rem;
+    border: solid #042C31; /* White checkmark color */
+    border-width: 0 0.2rem 0.2rem 0; /* Top-right and bottom-left lines */
+    box-sizing: border-box; 
+    }
+
+/* Overrides DaisyUI checkbox styles */
+.checkbox {
+    @apply appearance-none; /* Reset styles */
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #93A4A6; /* Border for unchecked */
+    border-radius: 0.25rem;
+    background-color: transparent;
+    position: relative;
+    transition: all 0.3s;
+  }
+  
+  /* Checked state */
+  .checkbox:checked {
+    background-color: transparent; /* Orange fill */
+    border-color: #042C31; /* Dark blue border */
+  }
+  
+  .checkbox:checked::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 0.4rem;
+    height: 0.8rem;
+    background-color: transparent;
+    border: solid #042C31; /* Checkmark color */
+    border-width: 0 0.2rem 0.2rem 0;
+    box-sizing: border-box; 
+  }
+
+  /* Radio */
+  .radio {
+    @apply border-2 border-radio-border bg-radio-fill rounded-radio transition-all;
+  }
+  .radio-checked {
+    @apply bg-radio-activeFill;
+  }
+
+
+
+
+/* ********  global settings v2 ok ****/
+/* Custom styles */
+/* body {
   @apply bg-base-100 text-text-primary;
 }
 
@@ -38,4 +257,4 @@ body {
 
 .input-field:focus {
   @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus;
-}
+} */
