@@ -89,7 +89,7 @@ const Cuil2 = () => {
                   <select
                       value={xx}
                       onChange={(e) => setXx(e.target.value)}
-                      className="select-field"
+                      className="select"
                   >
                       <option value={20}>M (20)</option>
                       <option value={27}>F (27)</option>
