@@ -15,7 +15,7 @@ function ClientCalculator() {
     const [term, setTerm] = useState(productData.plazoMin);
     const [monthlyPayment, setMonthlyPayment] = useState(null);
     const [loanDetails, setLoanDetails] = useState([]);
-    const [calculationType, setCalculationType] = useState('ORO');
+    const [calculationType, setCalculationType] = useState('');
 
     // Inputs for quick calculation
     const [price, setPrice] = useState(26600);
@@ -145,6 +145,11 @@ function ClientCalculator() {
     };
 
     const clearFields = () => {
+        setPrice(0);
+        setAdvancePayment(0);
+        setPostPayment(0);
+        setAutoValue(0);
+        setAutoRepair(0);
         setPrincipal('');
         setAnnualRate(productData.tea1[0]);
         setTerm(productData.plazoMin);
@@ -310,7 +315,7 @@ function ClientCalculator() {
                 <select
                     value={annualRate}
                     onChange={(e) => setAnnualRate(parseFloat(e.target.value))}
-                    className="input-field"
+                    className="select"
                 >
                     {productData.tea1.map((rate, idx) => (
                         <option key={idx} value={rate}>
