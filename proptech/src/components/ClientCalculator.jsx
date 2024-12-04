@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from "react";
 
 const productData = {
     tea1: [20, 26.824179, 34.488882, 42.576089, 51.106866, 60.103222],
@@ -18,10 +19,54 @@ function ClientCalculator() {
 
     // Inputs for quick calculation
     const [price, setPrice] = useState(26600);
-    const [advancePayment, setAdvancePayment] = useState(7500);
+    const [advancePayment, setAdvancePayment] = useState(7000);
     const [postPayment, setPostPayment] = useState(0);
     const [autoValue, setAutoValue] = useState(10000);
     const [autoRepair, setAutoRepair] = useState(400);
+
+    const [errors, setErrors] = useState({ price: null, advancePayment: null, postPayment: null,autoValue: null,autoRepair:null, principal: null, annualRate: null, term: null }); // null: no validation yet, true: invalid, false: valid
+    const [focus, setFocus] = useState({price: null, advancePayment: null, postPayment: null,autoValue: null,autoRepair:null,  principal: false, annualRate: false, term: false });
+
+    useEffect(() => {
+        // console.log("Updated principal:", principal, "Updated annualRate:", annualRate, "Updated term:", term);
+    },[price, advancePayment, postPayment, autoValue, autoRepair, principal, annualRate, term]);    
+
+    const validateField = (field, value) => {
+        if (value === "") return false;
+        if (field === "price") return !/^\d+$/.test(value);
+        if (field === "advancePayment") return !/^\d+$/.test(value);
+        if (field === "postPayment") return !/^\d*$/.test(value);
+        if (field === "autoValue") return !/^\d+$/.test(value);
+        if (field === "autoRepair") return !/^\d+$/.test(value);
+        if (field === "principal") return !/^\d+$/.test(value);
+        if (field === "annualRate") return !/^\d+(\.\d+)?$/.test(value);
+        if (field === "term") return !/^\d+$/.test(value);
+        return false;
+    };
+    
+    const handleInputChange = (field, value) => {
+        // Update the state
+        if (field === "price") setPrice(value);
+        if (field === "advancePayment") setAdvancePayment(value);
+        if (field === "postPayment") setPostPayment(value);
+        if (field === "autoValue") setAutoValue(value);
+        if (field === "autoRepair") setAutoRepair(value);
+        if (field === "principal") setPrincipal(value);
+        if (field === "annualRate") setAnnualRate(value);
+        if (field === "term") setTerm(value);
+
+        // Validate the field
+        const isValid = !validateField(field, value);
+        setErrors((prevErrors) => ({ ...prevErrors, [field]: !value ? true : !isValid }));
+
+    };
+    const handleFocus = (field) => {
+        setFocus((prevFocus) => ({ ...prevFocus, [field]: true }));
+    };        
+    const handleBlur = (field) => {
+        setFocus((prevFocus) => ({ ...prevFocus, [field]: false }));
+    };
+
 
     // Reverse calculation to get nominal rate from TEA
     const calculateNominalRate = (tea, npery) => {
@@ -105,58 +150,163 @@ function ClientCalculator() {
         setTerm(productData.plazoMin);
         setMonthlyPayment(null);
         setLoanDetails([]);
-        setCalculationType('ORO');
+        setCalculationType('');
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-inherit shadow-md rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Calculadora de pagos</h2>
+        <div className="min-w-[40vw] mx-auto p-6 bg-inherit border-2 border-secondary shadow-md rounded-xl focus-within:shadow-primary">
+            <h2 className="text-2xl font-bold mb-4 text-center text-text-primary w-full">Calculadora de pagos</h2>
             <div className="space-y-4">
+            <div >
+                <label className="font-bold text-text-primary mb-1">Precio del terreno</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.price === true
+                            ? "p-messageError"
+                            : focus.price && errors.price === false
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Precio del terreno.
+                    </p>
                 <input
                     type="number"
                     placeholder="Precio Contado"
                     value={price}
-                    onChange={(e) => setPrice(parseFloat(e.target.value))}
+                    onChange={(e) => handleInputChange("price", parseFloat(e.target.value))}
+                    onBlur={() => handleBlur("price")}
+                    onFocus={() => handleFocus("price")}                    
                     className="input-field"
                 />
+                </div>
+                <div>
+                <label className="font-bold text-text-primary mb-1">Seña o Contado</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.advancePayment === true
+                            ? "p-messageError"
+                            : errors.advancePayment === false && focus.advancePayment
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Seña o pago adelantado de contado.
+                    </p>
+
                 <input
                     type="number"
                     placeholder="Seña o Contado"
                     value={advancePayment}
-                    onChange={(e) => setAdvancePayment(parseFloat(e.target.value))}
+                    onChange={(e) => handleInputChange("advancePayment", parseFloat(e.target.value))}
+                    onBlur={() => handleBlur("advancePayment")}
+                    onFocus={() => handleFocus("advancePayment")}     
                     className="input-field"
                 />
+                </div>
+                <div>                
+                <label className="font-bold text-text-primary mb-1">Entrega posterior</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.postPayment === true
+                            ? "p-messageError"
+                            : errors.postPayment === false && focus.postPayment
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Entrega de seña posterior
+                    </p>
                 <input
                     type="number"
                     placeholder="Entrega Posterior"
                     value={postPayment}
-                    onChange={(e) => setPostPayment(parseFloat(e.target.value))}
+                    onChange={(e) => handleInputChange("postPayment", parseFloat(e.target.value))}
+                    onBlur={() => handleBlur("postPayment")}
+                    onFocus={() => handleFocus("postPayment")}  
                     className="input-field"
                 />
+                </div>
+                <div>                
+                <label className="font-bold text-text-primary mb-1">Infoauto</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.autoValue === true
+                            ? "p-messageError"
+                            : errors.autoValue === false && focus.autoValue
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Precio del auto.
+                    </p>
                 <input
                     type="number"
                     placeholder="Infoauto"
                     value={autoValue}
-                    onChange={(e) => setAutoValue(parseFloat(e.target.value))}
+                    onChange={(e) => handleInputChange("autoValue", parseFloat(e.target.value))}
+                    onBlur={() => handleBlur("autoValue")}
+                    onFocus={() => handleFocus("autoValue")}  
                     className="input-field"
                 />
+                </div>
+                <div>                
+                <label className="font-bold text-text-primary mb-1">Reparaciones</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.autoRepair === true
+                            ? "p-messageError"
+                            : errors.autoRepair === false && focus.autoRepair
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Reparaciones del auto.
+                    </p>
                 <input
                     type="number"
                     placeholder="Reparaciones"
                     value={autoRepair}
-                    onChange={(e) => setAutoRepair(parseFloat(e.target.value))}
+                    onChange={(e) => handleInputChange("autoRepair", parseFloat(e.target.value))}
+                    onBlur={() => handleBlur("autoRepair")}
+                    onFocus={() => handleFocus("autoRepair")}  
                     className="input-field"
                 />
+                </div>
                 <button className="btn-primary w-full" onClick={determineCalculationType}>
-                    Calcular tipo de cálculo
+                    Ver tipo de cuota y capital a solicitar
                 </button>
+                <h3 className="text-xl font-semibold">
+                        Cuota Mensual ({calculationType}): ${monthlyPayment}
+                    </h3>
+                <div className="space-y-4">
+                <div >                
+                <label className="font-bold text-text-primary mb-1">Capital a solicitar en pesos</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.principal === true
+                            ? "p-messageError"
+                            : errors.principal === false && focus.principal
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Ingresa el capital que necesitas.
+                    </p>
                 <input
                     type="number"
                     placeholder={`Capital sugerido: ${principal}`}
                     value={principal}
                     onChange={(e) => setPrincipal(e.target.value)}
                     className="input-field"
-                />
+                    />
+                    </div>
+                        <div>
+                    <label className='font-bold text-text-primary mb-1'>Tasa de Interes anual</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.annualRate === true
+                            ? "p-messageError"
+                            : focus.annualRate && errors.annualRate === false
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Tasa de interes expresada en (%)
+                    </p>
                 <select
                     value={annualRate}
                     onChange={(e) => setAnnualRate(parseFloat(e.target.value))}
@@ -168,6 +318,19 @@ function ClientCalculator() {
                         </option>
                     ))}
                 </select>
+                </div>
+                <div>  
+                <label className="font-bold text-text-primary mb-1">Plazo en meses</label>
+                    <p
+                        className={`text-sm mt-1 ${errors.term === true
+                            ? "p-messageError"
+                            : errors.term === false && focus.term
+                                ? "p-messageOk"
+                                : "p-message"
+                            }`}
+                    >
+                        Plazo hasta 360 meses.
+                    </p>
                 <input
                     type="number"
                     placeholder={`Plazo (meses) entre ${productData.plazoMin} y ${productData.plazoMax}`}
@@ -177,6 +340,7 @@ function ClientCalculator() {
                     max={productData.plazoMax}
                     className="input-field"
                 />
+                 </div>
                 <div className="flex px-2 space-x-4">
                     <button className="btn-tertiary w-full" onClick={clearFields}>
                         Borrar campos
@@ -184,6 +348,7 @@ function ClientCalculator() {
                     <button onClick={calculateMortgage} className="btn-primary w-full">
                         Calcular
                     </button>
+                </div>
                 </div>
             </div>
 

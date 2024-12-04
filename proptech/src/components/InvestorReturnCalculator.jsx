@@ -103,10 +103,10 @@ function InvestorReturnCalculator() {
     };
 
     return (
-        <div className="min-w-[40vw] p-6 bg-inherit border-2 border-secondary shadow-md rounded-xl focus-within:shadow-primary">
+        <div className="min-w-[40vw] mx-auto p-6 bg-inherit border-2 border-secondary shadow-md rounded-xl focus-within:shadow-primary">
             <h2 className="text-2xl font-bold mb-4 text-center text-text-primary w-full">Calculá tu ganancia</h2>
             <div className="space-y-4">
-                <div className="space-y-4">
+                <div >
                     <label className="font-bold text-text-primary mb-1">Capital</label>
                     <p
                         className={`text-sm mt-1 ${errors.principal === true
