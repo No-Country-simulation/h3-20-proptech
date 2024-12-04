@@ -12,6 +12,18 @@ body {
     @apply bg-background-navbar text-text-white;
   }
   
+  .dropdown {
+    position: relative; /* Ensure it acts as a positioning reference for dropdown-content */
+}
+  .dropdown-content {
+    position: absolute; /* Ensure the dropdown is positioned relative to its parent */
+    z-index: 1000; /* A high value to ensure it appears in front */
+    background-color: #1f2937; /* Optional: same as your base-700 color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    border-radius: 0.5rem; /* Optional: rounded corners */
+    overflow: hidden; /* Ensure no child elements overflow */
+}
+
   .footer {
     @apply bg-background-footer text-white;
   }

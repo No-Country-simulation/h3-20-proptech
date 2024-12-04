@@ -38,6 +38,34 @@ function Navbar() {
           </div>
           <nav className="p-4">
             <ul className="flex space-x-24">
+              <li className="dropdown">
+                                <div tabIndex={0} className="dropdown-toggle cursor-pointer">
+                                    pages
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-700 rounded-box w-52">
+                                    <li><Link to="/contacto">Contacto</Link></li>
+                                    <li><Link to="/calculator">ClientCalculator</Link></li>
+                                    <li><Link to="/adelantoCapital">EnhancedMortgageCalculator</Link></li>
+                                    <li><Link to="/pagos">PaymentAdminMortgageCalculator</Link></li>
+                                    <li><Link to="/inversion">InvestorReturnCalculator</Link></li>
+                                    <li><Link to="/cuil">Cuil</Link></li>
+                                    <li><Link to="/cuil2">Cuil2</Link></li>
+                                    <li><Link to="/deudas">DeudasTable</Link></li>
+                                    <li><Link to="/login">Login</Link></li>
+                                    <li><Link to="/register">Register</Link></li>
+                                    <li><Link to="/solicitar">ComoSolicitarTuCredito</Link></li>
+                                    <li><Link to="/tieneDeudas">TieneDeudas</Link></li>
+                                    <li><Link to="/controlpanel">ControlPanel</Link></li>
+                                    <li><Link to="/preaprobacion">Preaprobacion</Link></li>
+                                    <li><Link to="/preaprobacionDatosPersonales">PreaprobacionDatosPersonales</Link></li>
+                                    <li><Link to="/preaprobacionDatosServicios">PreaprobacionDatosServicios</Link></li>
+                                    <li><Link to="/preaprobacionGarante">PreaprobacionGarante</Link></li>
+                                    <li><Link to="/preaprobacionGaranteDatos">PreaprobacionGaranteDatos</Link></li>
+                                    <li><Link to="/preaprobacionGaranteServicios">PreaprobacionGaranteServicios</Link></li>
+                                    <li><Link to="/preaprobacionFin">PreaprobacionFin</Link></li>
+                                    <li><Link to="/">home</Link></li>
+                                </ul>
+                            </li>
               <li>
                 <Link to="/" className="text-white hover:text-gray-300">
                   Inicio
@@ -66,6 +94,7 @@ function Navbar() {
                   Inicia sesión
                 </Link>
               </li>
+
             </ul>
           </nav>
         </div>
