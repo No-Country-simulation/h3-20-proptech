@@ -7,6 +7,7 @@ import { Input } from "@mui/material";
 
 import Stats from "./Stats";
 import InfoCards from "./InfoCards";
+import ClientCalculator from "./ClientCalculator";
 
 function Content() {
     return (
@@ -95,8 +96,9 @@ function Content() {
                         </h2>
                     </div>
                     <div className="flex">
-                        <MortgageCalculator />
+                        <ClientCalculator />
                         <InvestorReturnCalculator />
+                        
                     </div>
                 </div>
             </section>
