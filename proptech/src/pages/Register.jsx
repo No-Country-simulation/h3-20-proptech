@@ -206,20 +206,19 @@ const Register = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-4 card-actions">
-                <div className="flex justify-start gap-4 items-center">
-                  <div className="grid grid-cols-12">
-                    <div className="col-span-6">
-                      <button type="submit" className="btn-primary w-full ">
-                        Registrar
-                      </button>
-                    </div>
-                    <div className="col-span-6">
-                      <div className="text-sm text-center ml-4">
-                        <Link className="text-sm mx-2 text-primary" to="/login">
-                          Login
-                        </Link>
-                      </div>
+
+              <div className="gap-4 items-center">
+                <div className="grid grid-cols-12">
+                  <div className="col-span-6">
+                    <button type="submit" className="btn-primary w-full ">
+                      Registrar
+                    </button>
+                  </div>
+                  <div className="col-span-6">
+                    <div className="text-sm text-center ml-4 mx-auto">
+                      <Link className="text-sm mx-2 text-primary" to="/login">
+                        Login
+                      </Link>
                     </div>
                   </div>
                 </div>
