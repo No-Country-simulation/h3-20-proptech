@@ -212,7 +212,7 @@ function ClientCalculator() {
                                 : "p-message"
                             }`}
                     >
-                        Entrega de seña posterior
+                        Entrega de contado posterior
                     </p>
                 <input
                     type="number"
@@ -365,7 +365,7 @@ function ClientCalculator() {
                                 <th className="border px-2 py-1">Interes</th>
                                 <th className="border px-2 py-1">Capital</th>
                                 <th className="border px-2 py-1">Saldo Restante</th>
-                                <th className="border px-2 py-1">Costo Adicional</th>
+                                <th className="border px-2 py-1">Cuota mensual</th>
                             </tr>
                         </thead>
                         <tbody>
