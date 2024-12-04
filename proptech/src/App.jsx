@@ -27,10 +27,8 @@ import Layout from "./shared/Layout"
 
 function App() {
     return (
-
-
         <Routes>
-            <Route element={<Layout/>}>
+            <Route element={<Layout />}>
                 <Route path="/calculator" element={<ClientCalculator />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/adelantoCapital" element={<EnhancedMortgageCalculator />} />
@@ -56,8 +54,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>
-
-
     );
 }
 
