@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import transaction
@@ -6,6 +8,22 @@ from django.utils.crypto import get_random_string
 from .models import PersonalInformationToValidate
 
 User = get_user_model()
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    
+
+    def validate(self, attrs):
+        email = attrs.get("username")
+        password = attrs.get("password")
+
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            raise serializers.ValidationError("No user")
+        if user is None or not user.check_password(password):
+            raise serializers.ValidationError("Invalid email or password")
+        
+        attrs["username"] = user.username  # Requiere el username para el flujo JWT
+        return super().validate(attrs)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
