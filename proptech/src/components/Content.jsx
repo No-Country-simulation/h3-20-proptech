@@ -10,6 +10,7 @@ import remaxPhoto from "../assets/remax.png";
 import grupoPhoto from "../assets/grupo.png";
 import p4Photo from "../assets/p4.png";
 import proacoPhoto from "../assets/proaco.png";
+import CapitalizationCalculator from "./CapitalizationCalculator";
 function Content() {
   return (
     <>
@@ -122,7 +123,7 @@ function Content() {
           </div>
           <div className="flex">
             <ClientCalculator />
-            <InvestorReturnCalculator />
+            <CapitalizationCalculator />
           </div>
         </div>
       </section>

@@ -24,6 +24,7 @@ import PreaprobacionGaranteDatos from "./pages/PreaprobacionGaranteDatos"
 import PreaprobacionGaranteServicios from "./pages/PreaprobacionGaranteServicios"
 import PreaprobacionFin from "./pages/PreaprobacionFin"
 import Layout from "./shared/Layout"
+import CapitalizationCalculator from "./components/CapitalizationCalculator";
 
 function App() {
     return (
@@ -49,7 +50,7 @@ function App() {
                 <Route path="/preaprobacionGaranteDatos" element={<PreaprobacionGaranteDatos />} />
                 <Route path="/preaprobacionGaranteServicios" element={<PreaprobacionGaranteServicios />} />
                 <Route path="/preaprobacionFin" element={<PreaprobacionFin />} />
-
+                <Route path="/capitalizacion" element={<CapitalizationCalculator/>} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
