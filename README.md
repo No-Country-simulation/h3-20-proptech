@@ -16,7 +16,7 @@ revalorización a mediano plazo.
 
  * **Project type:** `Fintech`
  * **QA Tester:** `Github projects` `Drive`.
- * **Backend:** `Python` `Django` `PostgreSql`
+ * **Backend:** `Python` `Django` `PostgreSql` `Docker`
  * **Frontend:** `HTML` `CSS` `JS` `React` `Vite` `Axios` `Tailwind` `MUI` `Daisyui`.
 
 ## 📌 Team:
@@ -24,12 +24,12 @@ revalorización a mediano plazo.
 
 | Count | Name | <img src="https://static.licdn.com/aero-v1/sc/h/3loy7tajf3n0cho89wgg0fjre?raw=true" alt="Image" width="28vw"> <br /> linkedin.com/in/ | imagen| Github <br/> Nickname| Role <br /> |
 | --- |--- | --- | --- | --- | ---: |
-| 1  | Juan Ignacio Novas | [**JuanNovas/**](https://www.linkedin.com/in/JuanNovas) | 💻 | [**JuanNovas**](https://github.com/JuanNovas) | Backend   |
-| 2  | Jorge Henríquez Novoa | [**jorgea-hn/**](https://www.linkedin.com/in/jorgea-hn/) | 💻 | [**jorgea-hn**](https://github.com/jorgea-hn) | Frontend   |
+| 1  | Juan Ignacio Novas | [**juan-novas/**](https://www.linkedin.com/in/juan-novas/) | 💻 | [**JuanNovas**](https://github.com/JuanNovas) | Backend   |
+| 2  | Jorge Henríquez Novoa | [**jorge-henriquez-novoa/**](https://www.linkedin.com/in/jorge-henriquez-novoa) | 💻 | [**jorgea-hn**](https://github.com/jorgea-hn) | Frontend   |
 | 3  | Leon asturizaga | [**leonasturizaga/**](https://www.linkedin.com/in/leon-asturizaga-94a80377) | 💻| [**leonasturizaga**](https://github.com/leonasturizaga) | Frontend   |
-| 4  | Edivaldo Laevicth | [**edivaldogomes/**](https://www.linkedin.com/in/edivaldogomes) | 💻 | [**edivaldogomes**](https://github.com/edivaldogomes) | Frontend   |
+| 4  | Edivaldo Laevicth | [**edivaldo-gomes/**](https://www.linkedin.com/in/edivaldo-gomes/) | 💻 | [**edivaldogomes**](https://github.com/edivaldogomes) | Frontend   |
 | 5  | Tania Soto | [**tanisoto/**](https://www.linkedin.com/in/tanisoto) | 📋 | [**tanisoto**](https://github.com/tanisoto) | UX-UI   |
-| 6  | UI-Rodrigo| [**UI-Rodrigo/**](https://www.linkedin.com/in/UI-Rodrigo/)| 📋 | [**UI-Rodrigo**](https://github.com/UI-Rodrigo) | UX-UI   |
+| 6  | Rodrigo Ruiz| [**uirodriruiz/**](https://www.linkedin.com/in/uirodriruiz)| 📋 | [**UI-Rodrigo**](https://github.com/UI-Rodrigo) | UX-UI   |
 
 ## 🎥 Promotional Video
 
