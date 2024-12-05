@@ -46,7 +46,7 @@ function Navbar() {
                                     <li><Link to="/contacto">Contacto</Link></li>
                                     <li><Link to="/calculator">ClientCalculator</Link></li>
                                     <li><Link to="/adelantoCapital">EnhancedMortgageCalculator</Link></li>
-                                    <li><Link to="/pagos">PaymentAdminMortgageCalculator</Link></li>
+                                    <li><Link to="/pagosCalculator">PaymentAdminMortgageCalculator</Link></li>
                                     <li><Link to="/inversion">InvestorReturnCalculator</Link></li>
                                     <li><Link to="/cuil">Cuil</Link></li>
                                     <li><Link to="/cuil2">Cuil2</Link></li>
