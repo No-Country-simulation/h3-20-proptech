@@ -3,10 +3,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
 
 from .models import PersonalInformationToValidate
-from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer, CustomTokenObtainPairSerializer
 
 User = get_user_model()
 
@@ -24,7 +25,11 @@ class RegisterView(generics.CreateAPIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }, status=status.HTTP_201_CREATED)
-        
+     
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer   
         
 class RegisterWithKYC(generics.CreateAPIView):
    
