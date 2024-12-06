@@ -12,6 +12,18 @@ body {
     @apply bg-background-navbar text-text-white;
   }
   
+  .dropdown {
+    position: relative; /* Ensure it acts as a positioning reference for dropdown-content */
+}
+  .dropdown-content {
+    position: absolute; /* Ensure the dropdown is positioned relative to its parent */
+    z-index: 1000; /* A high value to ensure it appears in front */
+    background-color: #1f2937; /* Optional: same as your base-700 color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    border-radius: 0.5rem; /* Optional: rounded corners */
+    overflow: hidden; /* Ensure no child elements overflow */
+}
+
   .footer {
     @apply bg-background-footer text-white;
   }
@@ -49,7 +61,7 @@ body {
   .input-field {
     @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
   }
-  .input-field:focus {
+  .input-field:focus, select:focus {
     @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary;
   }
   .input-field-error {
@@ -62,12 +74,24 @@ body {
     @apply bg-wireframe-white border-wireframe-300 text-wireframe-300;
   }
 
-  .select-field {
-    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-wireframe-300;
+  .select {
+    @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
+}
+  .select:focus {
+    @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary;
   }
-  .select-field:focus {
-    @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus shadow-md shadow-primary text-text-primary;
-  }
+  select option {
+    background-color: #f5f5f5; /* Matches input background */
+    color: #042C31;
+    padding: 0.5rem 1rem;
+}
+
+/* Highlighted option style */
+select option:checked {
+    background-color: #f29877; /* Highlight color */
+    color: #fff; /* Text contrast */
+}
+
 
   .p {
     @apply py-1 bg-inherit text-text-p;
@@ -91,8 +115,8 @@ body {
   .tooltip-text {
     visibility: hidden;
     width: 400px;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #fff;
+    background-color: #f5f5f5;
+    color: #042C31;
     text-align: left;
     padding: 10px;
     border-radius: 5px;
@@ -111,7 +135,7 @@ body {
     opacity: 1;
   }
   .tooltip-container:hover .tooltip-text {
-    left: 10%;
+    left: -80%;
     transform: translateX(-50%);
     transform: translateY(50%);
   }
