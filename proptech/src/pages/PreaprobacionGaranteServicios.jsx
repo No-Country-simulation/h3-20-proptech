@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
@@ -27,15 +26,35 @@ function PreaprobacionGaranteServicios() {
     setFiles(updatedFiles);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    navigate("/preaprobacionFin");
+    
+    const formData = new FormData();
+    
+    files.forEach((file, index) => {
+      if (file.file) {
+        formData.append(`file_${index}`, file.file);
+      }
+    });
+
+    try {
+      const response = await fetch("url", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionFin");
+      } else {
+        console.error("Error al enviar los archivos:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-    <UserNavbar />
     <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <IllustrationContainer
@@ -57,8 +76,8 @@ function PreaprobacionGaranteServicios() {
 
         <p className="mb-4">Pasos para completar la información</p>
 
-        <div className="tab-container items-center">
-            <button className="tab">Personal</button>
+        <div className="tab-container items-center m-0 p-0">
+            <button className="tab m-0 p-0">Personal</button>
             <button className="tab">Garante uno</button>
             <button className="tab active">Garante dos</button>
           </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import { useNavigate } from "react-router-dom"; 
 
@@ -11,19 +10,39 @@ function PreaprobacionGarante() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    console.log("Nombre:", name);
-    console.log("Apellido:", lastName);
-    console.log("DNI:", dni);
 
-    navigate("/preaprobacionGaranteDatos");
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("lastName", lastName);
+    formData.append("dni", dni);
+
+
+    files.forEach((file, index) => {
+      formData.append(`file${index + 1}`, file);
+    });
+
+    try {
+
+      const response = await fetch("url", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionGaranteDatos");
+      } else {
+        console.error("Error al enviar los datos al servidor");
+      }
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-      <UserNavbar />
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer
@@ -34,7 +53,8 @@ function PreaprobacionGarante() {
           />
         </div>
 
-        <div className="w-full md:w-1/2 py-8 pr-20 overflow-y-auto">
+        <div className="w-full md:w-1/2 py-8 pr-16 overflow-y-auto">
+        
           <ul className="steps steps-vertical lg:steps-horizontal w-full">
             <li className="step step-primary">Paso 1</li>
             <li className="step step-primary">Paso 2</li>
@@ -43,10 +63,10 @@ function PreaprobacionGarante() {
             <li className="step">Enviado</li>
           </ul>
 
-          <p className="mb-4">Pasos para completar la información</p>
+          <p className="my-4">Pasos para completar la información</p>
 
-          <div class="tab-container items-center mb-4">
-            <button class="tab ">Personal</button>
+          <div class="tab-container items-center m-0 p-0">
+            <button class="tab p-0 m-0">Personal</button>
             <button class="tab active">Garante uno</button>
             <button class="tab">Garante dos</button>
           </div>

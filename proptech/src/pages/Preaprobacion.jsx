@@ -1,4 +1,4 @@
-import UserNavbar from "../components/UserNavbar";
+
 import Ilustracion1 from "../assets/Preaprobacion1.png";
 import ImagenDocumento from "../assets/ImagenDocumento.png";
 import IllustrationContainer from "../components/IllustrationContainer";
@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 function Preaprobacion() {
   return (
     <div className="w-full h-full bg-white">
-      <UserNavbar />
+      
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer src={Ilustracion1} alt="Ilustración 1" />
         </div>
 
-        <div className="w-full md:w-1/2 py-8 pr-20">
+        <div className="w-full md:w-1/2 py-8 pr-16">
           <button className="btn-tertiary mb-4 self-start">Volver</button>
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             Pasos a seguir
