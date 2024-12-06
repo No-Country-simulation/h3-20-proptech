@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo-white.png"; // Ensure correct logo path
+import logo from "../assets/logo-white.png";
 
 function Navbar() {
   return (
