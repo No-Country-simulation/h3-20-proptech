@@ -109,6 +109,9 @@ class AddGarantorSerializer(serializers.Serializer):
     second_receipt = serializers.ImageField()
     third_receipt = serializers.ImageField()
     service_receipt = serializers.ImageField()
+    first_income_receipt = serializers.ImageField()
+    second_income_receipt = serializers.ImageField()
+    third_income_receipt = serializers.ImageField()
     
      
     @transaction.atomic
@@ -134,6 +137,9 @@ class AddGarantorSerializer(serializers.Serializer):
             second_receipt = validated_data['second_receipt'],
             third_receipt = validated_data['third_receipt'],
             service_receipt = validated_data['service_receipt'],
+            first_income_receipt = validated_data['service_receipt'],
+            second_income_receipt = validated_data['service_receipt'],
+            third_income_receipt = validated_data['service_receipt'],
         )
         return personal_data
     

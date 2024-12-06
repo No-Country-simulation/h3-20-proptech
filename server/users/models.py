@@ -48,3 +48,7 @@ class PersonalInformationToValidate(models.Model):
     second_receipt = models.ImageField(upload_to="media/") 
     third_receipt  = models.ImageField(upload_to="media/") 
     service_receipt = models.ImageField(upload_to="media/") 
+    first_income_receipt = models.ImageField(upload_to="media/") 
+    second_income_receipt = models.ImageField(upload_to="media/") 
+    third_income_receipt = models.ImageField(upload_to="media/") 
+    
