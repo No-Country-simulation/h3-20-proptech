@@ -30,6 +30,11 @@ DEBUG = True
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://h3-20-proptech-production.up.railway.app'
+]
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
