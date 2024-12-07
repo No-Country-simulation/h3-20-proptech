@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import usersDataFile from "../shared/data/usersData.json";
 import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
+import { PiTrash, PiNotePencil, PiNote } from "react-icons/pi";
 
 const AdministratorDashboard = () => {
   const [usersData, setUsersData] = useState(usersDataFile);
@@ -96,17 +97,23 @@ const AdministratorDashboard = () => {
               </td>
               <td className="border border-gray-300 px-4 py-2">{row.monthlyReturn}</td>
               <td className="border border-gray-300 px-4 py-2 flex gap-2">
+              <button
+                  className="bg-green-500 text-white px-2 py-1 rounded"
+                  onClick={() => setEditingRow(row)}
+                >
+                  <PiNote />
+                </button>
                 <button
                   className="bg-blue-500 text-white px-2 py-1 rounded"
                   onClick={() => setEditingRow(row)}
                 >
-                  Edit
+                  <PiNotePencil />
                 </button>
                 <button
                   className="bg-red-500 text-white px-2 py-1 rounded"
                   onClick={() => handleDelete(row.id)}
                 >
-                  Delete
+                  <PiTrash />
                 </button>
               </td>
             </tr>
@@ -118,7 +125,7 @@ const AdministratorDashboard = () => {
       {editingRow && (
         <div >
           <div className="modal-custom">
-            <h2 className="h2">Edit Investment</h2>
+            <h2 className="h2">Editar Inversión</h2>
             <input
               type="text"
               placeholder="Principal"
@@ -134,6 +141,24 @@ const AdministratorDashboard = () => {
               value={editingRow.interestRate}
               onChange={(e) =>
                 setEditingRow({ ...editingRow, interestRate: e.target.value })
+              }
+              className="input-field"
+            />
+            <input
+              type="text"
+              placeholder="Numero de cuotas"
+              value={editingRow.numberOfPayments}
+              onChange={(e) =>
+                setEditingRow({ ...editingRow, numberOfPayments: e.target.value })
+              }
+              className="input-field"
+            />
+            <input
+              type="text"
+              placeholder="Cuota"
+              value={editingRow.monthlyReturn}
+              onChange={(e) =>
+                setEditingRow({ ...editingRow, monthlyReturn: e.target.value })
               }
               className="input-field"
             />
@@ -158,7 +183,7 @@ const AdministratorDashboard = () => {
 
       {/* Add New Investment */}
       <div className="mt-8">
-        <h2 className="h2">Add New Investment</h2>
+        <h2 className="h2">Crear nueva inversión</h2>
         <input
           type="text"
           placeholder="Investor ID"
@@ -188,7 +213,7 @@ const AdministratorDashboard = () => {
           className="bg-green-500 text-white px-4 py-2 rounded"
           onClick={handleCreate}
         >
-          Add Investment
+          Crear Inversion
         </button>
       </div>
     </div>

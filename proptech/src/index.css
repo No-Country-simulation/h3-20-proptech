@@ -57,7 +57,14 @@ body {
   .btn-tertiary:disabled {
     @apply bg-wireframe-white text-wireframe-200 border-wireframe-100;
   }
-  
+
+  .label {
+    @apply font-bold text-text-primary mb-1;
+  }
+  .label-field {
+    @apply font-bold w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
+  }
+
   .input-field {
     @apply w-full px-4 py-2 border border-tertiary rounded-input bg-inherit text-text-primary;
   }

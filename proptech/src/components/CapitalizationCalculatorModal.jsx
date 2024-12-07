@@ -70,35 +70,57 @@ setInvestor,
         {/* Modal content */}
         <div className="modal-custom">
           <h2 className="text-lg font-semibold mb-4 text-center">
-            Select an Investor
+            Seleccione Inversor
           </h2>
 
           {/* React-Select searchable dropdown */}
           <Select
             options={options}
             onChange={handleSelectChange}
-            placeholder="Search and select a user"
+            placeholder="Buscar y elegir inversor"
             isSearchable
           />
 
           {/* Display details */}
           {newInvestmentData && (
             <div className="mt-4 text-sm">
-              <p>
-                <strong>Principal:</strong> {newInvestmentData.principal}
-              </p>
-              <p>
-                <strong>Interest Rate:</strong> {newInvestmentData.interestRate}
-              </p>
-              <p>
-                <strong>Number of Payments:</strong>{" "}
-                {newInvestmentData.numberOfPayments}
-              </p>
-              <p>
-                <strong>Monthly Return:</strong>{" "}
-                {newInvestmentData.monthlyReturn}
-              </p>
-            </div>
+                      <div >
+                          <label className="label">Capital:</label>
+                          <input
+                              className="input-field"
+                              type="text"
+                              value={newInvestmentData.principal.toFixed(2)}
+                              readOnly
+                          />
+                      </div>
+                      <div>
+                          <label className="label">Tasa de Interes:</label>
+                          <input
+                              className="input-field"
+                              type="text"
+                              value={`${(newInvestmentData.interestRate * 100).toFixed(3)}%`}
+                              readOnly
+                          />
+                      </div>
+                      <div>
+                          <label className="label">Numero de Cuotas:</label>
+                          <input
+                              className="input-field"
+                              type="text"
+                              value={newInvestmentData.numberOfPayments}
+                              readOnly
+                          />
+                      </div>
+                      <div>
+                          <label className="label">Cuota Mensual:</label>
+                          <input
+                              className="input-field"
+                              type="text"
+                              value={newInvestmentData.monthlyReturn}
+                              readOnly
+                          />
+                      </div>
+                  </div>
           )}
 
           {/* Modal buttons */}
@@ -107,13 +129,13 @@ setInvestor,
               className="btn-tertiary px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
               onClick={() => setShowModal(false)}
             >
-              Cancel
+              Cancelar
             </button>
             <button
               className="btn-primary px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               onClick={saveInvestmentData}
             >
-              Save Investment
+              Guardar Inversion
             </button>
           </div>
         </div>
