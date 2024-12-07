@@ -28,6 +28,7 @@ import CapitalizationCalculator from "./components/CapitalizationCalculator";
 import LoanForm from './components/LoanForm';
 import PaymentForm from "./components/PaymentForm";
 import Payments from "./components/Payments";
+import AdministrationDashboard from "./components/AdministrationDashboard";
 
 function App() {
     return (
@@ -57,7 +58,7 @@ function App() {
                 <Route path="/pagos" element={<Payments/>} />
                 <Route path="/loan" element={<LoanForm/>} />
                 <Route path="/payment" element={<PaymentForm/>} />
-
+<Route path="/adminDashboard" element={<AdministrationDashboard/>} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<ErrorPage />} />

@@ -1,0 +1,16 @@
+{
+    "id": 1,
+    "investor": "",
+    "amount": "",
+    "product": "",
+    "dateOfGeneration": "2024-12-07T02:55:41.955Z",
+    "principal": 3395.6459973954697,
+    "interestRate": 0.015309999999999999,
+    "numberOfPayments": 12,
+    "monthlyReturn": "237",
+    "term": "12",
+    "termType": "months",
+    "annualRate": 20.00075098538541,
+    "depositedCuota": ""
+
+}
