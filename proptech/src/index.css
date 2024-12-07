@@ -93,6 +93,12 @@ select option:checked {
 }
 
 
+.h2 {
+    @apply text-2xl font-bold mb-4 text-center text-text-primary w-full bg-inherit;
+  }
+  .h3 {
+    @apply text-xl font-semibold text-center text-text-primary w-full bg-inherit;
+  }
   .p {
     @apply py-1 bg-inherit text-text-p;
   }
@@ -246,39 +252,34 @@ all: unset;
     @apply bg-radio-activeFill;
   }
 
-
-
-
-/* ********  global settings v2 ok ****/
-/* Custom styles */
-/* body {
-  @apply bg-base-100 text-text-primary;
+  .modal-custom {
+    @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-[1001];
 }
 
-.navbar {
-  @apply bg-background-navbar text-text-white;
+.modal-backdrop {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-[1000];
 }
 
-.footer {
-  @apply bg-background-footer text-text-white;
+  /* .modal-custom {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
 }
 
-.btn-primary {
-  @apply bg-primary text-white hover:bg-primary/90 rounded-button px-4 py-2;
-}
-
-.btn-secondary {
-  @apply bg-secondary text-white hover:bg-secondary/90 rounded-button px-4 py-2;
-}
-
-.btn-tertiary {
-  @apply bg-tertiary text-secondary hover:bg-tertiary/90 rounded-button px-4 py-2;
-}
-
-.input-field {
-  @apply w-full px-4 py-2 border border-tertiary rounded-button bg-inherit text-text-primary;
-}
-
-.input-field:focus {
-  @apply outline-none border border-none ring-2 ring-primary bg-surfaceFocus;
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 } */

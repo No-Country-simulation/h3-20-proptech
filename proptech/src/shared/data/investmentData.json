@@ -1,16 +1,69 @@
-{
-    "id": 1,
-    "investor": "",
-    "amount": "",
-    "product": "",
-    "dateOfGeneration": "2024-12-07T02:55:41.955Z",
-    "principal": 3395.6459973954697,
-    "interestRate": 0.015309999999999999,
-    "numberOfPayments": 12,
-    "monthlyReturn": "237",
-    "term": "12",
-    "termType": "months",
-    "annualRate": 20.00075098538541,
-    "depositedCuota": ""
-
-}
+[
+    {
+      "id": 1,
+      "investor": 3,
+      "amount": "",
+      "product": "",
+      "dateOfGeneration": "2024-12-07T02:55:41.955Z",
+      "principal": 3395.6459973954697,
+      "interestRate": 0.015309999999999999,
+      "numberOfPayments": 12,
+      "monthlyReturn": "237",
+      "term": "12",
+      "termType": "months",
+      "annualRate": 20.00075098538541,
+      "depositedCuota": ""
+    },
+    {
+      "id": 2,
+      "investor": 1,
+      "dateOfGeneration": "2024-12-07T10:09:15.731Z",
+      "principal": 1326.380909800318,
+      "interestRate": 0.015309470499731193,
+      "numberOfPayments": 12,
+      "monthlyReturn": "100",
+      "term": "1",
+      "termType": "years",
+      "annualRate": "20",
+      "depositedCuota": ""
+    },
+    {
+      "id": 3,
+      "investor": 2,
+      "dateOfGeneration": "2024-12-07T10:10:08.144Z",
+      "principal": 1326.380909800318,
+      "interestRate": 0.015309470499731193,
+      "numberOfPayments": 12,
+      "monthlyReturn": "100",
+      "term": "1",
+      "termType": "years",
+      "annualRate": "20",
+      "depositedCuota": ""
+    },
+    {
+      "id": 4,
+      "investor": 4,
+      "dateOfGeneration": "2024-12-07T10:25:11.188Z",
+      "principal": 3143.522756226754,
+      "interestRate": 0.015309470499731193,
+      "numberOfPayments": 12,
+      "monthlyReturn": "237",
+      "term": "1",
+      "termType": "years",
+      "annualRate": "20",
+      "depositedCuota": ""
+    },
+    {
+      "id": 5,
+      "investor": 5,
+      "dateOfGeneration": "2024-12-07T10:26:19.487Z",
+      "principal": 13263.855312195783,
+      "interestRate": 0.015309999999999999,
+      "numberOfPayments": 24,
+      "monthlyReturn": "1000",
+      "term": "24",
+      "termType": "months",
+      "annualRate": 20.00075098538541,
+      "depositedCuota": ""
+    }
+  ]
