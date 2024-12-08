@@ -91,6 +91,7 @@ function Navbar() {
                                 <ul tabIndex={0}  className="dropdown-content menu p-2 shadow bg-base-700 rounded-box w-52">
                                     <li><Link to="/calculator">ClientCalculator</Link></li>
                                     <li><Link to="/capitalizacion">CapitalizationCalculator</Link></li>
+                                    <li><Link to="/dashboard">Panel de control</Link></li>
                                 </ul>
                             </li>
                             <li>

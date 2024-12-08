@@ -145,7 +145,26 @@ const theme = createTheme({
           },
         },
       },
-      
+
+      MuiModal: {
+        styleOverrides: {
+          root: {
+            zIndex: 1300,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backdropFilter: 'blur(4px)', // Optional blur effect
+          },
+          paper: {
+            backgroundColor: '#FFFFFF',
+            borderRadius: '0.5rem',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            padding: '20px',
+            outline: 'none',
+          },
+        },
+      },
+
   },
 });
 
