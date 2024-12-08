@@ -24,17 +24,22 @@ import PreaprobacionGaranteDatos from "./pages/PreaprobacionGaranteDatos"
 import PreaprobacionGaranteServicios from "./pages/PreaprobacionGaranteServicios"
 import PreaprobacionFin from "./pages/PreaprobacionFin"
 import Layout from "./shared/Layout"
+import CapitalizationCalculator from "./components/CapitalizationCalculator";
+import LoanForm from './components/LoanForm';
+import PaymentForm from "./components/PaymentForm";
+import Payments from "./components/Payments";
+import AdministrationDashboard from "./components/AdministrationDashboard";
+import CapitalizationCalculatorEdit from "./components/CapitalizationCalculatorEdit";
+import Dashboard from "./components/Dashboard";
 
 function App() {
     return (
-
-
         <Routes>
-            <Route element={<Layout/>}>
+            <Route element={<Layout />}>
                 <Route path="/calculator" element={<ClientCalculator />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/adelantoCapital" element={<EnhancedMortgageCalculator />} />
-                <Route path="/pagos" element={<PaymentAdminMortgageCalculator />} />
+                <Route path="/pagosCalculator" element={<PaymentAdminMortgageCalculator />} />
                 <Route path="/inversion" element={<InvestorReturnCalculator />} />
                 <Route path="/cuil" element={<Cuil />} />
                 <Route path="/cuil2" element={<Cuil2 />} />
@@ -51,13 +56,17 @@ function App() {
                 <Route path="/preaprobacionGaranteDatos" element={<PreaprobacionGaranteDatos />} />
                 <Route path="/preaprobacionGaranteServicios" element={<PreaprobacionGaranteServicios />} />
                 <Route path="/preaprobacionFin" element={<PreaprobacionFin />} />
-
+                <Route path="/capitalizacion" element={<CapitalizationCalculator/>} />
+                <Route path="/capitalizacionEdit" element={<CapitalizationCalculatorEdit/>} />
+                <Route path="/pagos" element={<Payments/>} />
+                <Route path="/loan" element={<LoanForm/>} />
+                <Route path="/payment" element={<PaymentForm/>} />
+                <Route path="/adminDashboard" element={<AdministrationDashboard/>} />
+                <Route path="/dashboard" element={<Dashboard />} />
             </Route>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>
-
-
     );
 }
 

@@ -1,0 +1,2207 @@
+[
+    {
+      "id": 1,
+      "investor": 1,
+      "dateOfGeneration": "2024-12-08T05:09:40.271Z",
+      "principal": 3395.6459973954697,
+      "calcRate": "1.531",
+      "interestRate": 0.015309999999999999,
+      "numberOfPayments": 12,
+      "monthlyReturn": "237",
+      "term": "12",
+      "termType": "months",
+      "annualRate": 20.00075098538541,
+      "refuerzo": true,
+      "refuerzoMes": 6,
+      "refuerzoValue": 0.5,
+      "depositedCuota": "",
+      "isActive": true,
+      "validated": "",
+      "estado": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "237.00",
+          "capitalizacionMes": "240.63",
+          "descuento": "3.63",
+          "percentInterest": "1.53",
+          "netoAPagar": "98.47",
+          "capitalizacion": "240.63"
+        },
+        {
+          "term": 2,
+          "cuota": "237.00",
+          "capitalizacionMes": "244.31",
+          "descuento": "7.31",
+          "percentInterest": "3.09",
+          "netoAPagar": "96.91",
+          "capitalizacion": "484.94"
+        },
+        {
+          "term": 3,
+          "cuota": "237.00",
+          "capitalizacionMes": "248.05",
+          "descuento": "11.05",
+          "percentInterest": "4.66",
+          "netoAPagar": "95.34",
+          "capitalizacion": "732.99"
+        },
+        {
+          "term": 4,
+          "cuota": "237.00",
+          "capitalizacionMes": "251.85",
+          "descuento": "14.85",
+          "percentInterest": "6.27",
+          "netoAPagar": "93.73",
+          "capitalizacion": "984.84"
+        },
+        {
+          "term": 5,
+          "cuota": "237.00",
+          "capitalizacionMes": "255.71",
+          "descuento": "18.71",
+          "percentInterest": "7.89",
+          "netoAPagar": "92.11",
+          "capitalizacion": "1240.55"
+        },
+        {
+          "term": 6,
+          "cuota": "355.50",
+          "capitalizacionMes": "389.43",
+          "descuento": "33.93",
+          "percentInterest": "9.54",
+          "netoAPagar": "90.46",
+          "capitalizacion": "1620.49"
+        },
+        {
+          "term": 7,
+          "cuota": "237.00",
+          "capitalizacionMes": "263.60",
+          "descuento": "26.60",
+          "percentInterest": "11.22",
+          "netoAPagar": "88.78",
+          "capitalizacion": "1885.92"
+        },
+        {
+          "term": 8,
+          "cuota": "237.00",
+          "capitalizacionMes": "267.63",
+          "descuento": "30.63",
+          "percentInterest": "12.92",
+          "netoAPagar": "87.08",
+          "capitalizacion": "2155.43"
+        },
+        {
+          "term": 9,
+          "cuota": "237.00",
+          "capitalizacionMes": "271.73",
+          "descuento": "34.73",
+          "percentInterest": "14.65",
+          "netoAPagar": "85.35",
+          "capitalizacion": "2429.05"
+        },
+        {
+          "term": 10,
+          "cuota": "237.00",
+          "capitalizacionMes": "275.89",
+          "descuento": "38.89",
+          "percentInterest": "16.41",
+          "netoAPagar": "83.59",
+          "capitalizacion": "2706.87"
+        },
+        {
+          "term": 11,
+          "cuota": "237.00",
+          "capitalizacionMes": "280.11",
+          "descuento": "43.11",
+          "percentInterest": "18.19",
+          "netoAPagar": "81.81",
+          "capitalizacion": "2988.94"
+        },
+        {
+          "term": 12,
+          "cuota": "355.50",
+          "capitalizacionMes": "426.60",
+          "descuento": "71.10",
+          "percentInterest": "20.00",
+          "netoAPagar": "80.00",
+          "capitalizacion": "3395.65"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "investor": 2,
+      "dateOfGeneration": "2024-12-08T05:12:12.943Z",
+      "principal": 3143.522756226754,
+      "calcRate": "20",
+      "interestRate": 0.015309470499731193,
+      "numberOfPayments": 12,
+      "monthlyReturn": "237",
+      "term": "1",
+      "termType": "years",
+      "annualRate": "20",
+      "refuerzo": false,
+      "refuerzoMes": 6,
+      "refuerzoValue": 0.5,
+      "depositedCuota": "",
+      "isActive": true,
+      "validated": "",
+      "estado": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "237.00",
+          "capitalizacionMes": "240.63",
+          "descuento": "3.63",
+          "percentInterest": "1.53",
+          "netoAPagar": "98.47",
+          "capitalizacion": "240.63"
+        },
+        {
+          "term": 2,
+          "cuota": "237.00",
+          "capitalizacionMes": "244.31",
+          "descuento": "7.31",
+          "percentInterest": "3.09",
+          "netoAPagar": "96.91",
+          "capitalizacion": "484.94"
+        },
+        {
+          "term": 3,
+          "cuota": "237.00",
+          "capitalizacionMes": "248.05",
+          "descuento": "11.05",
+          "percentInterest": "4.66",
+          "netoAPagar": "95.34",
+          "capitalizacion": "732.99"
+        },
+        {
+          "term": 4,
+          "cuota": "237.00",
+          "capitalizacionMes": "251.85",
+          "descuento": "14.85",
+          "percentInterest": "6.27",
+          "netoAPagar": "93.73",
+          "capitalizacion": "984.84"
+        },
+        {
+          "term": 5,
+          "cuota": "237.00",
+          "capitalizacionMes": "255.71",
+          "descuento": "18.71",
+          "percentInterest": "7.89",
+          "netoAPagar": "92.11",
+          "capitalizacion": "1240.55"
+        },
+        {
+          "term": 6,
+          "cuota": "237.00",
+          "capitalizacionMes": "259.62",
+          "descuento": "22.62",
+          "percentInterest": "9.54",
+          "netoAPagar": "90.46",
+          "capitalizacion": "1500.17"
+        },
+        {
+          "term": 7,
+          "cuota": "237.00",
+          "capitalizacionMes": "263.60",
+          "descuento": "26.60",
+          "percentInterest": "11.22",
+          "netoAPagar": "88.78",
+          "capitalizacion": "1763.76"
+        },
+        {
+          "term": 8,
+          "cuota": "237.00",
+          "capitalizacionMes": "267.63",
+          "descuento": "30.63",
+          "percentInterest": "12.92",
+          "netoAPagar": "87.08",
+          "capitalizacion": "2031.40"
+        },
+        {
+          "term": 9,
+          "cuota": "237.00",
+          "capitalizacionMes": "271.73",
+          "descuento": "34.73",
+          "percentInterest": "14.65",
+          "netoAPagar": "85.35",
+          "capitalizacion": "2303.12"
+        },
+        {
+          "term": 10,
+          "cuota": "237.00",
+          "capitalizacionMes": "275.89",
+          "descuento": "38.89",
+          "percentInterest": "16.41",
+          "netoAPagar": "83.59",
+          "capitalizacion": "2579.01"
+        },
+        {
+          "term": 11,
+          "cuota": "237.00",
+          "capitalizacionMes": "280.11",
+          "descuento": "43.11",
+          "percentInterest": "18.19",
+          "netoAPagar": "81.81",
+          "capitalizacion": "2859.12"
+        },
+        {
+          "term": 12,
+          "cuota": "237.00",
+          "capitalizacionMes": "284.40",
+          "descuento": "47.40",
+          "percentInterest": "20.00",
+          "netoAPagar": "80.00",
+          "capitalizacion": "3143.52"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "investor": 3,
+      "dateOfGeneration": "2024-12-08T05:46:40.532Z",
+      "principal": 98703.96178370038,
+      "calcRate": "20",
+      "interestRate": 0.015309470499731193,
+      "numberOfPayments": 60,
+      "monthlyReturn": "1000",
+      "term": "5",
+      "termType": "years",
+      "annualRate": "20",
+      "depositedCuota": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1015.31",
+          "descuento": "15.31",
+          "percentInterest": "1.53",
+          "netoAPagar": "98.47",
+          "capitalizacion": "1015.31"
+        },
+        {
+          "term": 2,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1030.85",
+          "descuento": "30.85",
+          "percentInterest": "3.09",
+          "netoAPagar": "96.91",
+          "capitalizacion": "2046.16"
+        },
+        {
+          "term": 3,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1046.64",
+          "descuento": "46.64",
+          "percentInterest": "4.66",
+          "netoAPagar": "95.34",
+          "capitalizacion": "3092.80"
+        },
+        {
+          "term": 4,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1062.66",
+          "descuento": "62.66",
+          "percentInterest": "6.27",
+          "netoAPagar": "93.73",
+          "capitalizacion": "4155.46"
+        },
+        {
+          "term": 5,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1078.93",
+          "descuento": "78.93",
+          "percentInterest": "7.89",
+          "netoAPagar": "92.11",
+          "capitalizacion": "5234.38"
+        },
+        {
+          "term": 6,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1095.45",
+          "descuento": "95.45",
+          "percentInterest": "9.54",
+          "netoAPagar": "90.46",
+          "capitalizacion": "6329.83"
+        },
+        {
+          "term": 7,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1112.22",
+          "descuento": "112.22",
+          "percentInterest": "11.22",
+          "netoAPagar": "88.78",
+          "capitalizacion": "7442.04"
+        },
+        {
+          "term": 8,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1129.24",
+          "descuento": "129.24",
+          "percentInterest": "12.92",
+          "netoAPagar": "87.08",
+          "capitalizacion": "8571.29"
+        },
+        {
+          "term": 9,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1146.53",
+          "descuento": "146.53",
+          "percentInterest": "14.65",
+          "netoAPagar": "85.35",
+          "capitalizacion": "9717.82"
+        },
+        {
+          "term": 10,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1164.08",
+          "descuento": "164.08",
+          "percentInterest": "16.41",
+          "netoAPagar": "83.59",
+          "capitalizacion": "10881.90"
+        },
+        {
+          "term": 11,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1181.91",
+          "descuento": "181.91",
+          "percentInterest": "18.19",
+          "netoAPagar": "81.81",
+          "capitalizacion": "12063.81"
+        },
+        {
+          "term": 12,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1200.00",
+          "descuento": "200.00",
+          "percentInterest": "20.00",
+          "netoAPagar": "80.00",
+          "capitalizacion": "13263.81"
+        },
+        {
+          "term": 13,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1218.37",
+          "descuento": "218.37",
+          "percentInterest": "21.84",
+          "netoAPagar": "78.16",
+          "capitalizacion": "14482.18"
+        },
+        {
+          "term": 14,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1237.02",
+          "descuento": "237.02",
+          "percentInterest": "23.70",
+          "netoAPagar": "76.30",
+          "capitalizacion": "15719.20"
+        },
+        {
+          "term": 15,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1255.96",
+          "descuento": "255.96",
+          "percentInterest": "25.60",
+          "netoAPagar": "74.40",
+          "capitalizacion": "16975.17"
+        },
+        {
+          "term": 16,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1275.19",
+          "descuento": "275.19",
+          "percentInterest": "27.52",
+          "netoAPagar": "72.48",
+          "capitalizacion": "18250.36"
+        },
+        {
+          "term": 17,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1294.71",
+          "descuento": "294.71",
+          "percentInterest": "29.47",
+          "netoAPagar": "70.53",
+          "capitalizacion": "19545.07"
+        },
+        {
+          "term": 18,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1314.53",
+          "descuento": "314.53",
+          "percentInterest": "31.45",
+          "netoAPagar": "68.55",
+          "capitalizacion": "20859.60"
+        },
+        {
+          "term": 19,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1334.66",
+          "descuento": "334.66",
+          "percentInterest": "33.47",
+          "netoAPagar": "66.53",
+          "capitalizacion": "22194.26"
+        },
+        {
+          "term": 20,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1355.09",
+          "descuento": "355.09",
+          "percentInterest": "35.51",
+          "netoAPagar": "64.49",
+          "capitalizacion": "23549.35"
+        },
+        {
+          "term": 21,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1375.84",
+          "descuento": "375.84",
+          "percentInterest": "37.58",
+          "netoAPagar": "62.42",
+          "capitalizacion": "24925.19"
+        },
+        {
+          "term": 22,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1396.90",
+          "descuento": "396.90",
+          "percentInterest": "39.69",
+          "netoAPagar": "60.31",
+          "capitalizacion": "26322.09"
+        },
+        {
+          "term": 23,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1418.29",
+          "descuento": "418.29",
+          "percentInterest": "41.83",
+          "netoAPagar": "58.17",
+          "capitalizacion": "27740.38"
+        },
+        {
+          "term": 24,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1440.00",
+          "descuento": "440.00",
+          "percentInterest": "44.00",
+          "netoAPagar": "56.00",
+          "capitalizacion": "29180.38"
+        },
+        {
+          "term": 25,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1462.05",
+          "descuento": "462.05",
+          "percentInterest": "46.20",
+          "netoAPagar": "53.80",
+          "capitalizacion": "30642.43"
+        },
+        {
+          "term": 26,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1484.43",
+          "descuento": "484.43",
+          "percentInterest": "48.44",
+          "netoAPagar": "51.56",
+          "capitalizacion": "32126.85"
+        },
+        {
+          "term": 27,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1507.15",
+          "descuento": "507.15",
+          "percentInterest": "50.72",
+          "netoAPagar": "49.28",
+          "capitalizacion": "33634.01"
+        },
+        {
+          "term": 28,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1530.23",
+          "descuento": "530.23",
+          "percentInterest": "53.02",
+          "netoAPagar": "46.98",
+          "capitalizacion": "35164.24"
+        },
+        {
+          "term": 29,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1553.66",
+          "descuento": "553.66",
+          "percentInterest": "55.37",
+          "netoAPagar": "44.63",
+          "capitalizacion": "36717.89"
+        },
+        {
+          "term": 30,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1577.44",
+          "descuento": "577.44",
+          "percentInterest": "57.74",
+          "netoAPagar": "42.26",
+          "capitalizacion": "38295.33"
+        },
+        {
+          "term": 31,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1601.59",
+          "descuento": "601.59",
+          "percentInterest": "60.16",
+          "netoAPagar": "39.84",
+          "capitalizacion": "39896.92"
+        },
+        {
+          "term": 32,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1626.11",
+          "descuento": "626.11",
+          "percentInterest": "62.61",
+          "netoAPagar": "37.39",
+          "capitalizacion": "41523.03"
+        },
+        {
+          "term": 33,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1651.01",
+          "descuento": "651.01",
+          "percentInterest": "65.10",
+          "netoAPagar": "34.90",
+          "capitalizacion": "43174.04"
+        },
+        {
+          "term": 34,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1676.28",
+          "descuento": "676.28",
+          "percentInterest": "67.63",
+          "netoAPagar": "32.37",
+          "capitalizacion": "44850.32"
+        },
+        {
+          "term": 35,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1701.94",
+          "descuento": "701.94",
+          "percentInterest": "70.19",
+          "netoAPagar": "29.81",
+          "capitalizacion": "46552.27"
+        },
+        {
+          "term": 36,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1728.00",
+          "descuento": "728.00",
+          "percentInterest": "72.80",
+          "netoAPagar": "27.20",
+          "capitalizacion": "48280.27"
+        },
+        {
+          "term": 37,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1754.45",
+          "descuento": "754.45",
+          "percentInterest": "75.45",
+          "netoAPagar": "24.55",
+          "capitalizacion": "50034.72"
+        },
+        {
+          "term": 38,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1781.31",
+          "descuento": "781.31",
+          "percentInterest": "78.13",
+          "netoAPagar": "21.87",
+          "capitalizacion": "51816.03"
+        },
+        {
+          "term": 39,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1808.59",
+          "descuento": "808.59",
+          "percentInterest": "80.86",
+          "netoAPagar": "19.14",
+          "capitalizacion": "53624.62"
+        },
+        {
+          "term": 40,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1836.27",
+          "descuento": "836.27",
+          "percentInterest": "83.63",
+          "netoAPagar": "16.37",
+          "capitalizacion": "55460.89"
+        },
+        {
+          "term": 41,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1864.39",
+          "descuento": "864.39",
+          "percentInterest": "86.44",
+          "netoAPagar": "13.56",
+          "capitalizacion": "57325.28"
+        },
+        {
+          "term": 42,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1892.93",
+          "descuento": "892.93",
+          "percentInterest": "89.29",
+          "netoAPagar": "10.71",
+          "capitalizacion": "59218.21"
+        },
+        {
+          "term": 43,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1921.91",
+          "descuento": "921.91",
+          "percentInterest": "92.19",
+          "netoAPagar": "7.81",
+          "capitalizacion": "61140.12"
+        },
+        {
+          "term": 44,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1951.33",
+          "descuento": "951.33",
+          "percentInterest": "95.13",
+          "netoAPagar": "4.87",
+          "capitalizacion": "63091.45"
+        },
+        {
+          "term": 45,
+          "cuota": "1000.00",
+          "capitalizacionMes": "1981.21",
+          "descuento": "981.21",
+          "percentInterest": "98.12",
+          "netoAPagar": "1.88",
+          "capitalizacion": "65072.66"
+        },
+        {
+          "term": 46,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2011.54",
+          "descuento": "1011.54",
+          "percentInterest": "101.15",
+          "netoAPagar": "-1.15",
+          "capitalizacion": "67084.19"
+        },
+        {
+          "term": 47,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2042.33",
+          "descuento": "1042.33",
+          "percentInterest": "104.23",
+          "netoAPagar": "-4.23",
+          "capitalizacion": "69126.53"
+        },
+        {
+          "term": 48,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2073.60",
+          "descuento": "1073.60",
+          "percentInterest": "107.36",
+          "netoAPagar": "-7.36",
+          "capitalizacion": "71200.13"
+        },
+        {
+          "term": 49,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2105.35",
+          "descuento": "1105.35",
+          "percentInterest": "110.53",
+          "netoAPagar": "-10.53",
+          "capitalizacion": "73305.47"
+        },
+        {
+          "term": 50,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2137.58",
+          "descuento": "1137.58",
+          "percentInterest": "113.76",
+          "netoAPagar": "-13.76",
+          "capitalizacion": "75443.05"
+        },
+        {
+          "term": 51,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2170.30",
+          "descuento": "1170.30",
+          "percentInterest": "117.03",
+          "netoAPagar": "-17.03",
+          "capitalizacion": "77613.35"
+        },
+        {
+          "term": 52,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2203.53",
+          "descuento": "1203.53",
+          "percentInterest": "120.35",
+          "netoAPagar": "-20.35",
+          "capitalizacion": "79816.88"
+        },
+        {
+          "term": 53,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2237.26",
+          "descuento": "1237.26",
+          "percentInterest": "123.73",
+          "netoAPagar": "-23.73",
+          "capitalizacion": "82054.15"
+        },
+        {
+          "term": 54,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2271.51",
+          "descuento": "1271.51",
+          "percentInterest": "127.15",
+          "netoAPagar": "-27.15",
+          "capitalizacion": "84325.66"
+        },
+        {
+          "term": 55,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2306.29",
+          "descuento": "1306.29",
+          "percentInterest": "130.63",
+          "netoAPagar": "-30.63",
+          "capitalizacion": "86631.95"
+        },
+        {
+          "term": 56,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2341.60",
+          "descuento": "1341.60",
+          "percentInterest": "134.16",
+          "netoAPagar": "-34.16",
+          "capitalizacion": "88973.55"
+        },
+        {
+          "term": 57,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2377.45",
+          "descuento": "1377.45",
+          "percentInterest": "137.74",
+          "netoAPagar": "-37.74",
+          "capitalizacion": "91351.00"
+        },
+        {
+          "term": 58,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2413.84",
+          "descuento": "1413.84",
+          "percentInterest": "141.38",
+          "netoAPagar": "-41.38",
+          "capitalizacion": "93764.84"
+        },
+        {
+          "term": 59,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2450.80",
+          "descuento": "1450.80",
+          "percentInterest": "145.08",
+          "netoAPagar": "-45.08",
+          "capitalizacion": "96215.64"
+        },
+        {
+          "term": 60,
+          "cuota": "1000.00",
+          "capitalizacionMes": "2488.32",
+          "descuento": "1488.32",
+          "percentInterest": "148.83",
+          "netoAPagar": "-48.83",
+          "capitalizacion": "98703.96"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "investor": 4,
+      "dateOfGeneration": "2024-12-08T06:06:45.604Z",
+      "principal": 18026.133071964654,
+      "calcRate": "1.531",
+      "interestRate": 0.015309999999999999,
+      "numberOfPayments": 18,
+      "monthlyReturn": "800",
+      "term": "18",
+      "termType": "months",
+      "annualRate": 20.00075098538541,
+      "refuerzo": true,
+      "refuerzoMes": 6,
+      "refuerzoValue": 0.5,
+      "depositedCuota": "",
+      "isActive": true,
+      "validated": "",
+      "estado": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "800.00",
+          "capitalizacionMes": "812.25",
+          "descuento": "12.25",
+          "percentInterest": "1.53",
+          "netoAPagar": "98.47",
+          "capitalizacion": "812.25"
+        },
+        {
+          "term": 2,
+          "cuota": "800.00",
+          "capitalizacionMes": "824.68",
+          "descuento": "24.68",
+          "percentInterest": "3.09",
+          "netoAPagar": "96.91",
+          "capitalizacion": "1636.93"
+        },
+        {
+          "term": 3,
+          "cuota": "800.00",
+          "capitalizacionMes": "837.31",
+          "descuento": "37.31",
+          "percentInterest": "4.66",
+          "netoAPagar": "95.34",
+          "capitalizacion": "2474.24"
+        },
+        {
+          "term": 4,
+          "cuota": "800.00",
+          "capitalizacionMes": "850.13",
+          "descuento": "50.13",
+          "percentInterest": "6.27",
+          "netoAPagar": "93.73",
+          "capitalizacion": "3324.37"
+        },
+        {
+          "term": 5,
+          "cuota": "800.00",
+          "capitalizacionMes": "863.14",
+          "descuento": "63.14",
+          "percentInterest": "7.89",
+          "netoAPagar": "92.11",
+          "capitalizacion": "4187.51"
+        },
+        {
+          "term": 6,
+          "cuota": "1200.00",
+          "capitalizacionMes": "1314.54",
+          "descuento": "114.54",
+          "percentInterest": "9.54",
+          "netoAPagar": "90.46",
+          "capitalizacion": "5470.00"
+        },
+        {
+          "term": 7,
+          "cuota": "800.00",
+          "capitalizacionMes": "889.78",
+          "descuento": "89.78",
+          "percentInterest": "11.22",
+          "netoAPagar": "88.78",
+          "capitalizacion": "6365.99"
+        },
+        {
+          "term": 8,
+          "cuota": "800.00",
+          "capitalizacionMes": "903.40",
+          "descuento": "103.40",
+          "percentInterest": "12.92",
+          "netoAPagar": "87.08",
+          "capitalizacion": "7275.70"
+        },
+        {
+          "term": 9,
+          "cuota": "800.00",
+          "capitalizacionMes": "917.23",
+          "descuento": "117.23",
+          "percentInterest": "14.65",
+          "netoAPagar": "85.35",
+          "capitalizacion": "8199.34"
+        },
+        {
+          "term": 10,
+          "cuota": "800.00",
+          "capitalizacionMes": "931.27",
+          "descuento": "131.27",
+          "percentInterest": "16.41",
+          "netoAPagar": "83.59",
+          "capitalizacion": "9137.12"
+        },
+        {
+          "term": 11,
+          "cuota": "800.00",
+          "capitalizacionMes": "945.53",
+          "descuento": "145.53",
+          "percentInterest": "18.19",
+          "netoAPagar": "81.81",
+          "capitalizacion": "10089.26"
+        },
+        {
+          "term": 12,
+          "cuota": "1200.00",
+          "capitalizacionMes": "1440.01",
+          "descuento": "240.01",
+          "percentInterest": "20.00",
+          "netoAPagar": "80.00",
+          "capitalizacion": "11462.10"
+        },
+        {
+          "term": 13,
+          "cuota": "800.00",
+          "capitalizacionMes": "974.70",
+          "descuento": "174.70",
+          "percentInterest": "21.84",
+          "netoAPagar": "78.16",
+          "capitalizacion": "12449.83"
+        },
+        {
+          "term": 14,
+          "cuota": "800.00",
+          "capitalizacionMes": "989.63",
+          "descuento": "189.63",
+          "percentInterest": "23.70",
+          "netoAPagar": "76.30",
+          "capitalizacion": "13452.68"
+        },
+        {
+          "term": 15,
+          "cuota": "800.00",
+          "capitalizacionMes": "1004.78",
+          "descuento": "204.78",
+          "percentInterest": "25.60",
+          "netoAPagar": "74.40",
+          "capitalizacion": "14470.89"
+        },
+        {
+          "term": 16,
+          "cuota": "800.00",
+          "capitalizacionMes": "1020.16",
+          "descuento": "220.16",
+          "percentInterest": "27.52",
+          "netoAPagar": "72.48",
+          "capitalizacion": "15504.69"
+        },
+        {
+          "term": 17,
+          "cuota": "800.00",
+          "capitalizacionMes": "1035.78",
+          "descuento": "235.78",
+          "percentInterest": "29.47",
+          "netoAPagar": "70.53",
+          "capitalizacion": "16554.31"
+        },
+        {
+          "term": 18,
+          "cuota": "1200.00",
+          "capitalizacionMes": "1577.46",
+          "descuento": "377.46",
+          "percentInterest": "31.45",
+          "netoAPagar": "68.55",
+          "capitalizacion": "18026.13"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "investor": 5,
+      "dateOfGeneration": "2024-12-08T06:09:54.981Z",
+      "principal": 994.9720999737856,
+      "calcRate": "2",
+      "interestRate": 0.02,
+      "numberOfPayments": 9,
+      "monthlyReturn": "100",
+      "term": "9",
+      "termType": "months",
+      "annualRate": 26.82417945625457,
+      "refuerzo": false,
+      "refuerzoMes": 6,
+      "refuerzoValue": 0.5,
+      "depositedCuota": "",
+      "isActive": true,
+      "validated": "",
+      "estado": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "100.00",
+          "capitalizacionMes": "102.00",
+          "descuento": "2.00",
+          "percentInterest": "2.00",
+          "netoAPagar": "98.00",
+          "capitalizacion": "102.00"
+        },
+        {
+          "term": 2,
+          "cuota": "100.00",
+          "capitalizacionMes": "104.04",
+          "descuento": "4.04",
+          "percentInterest": "4.04",
+          "netoAPagar": "95.96",
+          "capitalizacion": "206.04"
+        },
+        {
+          "term": 3,
+          "cuota": "100.00",
+          "capitalizacionMes": "106.12",
+          "descuento": "6.12",
+          "percentInterest": "6.12",
+          "netoAPagar": "93.88",
+          "capitalizacion": "312.16"
+        },
+        {
+          "term": 4,
+          "cuota": "100.00",
+          "capitalizacionMes": "108.24",
+          "descuento": "8.24",
+          "percentInterest": "8.24",
+          "netoAPagar": "91.76",
+          "capitalizacion": "420.40"
+        },
+        {
+          "term": 5,
+          "cuota": "100.00",
+          "capitalizacionMes": "110.41",
+          "descuento": "10.41",
+          "percentInterest": "10.41",
+          "netoAPagar": "89.59",
+          "capitalizacion": "530.81"
+        },
+        {
+          "term": 6,
+          "cuota": "100.00",
+          "capitalizacionMes": "112.62",
+          "descuento": "12.62",
+          "percentInterest": "12.62",
+          "netoAPagar": "87.38",
+          "capitalizacion": "643.43"
+        },
+        {
+          "term": 7,
+          "cuota": "100.00",
+          "capitalizacionMes": "114.87",
+          "descuento": "14.87",
+          "percentInterest": "14.87",
+          "netoAPagar": "85.13",
+          "capitalizacion": "758.30"
+        },
+        {
+          "term": 8,
+          "cuota": "100.00",
+          "capitalizacionMes": "117.17",
+          "descuento": "17.17",
+          "percentInterest": "17.17",
+          "netoAPagar": "82.83",
+          "capitalizacion": "875.46"
+        },
+        {
+          "term": 9,
+          "cuota": "100.00",
+          "capitalizacionMes": "119.51",
+          "descuento": "19.51",
+          "percentInterest": "19.51",
+          "netoAPagar": "80.49",
+          "capitalizacion": "994.97"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "investor": 3,
+      "dateOfGeneration": "2024-12-08T06:12:34.864Z",
+      "principal": 270262.96103948436,
+      "calcRate": "2.5",
+      "interestRate": 0.025,
+      "numberOfPayments": 120,
+      "monthlyReturn": "333",
+      "term": "120",
+      "termType": "months",
+      "annualRate": 34.48888242462971,
+      "refuerzo": true,
+      "refuerzoMes": 6,
+      "refuerzoValue": 0.5,
+      "depositedCuota": "",
+      "isActive": true,
+      "validated": "",
+      "estado": "",
+      "results": [
+        {
+          "term": 1,
+          "cuota": "333.00",
+          "capitalizacionMes": "341.32",
+          "descuento": "8.32",
+          "percentInterest": "2.50",
+          "netoAPagar": "97.50",
+          "capitalizacion": "341.32"
+        },
+        {
+          "term": 2,
+          "cuota": "333.00",
+          "capitalizacionMes": "349.86",
+          "descuento": "16.86",
+          "percentInterest": "5.06",
+          "netoAPagar": "94.94",
+          "capitalizacion": "691.18"
+        },
+        {
+          "term": 3,
+          "cuota": "333.00",
+          "capitalizacionMes": "358.60",
+          "descuento": "25.60",
+          "percentInterest": "7.69",
+          "netoAPagar": "92.31",
+          "capitalizacion": "1049.79"
+        },
+        {
+          "term": 4,
+          "cuota": "333.00",
+          "capitalizacionMes": "367.57",
+          "descuento": "34.57",
+          "percentInterest": "10.38",
+          "netoAPagar": "89.62",
+          "capitalizacion": "1417.36"
+        },
+        {
+          "term": 5,
+          "cuota": "333.00",
+          "capitalizacionMes": "376.76",
+          "descuento": "43.76",
+          "percentInterest": "13.14",
+          "netoAPagar": "86.86",
+          "capitalizacion": "1794.12"
+        },
+        {
+          "term": 6,
+          "cuota": "499.50",
+          "capitalizacionMes": "579.27",
+          "descuento": "79.77",
+          "percentInterest": "15.97",
+          "netoAPagar": "84.03",
+          "capitalizacion": "2350.96"
+        },
+        {
+          "term": 7,
+          "cuota": "333.00",
+          "capitalizacionMes": "395.83",
+          "descuento": "62.83",
+          "percentInterest": "18.87",
+          "netoAPagar": "81.13",
+          "capitalizacion": "2751.06"
+        },
+        {
+          "term": 8,
+          "cuota": "333.00",
+          "capitalizacionMes": "405.73",
+          "descuento": "72.73",
+          "percentInterest": "21.84",
+          "netoAPagar": "78.16",
+          "capitalizacion": "3161.16"
+        },
+        {
+          "term": 9,
+          "cuota": "333.00",
+          "capitalizacionMes": "415.87",
+          "descuento": "82.87",
+          "percentInterest": "24.89",
+          "netoAPagar": "75.11",
+          "capitalizacion": "3581.51"
+        },
+        {
+          "term": 10,
+          "cuota": "333.00",
+          "capitalizacionMes": "426.27",
+          "descuento": "93.27",
+          "percentInterest": "28.01",
+          "netoAPagar": "71.99",
+          "capitalizacion": "4012.37"
+        },
+        {
+          "term": 11,
+          "cuota": "333.00",
+          "capitalizacionMes": "436.92",
+          "descuento": "103.92",
+          "percentInterest": "31.21",
+          "netoAPagar": "68.79",
+          "capitalizacion": "4454.01"
+        },
+        {
+          "term": 12,
+          "cuota": "499.50",
+          "capitalizacionMes": "671.77",
+          "descuento": "172.27",
+          "percentInterest": "34.49",
+          "netoAPagar": "65.51",
+          "capitalizacion": "5077.35"
+        },
+        {
+          "term": 13,
+          "cuota": "333.00",
+          "capitalizacionMes": "459.04",
+          "descuento": "126.04",
+          "percentInterest": "37.85",
+          "netoAPagar": "62.15",
+          "capitalizacion": "5545.60"
+        },
+        {
+          "term": 14,
+          "cuota": "333.00",
+          "capitalizacionMes": "470.52",
+          "descuento": "137.52",
+          "percentInterest": "41.30",
+          "netoAPagar": "58.70",
+          "capitalizacion": "6025.57"
+        },
+        {
+          "term": 15,
+          "cuota": "333.00",
+          "capitalizacionMes": "482.28",
+          "descuento": "149.28",
+          "percentInterest": "44.83",
+          "netoAPagar": "55.17",
+          "capitalizacion": "6517.53"
+        },
+        {
+          "term": 16,
+          "cuota": "333.00",
+          "capitalizacionMes": "494.34",
+          "descuento": "161.34",
+          "percentInterest": "48.45",
+          "netoAPagar": "51.55",
+          "capitalizacion": "7021.80"
+        },
+        {
+          "term": 17,
+          "cuota": "333.00",
+          "capitalizacionMes": "506.70",
+          "descuento": "173.70",
+          "percentInterest": "52.16",
+          "netoAPagar": "47.84",
+          "capitalizacion": "7538.67"
+        },
+        {
+          "term": 18,
+          "cuota": "499.50",
+          "capitalizacionMes": "779.05",
+          "descuento": "279.55",
+          "percentInterest": "55.97",
+          "netoAPagar": "44.03",
+          "capitalizacion": "8239.12"
+        },
+        {
+          "term": 19,
+          "cuota": "333.00",
+          "capitalizacionMes": "532.35",
+          "descuento": "199.35",
+          "percentInterest": "59.87",
+          "netoAPagar": "40.13",
+          "capitalizacion": "8786.42"
+        },
+        {
+          "term": 20,
+          "cuota": "333.00",
+          "capitalizacionMes": "545.66",
+          "descuento": "212.66",
+          "percentInterest": "63.86",
+          "netoAPagar": "36.14",
+          "capitalizacion": "9347.41"
+        },
+        {
+          "term": 21,
+          "cuota": "333.00",
+          "capitalizacionMes": "559.30",
+          "descuento": "226.30",
+          "percentInterest": "67.96",
+          "netoAPagar": "32.04",
+          "capitalizacion": "9922.42"
+        },
+        {
+          "term": 22,
+          "cuota": "333.00",
+          "capitalizacionMes": "573.28",
+          "descuento": "240.28",
+          "percentInterest": "72.16",
+          "netoAPagar": "27.84",
+          "capitalizacion": "10511.81"
+        },
+        {
+          "term": 23,
+          "cuota": "333.00",
+          "capitalizacionMes": "587.62",
+          "descuento": "254.62",
+          "percentInterest": "76.46",
+          "netoAPagar": "23.54",
+          "capitalizacion": "11115.93"
+        },
+        {
+          "term": 24,
+          "cuota": "499.50",
+          "capitalizacionMes": "903.46",
+          "descuento": "403.96",
+          "percentInterest": "80.87",
+          "netoAPagar": "19.13",
+          "capitalizacion": "11905.81"
+        },
+        {
+          "term": 25,
+          "cuota": "333.00",
+          "capitalizacionMes": "617.36",
+          "descuento": "284.36",
+          "percentInterest": "85.39",
+          "netoAPagar": "14.61",
+          "capitalizacion": "12544.78"
+        },
+        {
+          "term": 26,
+          "cuota": "333.00",
+          "capitalizacionMes": "632.80",
+          "descuento": "299.80",
+          "percentInterest": "90.03",
+          "netoAPagar": "9.97",
+          "capitalizacion": "13199.73"
+        },
+        {
+          "term": 27,
+          "cuota": "333.00",
+          "capitalizacionMes": "648.62",
+          "descuento": "315.62",
+          "percentInterest": "94.78",
+          "netoAPagar": "5.22",
+          "capitalizacion": "13871.04"
+        },
+        {
+          "term": 28,
+          "cuota": "333.00",
+          "capitalizacionMes": "664.83",
+          "descuento": "331.83",
+          "percentInterest": "99.65",
+          "netoAPagar": "0.35",
+          "capitalizacion": "14559.15"
+        },
+        {
+          "term": 29,
+          "cuota": "333.00",
+          "capitalizacionMes": "681.45",
+          "descuento": "348.45",
+          "percentInterest": "104.64",
+          "netoAPagar": "-4.64",
+          "capitalizacion": "15264.45"
+        },
+        {
+          "term": 30,
+          "cuota": "499.50",
+          "capitalizacionMes": "1047.74",
+          "descuento": "548.24",
+          "percentInterest": "109.76",
+          "netoAPagar": "-9.76",
+          "capitalizacion": "16158.05"
+        },
+        {
+          "term": 31,
+          "cuota": "333.00",
+          "capitalizacionMes": "715.95",
+          "descuento": "382.95",
+          "percentInterest": "115.00",
+          "netoAPagar": "-15.00",
+          "capitalizacion": "16903.32"
+        },
+        {
+          "term": 32,
+          "cuota": "333.00",
+          "capitalizacionMes": "733.85",
+          "descuento": "400.85",
+          "percentInterest": "120.38",
+          "netoAPagar": "-20.38",
+          "capitalizacion": "17667.23"
+        },
+        {
+          "term": 33,
+          "cuota": "333.00",
+          "capitalizacionMes": "752.20",
+          "descuento": "419.20",
+          "percentInterest": "125.89",
+          "netoAPagar": "-25.89",
+          "capitalizacion": "18450.24"
+        },
+        {
+          "term": 34,
+          "cuota": "333.00",
+          "capitalizacionMes": "771.00",
+          "descuento": "438.00",
+          "percentInterest": "131.53",
+          "netoAPagar": "-31.53",
+          "capitalizacion": "19252.82"
+        },
+        {
+          "term": 35,
+          "cuota": "333.00",
+          "capitalizacionMes": "790.28",
+          "descuento": "457.28",
+          "percentInterest": "137.32",
+          "netoAPagar": "-37.32",
+          "capitalizacion": "20075.46"
+        },
+        {
+          "term": 36,
+          "cuota": "499.50",
+          "capitalizacionMes": "1215.05",
+          "descuento": "715.55",
+          "percentInterest": "143.25",
+          "netoAPagar": "-43.25",
+          "capitalizacion": "21089.34"
+        },
+        {
+          "term": 37,
+          "cuota": "333.00",
+          "capitalizacionMes": "830.29",
+          "descuento": "497.29",
+          "percentInterest": "149.33",
+          "netoAPagar": "-49.33",
+          "capitalizacion": "21957.90"
+        },
+        {
+          "term": 38,
+          "cuota": "333.00",
+          "capitalizacionMes": "851.04",
+          "descuento": "518.04",
+          "percentInterest": "155.57",
+          "netoAPagar": "-55.57",
+          "capitalizacion": "22848.17"
+        },
+        {
+          "term": 39,
+          "cuota": "333.00",
+          "capitalizacionMes": "872.32",
+          "descuento": "539.32",
+          "percentInterest": "161.96",
+          "netoAPagar": "-61.96",
+          "capitalizacion": "23760.70"
+        },
+        {
+          "term": 40,
+          "cuota": "333.00",
+          "capitalizacionMes": "894.13",
+          "descuento": "561.13",
+          "percentInterest": "168.51",
+          "netoAPagar": "-68.51",
+          "capitalizacion": "24696.04"
+        },
+        {
+          "term": 41,
+          "cuota": "333.00",
+          "capitalizacionMes": "916.48",
+          "descuento": "583.48",
+          "percentInterest": "175.22",
+          "netoAPagar": "-75.22",
+          "capitalizacion": "25654.77"
+        },
+        {
+          "term": 42,
+          "cuota": "499.50",
+          "capitalizacionMes": "1409.09",
+          "descuento": "909.59",
+          "percentInterest": "182.10",
+          "netoAPagar": "-82.10",
+          "capitalizacion": "26808.12"
+        },
+        {
+          "term": 43,
+          "cuota": "333.00",
+          "capitalizacionMes": "962.88",
+          "descuento": "629.88",
+          "percentInterest": "189.15",
+          "netoAPagar": "-89.15",
+          "capitalizacion": "27819.65"
+        },
+        {
+          "term": 44,
+          "cuota": "333.00",
+          "capitalizacionMes": "986.95",
+          "descuento": "653.95",
+          "percentInterest": "196.38",
+          "netoAPagar": "-96.38",
+          "capitalizacion": "28856.47"
+        },
+        {
+          "term": 45,
+          "cuota": "333.00",
+          "capitalizacionMes": "1011.62",
+          "descuento": "678.62",
+          "percentInterest": "203.79",
+          "netoAPagar": "-103.79",
+          "capitalizacion": "29919.20"
+        },
+        {
+          "term": 46,
+          "cuota": "333.00",
+          "capitalizacionMes": "1036.91",
+          "descuento": "703.91",
+          "percentInterest": "211.39",
+          "netoAPagar": "-111.39",
+          "capitalizacion": "31008.51"
+        },
+        {
+          "term": 47,
+          "cuota": "333.00",
+          "capitalizacionMes": "1062.84",
+          "descuento": "729.84",
+          "percentInterest": "219.17",
+          "netoAPagar": "-119.17",
+          "capitalizacion": "32125.05"
+        },
+        {
+          "term": 48,
+          "cuota": "499.50",
+          "capitalizacionMes": "1634.11",
+          "descuento": "1134.61",
+          "percentInterest": "227.15",
+          "netoAPagar": "-127.15",
+          "capitalizacion": "33440.16"
+        },
+        {
+          "term": 49,
+          "cuota": "333.00",
+          "capitalizacionMes": "1116.64",
+          "descuento": "783.64",
+          "percentInterest": "235.33",
+          "netoAPagar": "-135.33",
+          "capitalizacion": "34617.49"
+        },
+        {
+          "term": 50,
+          "cuota": "333.00",
+          "capitalizacionMes": "1144.56",
+          "descuento": "811.56",
+          "percentInterest": "243.71",
+          "netoAPagar": "-143.71",
+          "capitalizacion": "35824.25"
+        },
+        {
+          "term": 51,
+          "cuota": "333.00",
+          "capitalizacionMes": "1173.17",
+          "descuento": "840.17",
+          "percentInterest": "252.30",
+          "netoAPagar": "-152.30",
+          "capitalizacion": "37061.18"
+        },
+        {
+          "term": 52,
+          "cuota": "333.00",
+          "capitalizacionMes": "1202.50",
+          "descuento": "869.50",
+          "percentInterest": "261.11",
+          "netoAPagar": "-161.11",
+          "capitalizacion": "38329.04"
+        },
+        {
+          "term": 53,
+          "cuota": "333.00",
+          "capitalizacionMes": "1232.56",
+          "descuento": "899.56",
+          "percentInterest": "270.14",
+          "netoAPagar": "-170.14",
+          "capitalizacion": "39628.59"
+        },
+        {
+          "term": 54,
+          "cuota": "499.50",
+          "capitalizacionMes": "1895.07",
+          "descuento": "1395.57",
+          "percentInterest": "279.39",
+          "netoAPagar": "-179.39",
+          "capitalizacion": "41131.29"
+        },
+        {
+          "term": 55,
+          "cuota": "333.00",
+          "capitalizacionMes": "1294.96",
+          "descuento": "961.96",
+          "percentInterest": "288.88",
+          "netoAPagar": "-188.88",
+          "capitalizacion": "42500.90"
+        },
+        {
+          "term": 56,
+          "cuota": "333.00",
+          "capitalizacionMes": "1327.34",
+          "descuento": "994.34",
+          "percentInterest": "298.60",
+          "netoAPagar": "-198.60",
+          "capitalizacion": "43904.75"
+        },
+        {
+          "term": 57,
+          "cuota": "333.00",
+          "capitalizacionMes": "1360.52",
+          "descuento": "1027.52",
+          "percentInterest": "308.56",
+          "netoAPagar": "-208.56",
+          "capitalizacion": "45343.69"
+        },
+        {
+          "term": 58,
+          "cuota": "333.00",
+          "capitalizacionMes": "1394.53",
+          "descuento": "1061.53",
+          "percentInterest": "318.78",
+          "netoAPagar": "-218.78",
+          "capitalizacion": "46818.61"
+        },
+        {
+          "term": 59,
+          "cuota": "333.00",
+          "capitalizacionMes": "1429.40",
+          "descuento": "1096.40",
+          "percentInterest": "329.25",
+          "netoAPagar": "-229.25",
+          "capitalizacion": "48330.40"
+        },
+        {
+          "term": 60,
+          "cuota": "499.50",
+          "capitalizacionMes": "2197.69",
+          "descuento": "1698.19",
+          "percentInterest": "339.98",
+          "netoAPagar": "-239.98",
+          "capitalizacion": "50050.65"
+        },
+        {
+          "term": 61,
+          "cuota": "333.00",
+          "capitalizacionMes": "1501.76",
+          "descuento": "1168.76",
+          "percentInterest": "350.98",
+          "netoAPagar": "-250.98",
+          "capitalizacion": "51643.24"
+        },
+        {
+          "term": 62,
+          "cuota": "333.00",
+          "capitalizacionMes": "1539.30",
+          "descuento": "1206.30",
+          "percentInterest": "362.25",
+          "netoAPagar": "-262.25",
+          "capitalizacion": "53275.64"
+        },
+        {
+          "term": 63,
+          "cuota": "333.00",
+          "capitalizacionMes": "1577.78",
+          "descuento": "1244.78",
+          "percentInterest": "373.81",
+          "netoAPagar": "-273.81",
+          "capitalizacion": "54948.86"
+        },
+        {
+          "term": 64,
+          "cuota": "333.00",
+          "capitalizacionMes": "1617.23",
+          "descuento": "1284.23",
+          "percentInterest": "385.65",
+          "netoAPagar": "-285.65",
+          "capitalizacion": "56663.90"
+        },
+        {
+          "term": 65,
+          "cuota": "333.00",
+          "capitalizacionMes": "1657.66",
+          "descuento": "1324.66",
+          "percentInterest": "397.80",
+          "netoAPagar": "-297.80",
+          "capitalizacion": "58421.83"
+        },
+        {
+          "term": 66,
+          "cuota": "499.50",
+          "capitalizacionMes": "2548.65",
+          "descuento": "2049.15",
+          "percentInterest": "410.24",
+          "netoAPagar": "-310.24",
+          "capitalizacion": "60394.36"
+        },
+        {
+          "term": 67,
+          "cuota": "333.00",
+          "capitalizacionMes": "1741.58",
+          "descuento": "1408.58",
+          "percentInterest": "423.00",
+          "netoAPagar": "-323.00",
+          "capitalizacion": "62245.54"
+        },
+        {
+          "term": 68,
+          "cuota": "333.00",
+          "capitalizacionMes": "1785.12",
+          "descuento": "1452.12",
+          "percentInterest": "436.07",
+          "netoAPagar": "-336.07",
+          "capitalizacion": "64143.01"
+        },
+        {
+          "term": 69,
+          "cuota": "333.00",
+          "capitalizacionMes": "1829.75",
+          "descuento": "1496.75",
+          "percentInterest": "449.47",
+          "netoAPagar": "-349.47",
+          "capitalizacion": "66087.91"
+        },
+        {
+          "term": 70,
+          "cuota": "333.00",
+          "capitalizacionMes": "1875.49",
+          "descuento": "1542.49",
+          "percentInterest": "463.21",
+          "netoAPagar": "-363.21",
+          "capitalizacion": "68081.43"
+        },
+        {
+          "term": 71,
+          "cuota": "333.00",
+          "capitalizacionMes": "1922.38",
+          "descuento": "1589.38",
+          "percentInterest": "477.29",
+          "netoAPagar": "-377.29",
+          "capitalizacion": "70124.79"
+        },
+        {
+          "term": 72,
+          "cuota": "499.50",
+          "capitalizacionMes": "2955.66",
+          "descuento": "2456.16",
+          "percentInterest": "491.72",
+          "netoAPagar": "-391.72",
+          "capitalizacion": "72389.90"
+        },
+        {
+          "term": 73,
+          "cuota": "333.00",
+          "capitalizacionMes": "2019.70",
+          "descuento": "1686.70",
+          "percentInterest": "506.52",
+          "netoAPagar": "-406.52",
+          "capitalizacion": "74540.97"
+        },
+        {
+          "term": 74,
+          "cuota": "333.00",
+          "capitalizacionMes": "2070.19",
+          "descuento": "1737.19",
+          "percentInterest": "521.68",
+          "netoAPagar": "-421.68",
+          "capitalizacion": "76745.82"
+        },
+        {
+          "term": 75,
+          "cuota": "333.00",
+          "capitalizacionMes": "2121.95",
+          "descuento": "1788.95",
+          "percentInterest": "537.22",
+          "netoAPagar": "-437.22",
+          "capitalizacion": "79005.79"
+        },
+        {
+          "term": 76,
+          "cuota": "333.00",
+          "capitalizacionMes": "2174.99",
+          "descuento": "1841.99",
+          "percentInterest": "553.15",
+          "netoAPagar": "-453.15",
+          "capitalizacion": "81322.26"
+        },
+        {
+          "term": 77,
+          "cuota": "333.00",
+          "capitalizacionMes": "2229.37",
+          "descuento": "1896.37",
+          "percentInterest": "569.48",
+          "netoAPagar": "-469.48",
+          "capitalizacion": "83696.64"
+        },
+        {
+          "term": 78,
+          "cuota": "499.50",
+          "capitalizacionMes": "3427.65",
+          "descuento": "2928.15",
+          "percentInterest": "586.22",
+          "netoAPagar": "-486.22",
+          "capitalizacion": "86301.05"
+        },
+        {
+          "term": 79,
+          "cuota": "333.00",
+          "capitalizacionMes": "2342.23",
+          "descuento": "2009.23",
+          "percentInterest": "603.37",
+          "netoAPagar": "-503.37",
+          "capitalizacion": "88799.90"
+        },
+        {
+          "term": 80,
+          "cuota": "333.00",
+          "capitalizacionMes": "2400.79",
+          "descuento": "2067.79",
+          "percentInterest": "620.96",
+          "netoAPagar": "-520.96",
+          "capitalizacion": "91361.22"
+        },
+        {
+          "term": 81,
+          "cuota": "333.00",
+          "capitalizacionMes": "2460.81",
+          "descuento": "2127.81",
+          "percentInterest": "638.98",
+          "netoAPagar": "-538.98",
+          "capitalizacion": "93986.58"
+        },
+        {
+          "term": 82,
+          "cuota": "333.00",
+          "capitalizacionMes": "2522.33",
+          "descuento": "2189.33",
+          "percentInterest": "657.46",
+          "netoAPagar": "-557.46",
+          "capitalizacion": "96677.56"
+        },
+        {
+          "term": 83,
+          "cuota": "333.00",
+          "capitalizacionMes": "2585.38",
+          "descuento": "2252.38",
+          "percentInterest": "676.39",
+          "netoAPagar": "-576.39",
+          "capitalizacion": "99435.83"
+        },
+        {
+          "term": 84,
+          "cuota": "499.50",
+          "capitalizacionMes": "3975.03",
+          "descuento": "3475.53",
+          "percentInterest": "695.80",
+          "netoAPagar": "-595.80",
+          "capitalizacion": "102433.71"
+        },
+        {
+          "term": 85,
+          "cuota": "333.00",
+          "capitalizacionMes": "2716.27",
+          "descuento": "2383.27",
+          "percentInterest": "715.70",
+          "netoAPagar": "-615.70",
+          "capitalizacion": "105335.88"
+        },
+        {
+          "term": 86,
+          "cuota": "333.00",
+          "capitalizacionMes": "2784.18",
+          "descuento": "2451.18",
+          "percentInterest": "736.09",
+          "netoAPagar": "-636.09",
+          "capitalizacion": "108310.60"
+        },
+        {
+          "term": 87,
+          "cuota": "333.00",
+          "capitalizacionMes": "2853.78",
+          "descuento": "2520.78",
+          "percentInterest": "756.99",
+          "netoAPagar": "-656.99",
+          "capitalizacion": "111359.69"
+        },
+        {
+          "term": 88,
+          "cuota": "333.00",
+          "capitalizacionMes": "2925.12",
+          "descuento": "2592.12",
+          "percentInterest": "778.42",
+          "netoAPagar": "-678.42",
+          "capitalizacion": "114485.01"
+        },
+        {
+          "term": 89,
+          "cuota": "333.00",
+          "capitalizacionMes": "2998.25",
+          "descuento": "2665.25",
+          "percentInterest": "800.38",
+          "netoAPagar": "-700.38",
+          "capitalizacion": "117688.46"
+        },
+        {
+          "term": 90,
+          "cuota": "499.50",
+          "capitalizacionMes": "4609.81",
+          "descuento": "4110.31",
+          "percentInterest": "822.89",
+          "netoAPagar": "-722.89",
+          "capitalizacion": "121142.66"
+        },
+        {
+          "term": 91,
+          "cuota": "333.00",
+          "capitalizacionMes": "3150.04",
+          "descuento": "2817.04",
+          "percentInterest": "845.96",
+          "netoAPagar": "-745.96",
+          "capitalizacion": "124512.55"
+        },
+        {
+          "term": 92,
+          "cuota": "333.00",
+          "capitalizacionMes": "3228.79",
+          "descuento": "2895.79",
+          "percentInterest": "869.61",
+          "netoAPagar": "-769.61",
+          "capitalizacion": "127966.69"
+        },
+        {
+          "term": 93,
+          "cuota": "333.00",
+          "capitalizacionMes": "3309.51",
+          "descuento": "2976.51",
+          "percentInterest": "893.85",
+          "netoAPagar": "-793.85",
+          "capitalizacion": "131507.18"
+        },
+        {
+          "term": 94,
+          "cuota": "333.00",
+          "capitalizacionMes": "3392.25",
+          "descuento": "3059.25",
+          "percentInterest": "918.69",
+          "netoAPagar": "-818.69",
+          "capitalizacion": "135136.19"
+        },
+        {
+          "term": 95,
+          "cuota": "333.00",
+          "capitalizacionMes": "3477.05",
+          "descuento": "3144.05",
+          "percentInterest": "944.16",
+          "netoAPagar": "-844.16",
+          "capitalizacion": "138855.92"
+        },
+        {
+          "term": 96,
+          "cuota": "499.50",
+          "capitalizacionMes": "5345.97",
+          "descuento": "4846.47",
+          "percentInterest": "970.26",
+          "netoAPagar": "-870.26",
+          "capitalizacion": "142839.30"
+        },
+        {
+          "term": 97,
+          "cuota": "333.00",
+          "capitalizacionMes": "3653.08",
+          "descuento": "3320.08",
+          "percentInterest": "997.02",
+          "netoAPagar": "-897.02",
+          "capitalizacion": "146751.61"
+        },
+        {
+          "term": 98,
+          "cuota": "333.00",
+          "capitalizacionMes": "3744.41",
+          "descuento": "3411.41",
+          "percentInterest": "1024.45",
+          "netoAPagar": "-924.45",
+          "capitalizacion": "150761.72"
+        },
+        {
+          "term": 99,
+          "cuota": "333.00",
+          "capitalizacionMes": "3838.02",
+          "descuento": "3505.02",
+          "percentInterest": "1052.56",
+          "netoAPagar": "-952.56",
+          "capitalizacion": "154872.09"
+        },
+        {
+          "term": 100,
+          "cuota": "333.00",
+          "capitalizacionMes": "3933.97",
+          "descuento": "3600.97",
+          "percentInterest": "1081.37",
+          "netoAPagar": "-981.37",
+          "capitalizacion": "159085.22"
+        },
+        {
+          "term": 101,
+          "cuota": "333.00",
+          "capitalizacionMes": "4032.32",
+          "descuento": "3699.32",
+          "percentInterest": "1110.91",
+          "netoAPagar": "-1010.91",
+          "capitalizacion": "163403.67"
+        },
+        {
+          "term": 102,
+          "cuota": "499.50",
+          "capitalizacionMes": "6199.69",
+          "descuento": "5700.19",
+          "percentInterest": "1141.18",
+          "netoAPagar": "-1041.18",
+          "capitalizacion": "168000.75"
+        },
+        {
+          "term": 103,
+          "cuota": "333.00",
+          "capitalizacionMes": "4236.45",
+          "descuento": "3903.45",
+          "percentInterest": "1172.21",
+          "netoAPagar": "-1072.21",
+          "capitalizacion": "172542.10"
+        },
+        {
+          "term": 104,
+          "cuota": "333.00",
+          "capitalizacionMes": "4342.36",
+          "descuento": "4009.36",
+          "percentInterest": "1204.01",
+          "netoAPagar": "-1104.01",
+          "capitalizacion": "177196.97"
+        },
+        {
+          "term": 105,
+          "cuota": "333.00",
+          "capitalizacionMes": "4450.92",
+          "descuento": "4117.92",
+          "percentInterest": "1236.61",
+          "netoAPagar": "-1136.61",
+          "capitalizacion": "181968.22"
+        },
+        {
+          "term": 106,
+          "cuota": "333.00",
+          "capitalizacionMes": "4562.20",
+          "descuento": "4229.20",
+          "percentInterest": "1270.03",
+          "netoAPagar": "-1170.03",
+          "capitalizacion": "186858.75"
+        },
+        {
+          "term": 107,
+          "cuota": "333.00",
+          "capitalizacionMes": "4676.25",
+          "descuento": "4343.25",
+          "percentInterest": "1304.28",
+          "netoAPagar": "-1204.28",
+          "capitalizacion": "191871.55"
+        },
+        {
+          "term": 108,
+          "cuota": "499.50",
+          "capitalizacionMes": "7189.74",
+          "descuento": "6690.24",
+          "percentInterest": "1339.39",
+          "netoAPagar": "-1239.39",
+          "capitalizacion": "197180.32"
+        },
+        {
+          "term": 109,
+          "cuota": "333.00",
+          "capitalizacionMes": "4912.99",
+          "descuento": "4579.99",
+          "percentInterest": "1375.37",
+          "netoAPagar": "-1275.37",
+          "capitalizacion": "202451.16"
+        },
+        {
+          "term": 110,
+          "cuota": "333.00",
+          "capitalizacionMes": "5035.81",
+          "descuento": "4702.81",
+          "percentInterest": "1412.26",
+          "netoAPagar": "-1312.26",
+          "capitalizacion": "207853.76"
+        },
+        {
+          "term": 111,
+          "cuota": "333.00",
+          "capitalizacionMes": "5161.71",
+          "descuento": "4828.71",
+          "percentInterest": "1450.06",
+          "netoAPagar": "-1350.06",
+          "capitalizacion": "213391.43"
+        },
+        {
+          "term": 112,
+          "cuota": "333.00",
+          "capitalizacionMes": "5290.75",
+          "descuento": "4957.75",
+          "percentInterest": "1488.81",
+          "netoAPagar": "-1388.81",
+          "capitalizacion": "219067.54"
+        },
+        {
+          "term": 113,
+          "cuota": "333.00",
+          "capitalizacionMes": "5423.02",
+          "descuento": "5090.02",
+          "percentInterest": "1528.53",
+          "netoAPagar": "-1428.53",
+          "capitalizacion": "224885.56"
+        },
+        {
+          "term": 114,
+          "cuota": "499.50",
+          "capitalizacionMes": "8337.89",
+          "descuento": "7838.39",
+          "percentInterest": "1569.25",
+          "netoAPagar": "-1469.25",
+          "capitalizacion": "231019.68"
+        },
+        {
+          "term": 115,
+          "cuota": "333.00",
+          "capitalizacionMes": "5697.56",
+          "descuento": "5364.56",
+          "percentInterest": "1610.98",
+          "netoAPagar": "-1510.98",
+          "capitalizacion": "237136.50"
+        },
+        {
+          "term": 116,
+          "cuota": "333.00",
+          "capitalizacionMes": "5840.00",
+          "descuento": "5507.00",
+          "percentInterest": "1653.75",
+          "netoAPagar": "-1553.75",
+          "capitalizacion": "243406.24"
+        },
+        {
+          "term": 117,
+          "cuota": "333.00",
+          "capitalizacionMes": "5986.00",
+          "descuento": "5653.00",
+          "percentInterest": "1697.60",
+          "netoAPagar": "-1597.60",
+          "capitalizacion": "249832.72"
+        },
+        {
+          "term": 118,
+          "cuota": "333.00",
+          "capitalizacionMes": "6135.65",
+          "descuento": "5802.65",
+          "percentInterest": "1742.54",
+          "netoAPagar": "-1642.54",
+          "capitalizacion": "256419.86"
+        },
+        {
+          "term": 119,
+          "cuota": "333.00",
+          "capitalizacionMes": "6289.04",
+          "descuento": "5956.04",
+          "percentInterest": "1788.60",
+          "netoAPagar": "-1688.60",
+          "capitalizacion": "263171.68"
+        },
+        {
+          "term": 120,
+          "cuota": "499.50",
+          "capitalizacionMes": "9669.40",
+          "descuento": "9169.90",
+          "percentInterest": "1835.81",
+          "netoAPagar": "-1735.81",
+          "capitalizacion": "270262.96"
+        }
+      ]
+    }
+  ]

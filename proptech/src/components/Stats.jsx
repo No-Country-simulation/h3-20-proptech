@@ -25,13 +25,13 @@ function Stats() {
   ];
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-14 sm:py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+        <dl className="grid grid-cols-1 text-center lg:grid-cols-3">
           {stats.map((stat) => (
             <div
               key={stat.id}
-              className="mx-auto flex max-w-2xl flex-col items-center gap-y-4 bg-base-200 px-8 py-2 rounded-lg"
+              className="mx-auto flex max-w-2xl flex-col items-center gap-y-2 bg-base-200 px-8 py-2 rounded-lg"
             >
               <div>{stat.icon}</div>
 
