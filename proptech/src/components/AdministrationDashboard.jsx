@@ -3,6 +3,9 @@ import usersDataFile from "../shared/data/usersData.json";
 import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
 import { PiTrash, PiNotePencil, PiNote } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
+import { CheckBox } from "@mui/icons-material";
+
 
 const AdministratorDashboard = () => {
   const [usersData, setUsersData] = useState(usersDataFile);
@@ -15,6 +18,14 @@ const AdministratorDashboard = () => {
     numberOfPayments: "",
     monthlyReturn: "",
   });
+
+  const navigate = useNavigate();
+  const handleRowLoad = (rowId) => {
+    // Find the row data by ID
+    const rowData = investmentData.find((row) => row.id === rowId);
+    // Redirect to CapitalizationCalculator.jsx with data
+    navigate("/capitalizacionEdit", { state: rowData });
+  };
 
   // Map investor IDs to usernames
   const getUsernameById = (id) => {
@@ -80,6 +91,7 @@ const AdministratorDashboard = () => {
             <th className="border border-gray-300 px-4 py-2">Interest Rate</th>
             <th className="border border-gray-300 px-4 py-2">Number of Payments</th>
             <th className="border border-gray-300 px-4 py-2">Monthly Return</th>
+            <th className="border border-gray-300 px-4 py-2">isActive</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
           </tr>
         </thead>
@@ -96,10 +108,11 @@ const AdministratorDashboard = () => {
                 {row.numberOfPayments}
               </td>
               <td className="border border-gray-300 px-4 py-2">{row.monthlyReturn}</td>
+              <td className="border border-gray-300 px-4 py-2"><input type="checkbox" checked={row.isActive} className="checkbox-custom" /></td>
               <td className="border border-gray-300 px-4 py-2 flex gap-2">
               <button
                   className="bg-green-500 text-white px-2 py-1 rounded"
-                  onClick={() => setEditingRow(row)}
+                  onClick={() => handleRowLoad(row.id)}
                 >
                   <PiNote />
                 </button>
@@ -161,6 +174,14 @@ const AdministratorDashboard = () => {
                 setEditingRow({ ...editingRow, monthlyReturn: e.target.value })
               }
               className="input-field"
+            />
+            <input
+              type="checkbox"
+              checked={editingRow.isActive}
+              onChange={(e) =>
+                setEditingRow({ ...editingRow, isActive: e.target.checked })
+              }
+              className="mr-2 checkbox-custom"
             />
             <button
               className = "btn-tertiary"
