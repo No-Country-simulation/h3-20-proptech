@@ -21,6 +21,10 @@ function CapitalizationCalculator() {
     const [annualRate, setAnnualRate] = useState('');
     const [depositedCuota, setDepositedCuota] = useState('');
 
+    const [isActive, setIsActive] = useState('');
+    const [validated, setValidated] = useState('');
+    const [estado, setEstado] = useState('');
+
     //select user for investment data
     const [showModal, setShowModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
