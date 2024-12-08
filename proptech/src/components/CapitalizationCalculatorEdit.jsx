@@ -5,7 +5,7 @@ import usersData from "../shared/data/usersData.json";
 import investmentData from "../shared/data/investmentData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
 import { useLocation } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 function CapitalizationCalculatorEdit() {
     //view data from dashboard row
@@ -43,6 +43,7 @@ function CapitalizationCalculatorEdit() {
     const [selectedUser, setSelectedUser] = useState(null);
     const [newInvestmentData, setNewInvestmentData] = useState([]);
     const [investorData, setInvestorData]=useState(investmentData);
+    const navigate = useNavigate();
 
     const handleInputChange = (field, value) => {
         if (field === "principal") setPrincipal(value);
@@ -138,7 +139,7 @@ function CapitalizationCalculatorEdit() {
             isActive,
             validated,
             estado,
-
+            results,
         };
        
         //select user for investment data
@@ -233,7 +234,11 @@ function CapitalizationCalculatorEdit() {
                 <div className="mt-6">
                     <h3 className="text-xl font-semibold">Cuota Mensual: ${monthlyReturn}</h3>
                     <h3 className="text-xl font-semibold">Detalles de Capitalización:</h3>
-                    <button onClick={generateJSON} className="btn-secondary w-full">Generar JSON</button>
+                    <div className="flex space-x-4">
+                    <button onClick={() => navigate('/Dashboard')}  className="btn-tertiary w-full">Volver</button>
+                    <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button>
+                    </div>
+
             {/* <button onClick={generateJSON} className="btn-primary">Generar JSON</button> */}
                     <table className=" w-full mt-2 border-collapse ">
                         <thead>
@@ -272,32 +277,6 @@ function CapitalizationCalculatorEdit() {
                 setInvestorData={setInvestorData}
                 />
 
-                // <div>
-                //     <div className="fixed inset-0 bg-black bg-opacity-50 z-backdrop" onClick={() => setShowModal(false)}></div>
-                //     {/* <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-modalPadding rounded-lg shadow-modal z-modal"> */}
-                //     <div className="modal-custom">
-                //         <h2 className="text-lg font-bold text-center">Select an Investor</h2>
-                //         <ul>
-                //             {usersData.map((user) => (
-                //                 <li key={user.id}>
-                //                     <button
-                //                         className="btn-secondary"
-                //                         onClick={() => setSelectedUser(user.username)}
-                //                     >
-                //                         {user.username} - {user.email}
-                //                     </button>
-                //                 </li>
-                //             ))}
-                //         </ul>
-                //         <button onClick={saveInvestmentData} className="btn-primary">
-                //             Save Investment
-                //         </button>
-                //         <button onClick={() => setShowModal(false)} className="btn-tertiary">
-                //             Cancel
-                //         </button>
-                //     </div>
-                    
-                // </div>
             )}
 
         </div>
