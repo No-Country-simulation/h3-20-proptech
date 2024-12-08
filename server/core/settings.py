@@ -26,8 +26,19 @@ SECRET_KEY = 'django-insecure-eo(90nvc$*k24v2xx15t51kyg$z6g6!xxufcb^_z+0+8spu5yu
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173"
+]
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://h3-20-proptech-production.up.railway.app'
+]
 
 
 
@@ -44,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
@@ -62,6 +74,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

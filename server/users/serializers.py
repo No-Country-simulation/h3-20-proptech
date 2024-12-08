@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import transaction
@@ -6,6 +8,22 @@ from django.utils.crypto import get_random_string
 from .models import PersonalInformationToValidate
 
 User = get_user_model()
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    
+
+    def validate(self, attrs):
+        email = attrs.get("username")
+        password = attrs.get("password")
+
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            raise serializers.ValidationError("No user")
+        if user is None or not user.check_password(password):
+            raise serializers.ValidationError("Invalid email or password")
+        
+        attrs["username"] = user.username  # Requiere el username para el flujo JWT
+        return super().validate(attrs)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -76,7 +94,7 @@ class RegisterWithKYCSerializer(serializers.Serializer):
 class UpdatePersonalDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['identification', 'first_name', 'last_name', 'gender', 'income']
+        fields = ['identification', 'first_name', 'last_name', 'gender', 'income', 'contact', 'second_contact']
       
       
       
@@ -91,6 +109,9 @@ class AddGarantorSerializer(serializers.Serializer):
     second_receipt = serializers.ImageField()
     third_receipt = serializers.ImageField()
     service_receipt = serializers.ImageField()
+    first_income_receipt = serializers.ImageField()
+    second_income_receipt = serializers.ImageField()
+    third_income_receipt = serializers.ImageField()
     
      
     @transaction.atomic
@@ -116,6 +137,26 @@ class AddGarantorSerializer(serializers.Serializer):
             second_receipt = validated_data['second_receipt'],
             third_receipt = validated_data['third_receipt'],
             service_receipt = validated_data['service_receipt'],
+            first_income_receipt = validated_data['service_receipt'],
+            second_income_receipt = validated_data['service_receipt'],
+            third_income_receipt = validated_data['service_receipt'],
         )
         return personal_data
     
+    
+
+
+class PersonalInformationToValidateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalInformationToValidate
+        fields = [
+            'front_id',
+            'back_id',
+            'first_receipt',
+            'second_receipt',
+            'third_receipt',
+            'service_receipt',
+            'first_income_receipt',
+            'second_income_receipt',
+            'third_income_receipt'
+        ]
