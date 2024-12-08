@@ -13,7 +13,7 @@ class Investment(models.Model):
         ('Y', 'years'),
     ]
     
-    investor = models.ForeignKey(Investor, on_delete=models.CASCADE)
+    investor = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_created=True)
     amount = models.PositiveBigIntegerField()
     interest_rate = models.PositiveSmallIntegerField()
