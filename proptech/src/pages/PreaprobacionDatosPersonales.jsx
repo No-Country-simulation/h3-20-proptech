@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 function PreaprobacionDatosPersonales() {
   const [files, setFiles] = useState([
-    { label: "Recibo de sueldo 1", file: null, isUploaded: false },
-    { label: "Recibo de sueldo 2", file: null, isUploaded: false },
-    { label: "Recibo de sueldo 3", file: null, isUploaded: false },
+    { label: "Recibo de sueldo 1", file: null, isUploaded: false, pesoNeto: "", pesoBruto: "" },
+    { label: "Recibo de sueldo 2", file: null, isUploaded: false, pesoNeto: "", pesoBruto: "" },
+    { label: "Recibo de sueldo 3", file: null, isUploaded: false, pesoNeto: "", pesoBruto: "" },
   ]);
 
   const navigate = useNavigate();
@@ -93,16 +93,31 @@ function PreaprobacionDatosPersonales() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-4">
               {files.map((file, index) => (
-                <FileUploadField
-                  key={index}
-                  label={file.label}
-                  file={file.file}
-                  isUploaded={file.isUploaded}
-                  onFileChange={(e) =>
-                    handleFileChange(index, e.target.files[0])
-                  }
-                  onUpload={() => handleUpload(index)}
-                />
+                <div key={index} className="space-y-2">
+                  <FileUploadField
+                    label={file.label}
+                    file={file.file}
+                    isUploaded={file.isUploaded}
+                    onFileChange={(e) => handleFileChange(index, e.target.files[0])}
+                    onUpload={() => handleUpload(index)}
+                  />
+                  <div className="flex gap-4">
+                    <input
+                      type="text"
+                      placeholder="Peso neto"
+                      value={file.pesoNeto}
+                      onChange={(e) => handleInputChange(index, "pesoNeto", e.target.value)}
+                      className="input input-bordered w-full bg-white"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Peso bruto"
+                      value={file.pesoBruto}
+                      onChange={(e) => handleInputChange(index, "pesoBruto", e.target.value)}
+                      className="input input-bordered w-full bg-white"
+                    />
+                  </div>
+                </div>
               ))}
             </div>
             <div className="flex gap-4 mt-auto">
