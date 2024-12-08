@@ -5,9 +5,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
+from rest_framework.parsers import MultiPartParser, FormParser
+from django.shortcuts import get_object_or_404
 
 from .models import PersonalInformationToValidate
-from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer, CustomTokenObtainPairSerializer
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer, CustomTokenObtainPairSerializer, PersonalInformationToValidateSerializer
 
 User = get_user_model()
 
@@ -87,3 +89,31 @@ class AddGarantorView(generics.CreateAPIView):
         
         serializer.save()
         return Response({'message': 'Garantor added succesfully'}, status=status.HTTP_200_OK)
+    
+    
+    
+    
+class UpdateUserInformationView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+
+        user = request.user
+
+        user_serializer = UpdatePersonalDataSerializer(user, data=request.data, partial=True)
+        if user_serializer.is_valid():
+            user_serializer.save()
+        else:
+            return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+        personal_info, created = PersonalInformationToValidate.objects.get_or_create(user=user)
+        personal_info_serializer = PersonalInformationToValidateSerializer(personal_info, data=request.data, partial=True)
+
+        if personal_info_serializer.is_valid():
+            personal_info_serializer.save()
+        else:
+            return Response(personal_info_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "User information updated successfully"}, status=status.HTTP_200_OK)

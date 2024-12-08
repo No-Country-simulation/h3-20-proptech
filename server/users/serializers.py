@@ -94,7 +94,7 @@ class RegisterWithKYCSerializer(serializers.Serializer):
 class UpdatePersonalDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['identification', 'first_name', 'last_name', 'gender', 'income']
+        fields = ['identification', 'first_name', 'last_name', 'gender', 'income', 'contact', 'second_contact']
       
       
       
@@ -143,3 +143,20 @@ class AddGarantorSerializer(serializers.Serializer):
         )
         return personal_data
     
+    
+
+
+class PersonalInformationToValidateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalInformationToValidate
+        fields = [
+            'front_id',
+            'back_id',
+            'first_receipt',
+            'second_receipt',
+            'third_receipt',
+            'service_receipt',
+            'first_income_receipt',
+            'second_income_receipt',
+            'third_income_receipt'
+        ]
