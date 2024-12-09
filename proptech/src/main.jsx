@@ -8,13 +8,16 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import { NotificationProvider } from "./shared/notistack.service.jsx";
+import { ContextProvider } from "./context/Context.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <NotificationProvider>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <App />
+          <ContextProvider>
+            <App />
+          </ContextProvider>
         </ThemeProvider>
       </BrowserRouter>
     </NotificationProvider>

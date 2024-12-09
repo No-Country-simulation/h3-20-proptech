@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 
 export const Context = createContext();
 
@@ -10,6 +9,7 @@ export default Context;
 export const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
@@ -17,10 +17,42 @@ export const ContextProvider = ({ children }) => {
       : null
   );
 
-  const loginUser = async (email, password) => {
+  const registerUser = async (data) => {
     try {
-      let url = "";
-      const response = await axios.post(url, { email, password });
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      };
+
+      const url =
+        "https://h3-20-proptech-production.up.railway.app/api/register/";
+      console.log("THE RESPONSE BEFORE::: ", url);
+      const response = await axios.post(url, data, config);
+
+      if (response.status === 200) {
+        const { token } = response.data;
+        setAuthTokens(token);
+        localStorage.setItem("authTokens", JSON.stringify(token));
+        navigate("/login");
+        console.log("Login Success");
+      } else {
+        console.log("An Error Occurred");
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        console.error("Error en el servidor:", error.response.data.message);
+      } else {
+        console.error("Error inesperado:", error);
+      }
+    }
+  };
+
+  const loginUser = async (username, password) => {
+    try {
+      let url = "https://h3-20-proptech-production.up.railway.app/api/login";
+      const response = await axios.post(url, { username, password });
 
       const { data } = response;
       if (response.status === 200) {
@@ -28,10 +60,8 @@ export const ContextProvider = ({ children }) => {
         localStorage.setItem("authTokens", JSON.stringify(data.token));
 
         if (data.token) {
-          const { rol } = jwtDecode(data.token);
-          const welcome =
-            rol === "admin" ? "/welcome-admin" : "/welcome-pidiente";
-          navigate(welcome);
+          setIsAuthenticated(true);
+          navigate("/");
         }
 
         console.log("Login Success");
@@ -76,6 +106,7 @@ export const ContextProvider = ({ children }) => {
         setAuthTokens,
         loginUser,
         logoutUser,
+        registerUser,
       }}
     >
       {children}

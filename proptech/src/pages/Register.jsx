@@ -1,27 +1,30 @@
 import { Link } from "react-router-dom";
 import happyFamily from "../assets/familia-feliz.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Context from "../context/Context";
 
 const Register = () => {
+  const { registerUser } = useContext(Context);
+
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [validated, setValidated] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  //const [validated, setValidated] = useState(false);
+  //const [isActive, setIsActive] = useState(false);
 
   const [errors, setErrors] = useState({
     email: null,
     password: null,
-    name: null,
-    validated: null,
-    isActive: null,
+    username: null,
+    //validated: null,
+    //isActive: null,
   }); // null: no validation yet, true: invalid, false: valid
   const [focus, setFocus] = useState({
     email: false,
     password: false,
-    name: false,
-    validated: false,
-    isActive: false,
+    username: false,
+    //validated: false,
+    //isActive: false,
   });
 
   useEffect(
@@ -30,17 +33,21 @@ const Register = () => {
     },
     [email],
     [password],
-    [name],
-    [validated],
-    [isActive]
+    [username]
+    //[validated],
+    //[isActive]
   );
 
   const validateField = (field, value) => {
-    if (field === "email") return !/^\d+$/.test(value);
-    if (field === "password") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "name") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
-    if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "email") return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (field === "password")
+      return !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(
+        value
+      );
+    if (field === "username")
+      return !/^[a-zA-Z][a-zA-Z0-9._]{2,19}(?<!\.)$/.test(value);
+    //if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
+    //if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
     return false;
   };
 
@@ -48,9 +55,9 @@ const Register = () => {
     // Update the state
     if (field === "email") setEmail(value);
     if (field === "password") setPassword(value);
-    if (field === "name") setPassword(value);
-    if (field === "validated") setPassword(value);
-    if (field === "isActive") setPassword(value);
+    if (field === "username") setUsername(value);
+    // if (field === "validated") setPassword(value);
+    // if (field === "isActive") setPassword(value);
 
     // Validate the field
     const isValid = !validateField(field, value);
@@ -66,6 +73,21 @@ const Register = () => {
 
   const handleBlur = (field) => {
     setFocus((prevFocus) => ({ ...prevFocus, [field]: false }));
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      username: username,
+      email: email,
+      password: password,
+    };
+    try {
+      const result = await registerUser(data);
+      console.log("Del envio:: ", result);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -98,7 +120,7 @@ const Register = () => {
 
           {/* Form */}
           <div className="w-[70%] mx-auto mt-7">
-            <form onSubmit="" className="flex flex-col gap-9">
+            <form onSubmit={onSubmit} className="flex flex-col gap-9">
               <div className="flex flex-col gap-5 pb-3">
                 <div>
                   <label className="font-bold text-text-primary mb-2">
@@ -113,7 +135,7 @@ const Register = () => {
                         : "hidden"
                     }`}
                   >
-                    Capital a solicitar en pesos.
+                    El email es incorrecto.
                   </p>
                   <input
                     type="text"
@@ -128,26 +150,28 @@ const Register = () => {
 
                 <div>
                   <label className="font-bold text-text-primary mb-2">
-                    Nombre
+                    Nombre de usuario
                   </label>
                   <p
                     className={`text-sm mt-1 ${
-                      errors.name === true
+                      errors.username === true
                         ? "text-text-messageError"
-                        : errors.name === false && focus.name
+                        : errors.username === false && focus.username
                         ? "text-text-message"
                         : "hidden"
                     }`}
                   >
-                    Capital a solicitar en pesos.
+                    El nombre del usuario es incorrecto.
                   </p>
                   <input
                     type="text"
                     placeholder="jonathan"
-                    value={name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    onBlur={() => handleBlur("name")}
-                    onFocus={() => handleFocus("name")}
+                    value={username}
+                    onChange={(e) =>
+                      handleInputChange("username", e.target.value)
+                    }
+                    onBlur={() => handleBlur("username")}
+                    onFocus={() => handleFocus("username")}
                     className="input-field "
                   />
                 </div>
@@ -165,7 +189,7 @@ const Register = () => {
                         : "hidden"
                     }`}
                   >
-                    Capital a solicitar en pesos.
+                    La contraseña es incorrecta.
                   </p>
                   <input
                     type="password"
@@ -179,7 +203,8 @@ const Register = () => {
                     className="input-field "
                   />
                 </div>
-                <div className="grid grid-cols-12">
+
+                {/*  <div className="grid grid-cols-12">
                   <div className="col-span-6">
                     <label className="flex items-center space-x-2">
                       <input
@@ -205,6 +230,7 @@ const Register = () => {
                     </label>
                   </div>
                 </div>
+            */}
               </div>
 
               <div className="gap-4 items-center">
