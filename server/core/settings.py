@@ -41,6 +41,11 @@ CSRF_TRUSTED_ORIGINS = [
     'http://h3-20-proptech-production.up.railway.app'
 ]
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 
 MEDIA_URL = '/media/'
