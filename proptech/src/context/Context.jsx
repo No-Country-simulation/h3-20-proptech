@@ -25,10 +25,10 @@ export const ContextProvider = ({ children }) => {
           "Access-Control-Allow-Origin": "*",
         },
       };
+      console.log("RECEBIDO:::", data);
 
       const url =
         "https://h3-20-proptech-production.up.railway.app/api/register/";
-      console.log("THE RESPONSE BEFORE::: ", url);
       const response = await axios.post(url, data, config);
 
       if (response.status === 200) {
