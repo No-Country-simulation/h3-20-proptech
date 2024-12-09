@@ -160,3 +160,9 @@ class PersonalInformationToValidateSerializer(serializers.ModelSerializer):
             'second_income_receipt',
             'third_income_receipt'
         ]
+        
+        
+class CompleteUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ['password']
