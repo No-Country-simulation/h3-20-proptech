@@ -16,62 +16,68 @@ export const ContextProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
-
   const registerUser = async (data) => {
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      };
-
       const url =
         "https://h3-20-proptech-production.up.railway.app/api/register/";
-      console.log("THE RESPONSE BEFORE::: ", url);
-      const response = await axios.post(url, data, config);
 
-      if (response.status === 200) {
-        const { token } = response.data;
-        setAuthTokens(token);
-        localStorage.setItem("authTokens", JSON.stringify(token));
-        navigate("/login");
-        console.log("Login Success");
-      } else {
-        console.log("An Error Occurred");
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+        credentials: "include",
+      });
+      console.log("Before SHOW:::", response);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+
+      const result = await response.json();
+      console.log("Registration successful:", result);
+      navigate("/login");
+      return result;
     } catch (error) {
-      if (error.response && error.response.data) {
-        console.error("Error en el servidor:", error.response.data.message);
-      } else {
-        console.error("Error inesperado:", error);
-      }
+      console.error("Registration error:", error.message);
+      throw error;
     }
   };
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (login_data) => {
     try {
-      let url = "https://h3-20-proptech-production.up.railway.app/api/login";
-      const response = await axios.post(url, { username, password });
+      const url = "https://h3-20-proptech-production.up.railway.app/api/login/";
 
-      const { data } = response;
-      if (response.status === 200) {
-        setAuthTokens(data.token);
-        localStorage.setItem("authTokens", JSON.stringify(data.token));
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(login_data),
+        credentials: "include",
+      });
 
-        if (data.token) {
-          setIsAuthenticated(true);
-          navigate("/");
-        }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
+      const data = await response.json();
+      console.log("Response data:", data);
+
+      if (data.access && data.refresh) {
+        setIsAuthenticated(true);
+        localStorage.setItem("access", JSON.stringify(data.access));
+        localStorage.setItem("refresh", JSON.stringify(data.refresh));
+        navigate("/");
         console.log("Login Success");
       } else {
-        console.log(response.status);
-        console.log("An Error Occured");
-        console.log("Email - Password does not exist");
+        throw new Error("Tokens no encontrados en la respuesta");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error en login:", error.message);
     }
   };
 
