@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-eo(90nvc$*k24v2xx15t51kyg$z6g6!xxufcb^_z+0+8spu5yu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -37,7 +36,8 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://h3-20-proptech-production.up.railway.app'
+    'https://h3-20-proptech-production.up.railway.app',
+    'http://h3-20-proptech-production.up.railway.app'
 ]
 
 
