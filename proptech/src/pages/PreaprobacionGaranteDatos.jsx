@@ -3,6 +3,7 @@ import Ilustracion2 from "../assets/Preaprobacion2.png";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGaranteDatos() {
   const [files, setFiles] = useState([
@@ -75,11 +76,7 @@ function PreaprobacionGaranteDatos() {
 
           <p className="mb-4">Pasos para completar la información</p>
 
-          <div class="tab-container items-center m-0 p-0">
-            <button class="tab m-0 p-0">Personal</button>
-            <button class="tab active">Garante uno</button>
-            <button class="tab">Garante dos</button>
-          </div>
+          <LinkPreaprobacion/>
 
           <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
           <p className="mb-4">Se deben cargar:</p>

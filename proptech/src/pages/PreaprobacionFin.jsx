@@ -1,5 +1,6 @@
 import Ilustracion3 from "../assets/Preaprobacion3.png";
 import IllustrationContainer from "../components/IllustrationContainer";
+import { Link } from "react-router-dom"; 
 
 function Preaprobacion() {
   return (
@@ -38,9 +39,9 @@ function Preaprobacion() {
             </p>
 
             <div className="flex gap-4 mt-10">
-              <button className="btn-tertiary flex-grow">
+              <Link to="/#" className="btn-tertiary flex-grow text-center">
                 Volver al inicio
-              </button>
+              </Link>
             </div>
           </div>
         </div>

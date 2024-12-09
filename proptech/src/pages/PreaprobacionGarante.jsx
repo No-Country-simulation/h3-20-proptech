@@ -2,6 +2,7 @@ import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
 import IllustrationContainer from "../components/IllustrationContainer";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGarante() {
   const [name, setName] = useState("");
@@ -15,18 +16,13 @@ function PreaprobacionGarante() {
 
     const formData = new FormData();
 
-    formData.append("name", name);
-    formData.append("lastName", lastName);
-    formData.append("dni", dni);
-
-
-    files.forEach((file, index) => {
-      formData.append(`file${index + 1}`, file);
-    });
+    // Solo se están enviando los tres campos requeridos
+    formData.append("first_name", name); // Enviar el nombre como first_name
+    formData.append("last_name", lastName); // Enviar el apellido como last_name
+    formData.append("identification", dni); // Enviar el DNI como identification
 
     try {
-
-      const response = await fetch("url", {
+      const response = await fetch("https://h3-20-proptech-production.up.railway.app/update-user-information/", {
         method: "POST",
         body: formData,
       });
@@ -54,22 +50,17 @@ function PreaprobacionGarante() {
         </div>
 
         <div className="w-full md:w-1/2 py-8 pr-16 overflow-y-auto">
-        
           <ul className="steps steps-vertical lg:steps-horizontal w-full">
             <li className="step step-primary">Paso 1</li>
             <li className="step step-primary">Paso 2</li>
-            <li className="step ">Paso 3</li>
+            <li className="step">Paso 3</li>
             <li className="step">Paso 4</li>
             <li className="step">Enviado</li>
           </ul>
 
           <p className="my-4">Pasos para completar la información</p>
 
-          <div class="tab-container items-center m-0 p-0">
-            <button class="tab p-0 m-0">Personal</button>
-            <button class="tab active">Garante uno</button>
-            <button class="tab">Garante dos</button>
-          </div>
+          <LinkPreaprobacion />
 
           <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
           <p className="mb-4">Se deben ingresar:</p>
@@ -128,4 +119,5 @@ function PreaprobacionGarante() {
 }
 
 export default PreaprobacionGarante;
+
 

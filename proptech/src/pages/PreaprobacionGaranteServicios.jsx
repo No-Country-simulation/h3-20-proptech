@@ -3,6 +3,7 @@ import Ilustracion2 from "../assets/Preaprobacion2.png";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGaranteServicios() {
   const [files, setFiles] = useState([
@@ -38,10 +39,13 @@ function PreaprobacionGaranteServicios() {
     });
 
     try {
-      const response = await fetch("url", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://h3-20-proptech-production.up.railway.app/update-user-information/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (response.ok) {
         navigate("/preaprobacionFin");
@@ -76,11 +80,7 @@ function PreaprobacionGaranteServicios() {
 
         <p className="mb-4">Pasos para completar la información</p>
 
-        <div className="tab-container items-center m-0 p-0">
-            <button className="tab m-0 p-0">Personal</button>
-            <button className="tab">Garante uno</button>
-            <button className="tab active">Garante dos</button>
-          </div>
+        <LinkPreaprobacion/>
 
         <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
         <p className="mb-4">Se deben cargar:</p>

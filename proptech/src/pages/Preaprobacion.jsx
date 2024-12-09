@@ -14,8 +14,8 @@ function Preaprobacion() {
         </div>
 
         <div className="w-full md:w-1/2 py-8 pr-16">
-          <button className="btn-tertiary mb-4 self-start">Volver</button>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          <Link to="/#" className="btn-tertiary mb-4 self-start">Volver</Link>
+          <h2 className="text-2xl font-bold text-gray-800 my-4">
             Pasos a seguir
           </h2>
           <p className="text-gray-700 text-justify mb-4">
@@ -27,10 +27,9 @@ function Preaprobacion() {
           <ul className="list-disc ml-6 mb-4 text-gray-700">
             <li>Últimos tres recibos del sueldo</li>
             <li>
-              Servicios a nombre del titular que acredite el domicilio (al menos
-              3)
+              Servicios a nombre del titular que acredite el domicilio
             </li>
-            <li>Recibos de sueldos de los garantes (al menos 3)</li>
+            <li>Recibos de sueldos de los garantes </li>
           </ul>
 
           <div className="flex items-center justify-center">
@@ -42,8 +41,8 @@ function Preaprobacion() {
           </div>
 
           <div className="flex gap-4 mt-10">
-            <button className="btn-primary flex-grow">Volver más tarde</button>
-            <Link to="/preaprobacionDatosPersonales" className="btn-tertiary flex-grow text-center">
+            <Link to="/#" className="btn-tertiary flex-grow text-center">Volver más tarde</Link>
+            <Link to="/preaprobacionDatosPersonales" className="btn-primary flex-grow text-center">
                 Siguiente
             </Link>
           </div>
