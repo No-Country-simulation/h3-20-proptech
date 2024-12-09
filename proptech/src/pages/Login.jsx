@@ -57,9 +57,13 @@ const Login = () => {
   };
 
   const onSubmit = async (e) => {
+    const data = {
+      username: email,
+      password: password,
+    };
     e.preventDefault();
     try {
-      const result = await loginUser(email, password);
+      const result = await loginUser(data);
       console.log("Del envio:: ", result);
     } catch (error) {
       console.log("error", error);
