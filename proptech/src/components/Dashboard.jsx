@@ -57,7 +57,7 @@ function Dashboard() {
                     <div className="balance-box">
                         <h3>Balance Total</h3>
                         <h2 className="h2">US${totalBalance.toFixed(2)}</h2>
-                        <button className="btn-primary w-full" onClick={() => navigate("/capitalizacion")}>
+                        <button className="btn-primary w-full" onClick={() => navigate("/capitalizacionAdmin")}>
                             Calcular nueva inversión
                         </button>
                     </div>

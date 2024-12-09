@@ -1,8 +1,11 @@
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import investmentDataFile from "../shared/data/investmentData.json";
 
 function Stats() {
+    const totalBalance = investmentDataFile.reduce((sum, investment) => sum + investment.principal, 0);
+
   const stats = [
     {
       id: 1,
@@ -13,7 +16,7 @@ function Stats() {
     {
       id: 2,
       name: "Invertidos en el mercado",
-      value: "$500k",
+      value: `${totalBalance.toFixed(2)}`,
       icon: <AttachMoneyIcon />,
     },
     {
