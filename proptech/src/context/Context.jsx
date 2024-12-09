@@ -107,6 +107,7 @@ export const ContextProvider = ({ children }) => {
         loginUser,
         logoutUser,
         registerUser,
+        isAuthenticated,
       }}
     >
       {children}
