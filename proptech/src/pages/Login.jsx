@@ -16,7 +16,6 @@ const Login = () => {
   const [focus, setFocus] = useState({
     email: false,
     password: false,
-    term: false,
   });
 
   useEffect(
@@ -29,7 +28,10 @@ const Login = () => {
 
   const validateField = (field, value) => {
     if (field === "email") return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    if (field === "password") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "password")
+      return !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(
+        value
+      );
     return false;
   };
 
@@ -55,9 +57,13 @@ const Login = () => {
   };
 
   const onSubmit = async (e) => {
+    const data = {
+      username: email,
+      password: password,
+    };
     e.preventDefault();
     try {
-      const result = await loginUser(email, password);
+      const result = await loginUser(data);
       console.log("Del envio:: ", result);
     } catch (error) {
       console.log("error", error);

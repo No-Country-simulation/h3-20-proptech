@@ -82,6 +82,7 @@ const Register = () => {
       email: email,
       password: password,
     };
+    console.log("DATA:::", data);
     try {
       const result = await registerUser(data);
       console.log("Del envio:: ", result);
