@@ -193,3 +193,8 @@ class UpdateUserInformationView(APIView):
             return Response(personal_info_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "User information updated successfully"}, status=status.HTTP_200_OK)
+    
+    
+    
+    
+    
