@@ -35,7 +35,7 @@ function Content() {
             <button className="py-2 btn-tertiary text-white rounded mr-5">
               Quiero Financiamiento
             </button>
-            <button className="btn btn-primary">Quiero Invertir</button>
+            <button className="btn-primary">Quiero Invertir</button>
           </div>
         </div>
       </div>
