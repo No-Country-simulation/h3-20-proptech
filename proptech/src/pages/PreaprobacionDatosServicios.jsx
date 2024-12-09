@@ -35,7 +35,7 @@ function PreaprobacionDatosServicios() {
 
   return (
     <div className="w-full min-h-screen bg-white">
-    <UserNavbar />
+    {/* <UserNavbar /> */}
     <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <IllustrationContainer
@@ -88,7 +88,7 @@ function PreaprobacionDatosServicios() {
             ))}
           </div>
           <div className="flex gap-4 mt-auto">
-            <button type="submit" className="btn btn-primary flex-grow">
+            <button type="submit" className=" btn-primary flex-grow">
               Siguiente
             </button>
           </div>

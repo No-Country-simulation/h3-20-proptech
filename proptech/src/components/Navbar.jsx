@@ -147,7 +147,7 @@ function Navbar() {
                             </li>
                             <li>
                                 <Link
-                                    to="#servicios"
+                                    to="#empresas"
                                     className="text-white hover:text-gray-300"
                                 >
                                     Empresas
@@ -173,7 +173,7 @@ function Navbar() {
                                         <Link to="/capitalizacionAdmin">CapitalizationCalculator</Link>
                                     </li>
                                     <li>
-                                        <Link to="/dashboardAdmin">Panel de control</Link>
+                                        <Link to="/dashboard">Panel de control</Link>
                                     </li>
                                 </ul>
                             </li>
