@@ -11,6 +11,8 @@ import grupoPhoto from "../assets/grupo.png";
 import p4Photo from "../assets/p4.png";
 import proacoPhoto from "../assets/proaco.png";
 import CapitalizationCalculator from "./CapitalizationCalculator";
+
+
 function Content() {
   return (
     <>
@@ -33,7 +35,7 @@ function Content() {
             <button className="py-2 btn-tertiary text-white rounded mr-5">
               Quiero Financiamiento
             </button>
-            <button className="btn btn-primary">Quiero Invertir</button>
+            <button className="btn-primary">Quiero Invertir</button>
           </div>
         </div>
       </div>

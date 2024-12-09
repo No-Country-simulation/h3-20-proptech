@@ -21,8 +21,8 @@ function ClientCalculator() {
     const [price, setPrice] = useState(26600);
     const [advancePayment, setAdvancePayment] = useState(7000);
     const [postPayment, setPostPayment] = useState(0);
-    const [autoValue, setAutoValue] = useState(0);
-    const [autoRepair, setAutoRepair] = useState(0);
+    const [autoValue, setAutoValue] = useState(10000);
+    const [autoRepair, setAutoRepair] = useState(400);
 
     const [errors, setErrors] = useState({ price: null, advancePayment: null, postPayment: null,autoValue: null,autoRepair:null, principal: null, annualRate: null, term: null }); // null: no validation yet, true: invalid, false: valid
     const [focus, setFocus] = useState({price: null, advancePayment: null, postPayment: null,autoValue: null,autoRepair:null,  principal: false, annualRate: false, term: false });
@@ -207,7 +207,7 @@ function ClientCalculator() {
                     className="input-field"
                 />
                 </div>
-                <div className='hidden'>                
+                <div>                
                 <label className="font-bold text-text-primary mb-1">Entrega posterior</label>
                     <p
                         className={`text-sm mt-1 ${errors.postPayment === true
@@ -227,10 +227,9 @@ function ClientCalculator() {
                     onBlur={() => handleBlur("postPayment")}
                     onFocus={() => handleFocus("postPayment")}  
                     className="input-field"
-                    hidden
                 />
                 </div>
-                <div className='hidden'>                 
+                <div>                
                 <label className="font-bold text-text-primary mb-1">Infoauto</label>
                     <p
                         className={`text-sm mt-1 ${errors.autoValue === true
@@ -250,10 +249,9 @@ function ClientCalculator() {
                     onBlur={() => handleBlur("autoValue")}
                     onFocus={() => handleFocus("autoValue")}  
                     className="input-field"
-                    hidden
                 />
                 </div>
-                <div className='hidden'>                 
+                <div>                
                 <label className="font-bold text-text-primary mb-1">Reparaciones</label>
                     <p
                         className={`text-sm mt-1 ${errors.autoRepair === true
@@ -273,7 +271,6 @@ function ClientCalculator() {
                     onBlur={() => handleBlur("autoRepair")}
                     onFocus={() => handleFocus("autoRepair")}  
                     className="input-field"
-                    hidden
                 />
                 </div>
                 <button className="btn-primary w-full" onClick={determineCalculationType}>
@@ -303,7 +300,7 @@ function ClientCalculator() {
                     className="input-field"
                     />
                     </div>
-                    <div className='hidden'>  
+                        <div>
                     <label className='font-bold text-text-primary mb-1'>Tasa de Interes anual</label>
                     <p
                         className={`text-sm mt-1 ${errors.annualRate === true
