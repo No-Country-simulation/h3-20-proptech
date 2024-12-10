@@ -4,32 +4,46 @@ import productCapitalizationData from "../shared/data/productCapitalizationData.
 import usersData from "../shared/data/usersData.json";
 import investmentData from "../shared/data/investmentData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function CapitalizationCalculator() {
-    const [principal, setPrincipal] = useState('');
-    const [termType, setTermType] = useState('years'); // Default is years
-    const [calcRate, setCalcRate] = useState(termType === "years" ? 20 : 1.531);
-    const [numberOfPayments, setNumberOfPayments] = useState('');
-    const [term, setTerm] = useState('');
-    const [monthlyReturn, setMonthlyReturn] = useState('');
+function CapitalizationCalculatorEdit() {
+    //view data from dashboard row
+    const location = useLocation();
+    const [rowData, setRowData] = useState(location.state);
+
+    useEffect(() => {
+      // Preload fields with received data
+      if (location.state) {
+        setRowData(location.state);
+      }
+    }, [location.state]);
+    const [principal, setPrincipal] = useState(rowData.principal);
+    const [calcRate, setCalcRate] = useState(rowData.calcRate);
+    const [numberOfPayments, setNumberOfPayments] = useState(rowData.numberOfPayments);
+    const [term, setTerm] = useState(rowData.term);
+    const [termType, setTermType] = useState(rowData.termType); 
+    const [monthlyReturn, setMonthlyReturn] = useState(rowData.monthlyReturn);
     const [results, setResults] = useState([]);
-    const [refuerzo, setRefuerzo] = useState(false);
-    const [refuerzoMes, setRefuerzoMes] = useState(productCapitalizationData.index1[1]);
-    const [refuerzoValue, setRefuerzoValue] = useState(productCapitalizationData.index2[1]);
+    const [refuerzo, setRefuerzo] = useState(rowData.refuerzo);
+    const [refuerzoMes, setRefuerzoMes] = useState(rowData.refuerzoMes);
+    const [refuerzoValue, setRefuerzoValue] = useState(rowData.refuerzoValue);
     
-    const [interestRate, setInterestRate] = useState('');
-    const [annualRate, setAnnualRate] = useState('');
-    const [depositedCuota, setDepositedCuota] = useState('');
+    const [interestRate, setInterestRate] = useState(rowData.interestRate);
+    const [annualRate, setAnnualRate] = useState(rowData.annualRate);
+    const [depositedCuota, setDepositedCuota] = useState(rowData.depositedCuota);
 
-    const [isActive, setIsActive] = useState('');
-    const [validated, setValidated] = useState('');
-    const [estado, setEstado] = useState('');
+    const [isActive, setIsActive] = useState(rowData.isActive);
+    const [validated, setValidated] = useState(rowData.validated);
+    const [estado, setEstado] = useState(rowData.estado);
+
 
     //select user for investment data
     const [showModal, setShowModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [newInvestmentData, setNewInvestmentData] = useState([]);
     const [investorData, setInvestorData]=useState(investmentData);
+    const navigate = useNavigate();
 
     const handleInputChange = (field, value) => {
         if (field === "principal") setPrincipal(value);
@@ -37,16 +51,6 @@ function CapitalizationCalculator() {
         if (field === "term") setTerm(value);
         if (field === "monthlyReturn") setMonthlyReturn(value);
     };
-
-    const handleInputChangeTerm = (field, value) => {
-        if (field === "calcRate") {
-          setCalcRate(parseFloat(value)); // Ensure calcRate is updated as a number
-        }
-      };
-      useEffect(() => {
-        setCalcRate(termType === "years" ? 20 : 1.531);
-      }, [termType]);
-
 
     const calculateReturns = () => {
         const cuota = parseFloat(monthlyReturn);
@@ -137,7 +141,7 @@ function CapitalizationCalculator() {
             estado,
             results,
         };
-        
+       
         //select user for investment data
         setNewInvestmentData(data); // Store data in state for use after user selection
         console.log("Generating JSON and opening modal..." + data);
@@ -145,7 +149,7 @@ function CapitalizationCalculator() {
 
     };
 
-     const clearFields = () => {
+    const clearFields = () => {
         setPrincipal('');
         setCalcRate('');
         setTerm('');
@@ -168,13 +172,13 @@ function CapitalizationCalculator() {
                         className="input-field"
                     />
                 </div>
-                <div className="hidden">
+                <div>
                     <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'years' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
                     <input
                         type="number"
                         placeholder={`Ingrese la tasa ${termType === 'years' ? 'anual (TEA)' : 'nominal por mes'}`}
                         value={calcRate}
-                        onChange={(e) => handleInputChangeTerm("calcRate", e.target.value)}
+                        onChange={(e) => handleInputChange("calcRate", e.target.value)}
                         className="input-field"
                     />
                 </div>
@@ -230,7 +234,12 @@ function CapitalizationCalculator() {
                 <div className="mt-6">
                     <h3 className="text-xl font-semibold">Cuota Mensual: ${monthlyReturn}</h3>
                     <h3 className="text-xl font-semibold">Detalles de Capitalización:</h3>
-                    {/* <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button> */}
+                    <div className="flex space-x-4">
+                    <button onClick={() => navigate('/Dashboard')}  className="btn-tertiary w-full">Volver</button>
+                    <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button>
+                    </div>
+
+            {/* <button onClick={generateJSON} className="btn-primary">Generar JSON</button> */}
                     <table className=" w-full mt-2 border-collapse ">
                         <thead>
                             <tr>
@@ -274,4 +283,4 @@ function CapitalizationCalculator() {
     );
 }
 
-export default CapitalizationCalculator;
+export default CapitalizationCalculatorEdit;

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function Preaprobacion() {
   return (
     <div className="w-full h-full bg-white">
-      
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer src={Ilustracion1} alt="Ilustración 1" />
@@ -27,7 +26,7 @@ function Preaprobacion() {
           <ul className="list-disc ml-6 mb-4 text-gray-700">
             <li>Últimos tres recibos del sueldo</li>
             <li>
-              Servicios a nombre del titular que acredite el domicilio
+              Servicios a nombre del titular que acredite el domicilio.
             </li>
             <li>Recibos de sueldos de los garantes </li>
           </ul>

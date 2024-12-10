@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 
 export const Context = createContext();
 
@@ -10,38 +9,75 @@ export default Context;
 export const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
-
-  const loginUser = async (email, password) => {
+  const registerUser = async (data) => {
     try {
-      let url = "";
-      const response = await axios.post(url, { email, password });
+      const url =
+        "https://h3-20-proptech-production.up.railway.app/api/register/";
 
-      const { data } = response;
-      if (response.status === 200) {
-        setAuthTokens(data.token);
-        localStorage.setItem("authTokens", JSON.stringify(data.token));
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+        credentials: "include",
+      });
+      console.log("Before SHOW:::", response);
 
-        if (data.token) {
-          const { rol } = jwtDecode(data.token);
-          const welcome =
-            rol === "admin" ? "/welcome-admin" : "/welcome-pidiente";
-          navigate(welcome);
-        }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
+      const result = await response.json();
+      console.log("Registration successful:", result);
+      navigate("/login");
+      return result;
+    } catch (error) {
+      console.error("Registration error:", error.message);
+      throw error;
+    }
+  };
+
+  const loginUser = async (login_data) => {
+    try {
+      const url = "https://h3-20-proptech-production.up.railway.app/api/login/";
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(login_data),
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Response data:", data);
+
+      if (data.access && data.refresh) {
+        setIsAuthenticated(true);
+        localStorage.setItem("access", JSON.stringify(data.access));
+        localStorage.setItem("refresh", JSON.stringify(data.refresh));
+        navigate("/");
         console.log("Login Success");
       } else {
-        console.log(response.status);
-        console.log("An Error Occured");
-        console.log("Email - Password does not exist");
+        throw new Error("Tokens no encontrados en la respuesta");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error en login:", error.message);
     }
   };
 
@@ -76,6 +112,8 @@ export const ContextProvider = ({ children }) => {
         setAuthTokens,
         loginUser,
         logoutUser,
+        registerUser,
+        isAuthenticated,
       }}
     >
       {children}

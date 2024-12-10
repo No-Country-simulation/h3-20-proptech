@@ -18,12 +18,19 @@ function FileUploadField({ label }) {
   return (
     <div className="space-y-2">
       <label className="block text-gray-700">{label}</label>
+      <div className="flex justify-between items-center mt-2">
+        {isUploaded ? (
+          <span className="text-green-600">Cargado correctamente</span>
+        ) : (
+          <span className="text-gray-500">Selecciona un archivo para cargar</span>
+        )}
+      </div>
       <div className="flex items-center space-x-4">
         {/* Input field */}
         <input
           type="file"
           accept=".png, .jpg"
-          className="border p-2 w-full"
+          className="input-field"
           onChange={handleFileChange}
         />
         
@@ -35,13 +42,6 @@ function FileUploadField({ label }) {
         >
           Cargar
         </button>
-      </div>
-      <div className="flex justify-between items-center mt-2">
-        {isUploaded ? (
-          <span className="text-green-600">Cargado correctamente</span>
-        ) : (
-          <span className="text-gray-500">Selecciona un archivo para cargar</span>
-        )}
       </div>
     </div>
   );

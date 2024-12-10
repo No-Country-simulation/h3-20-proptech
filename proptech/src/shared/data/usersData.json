@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "identification": 12345678901,
+        "gender": "M",
+        "validated": true,
+        "income": 50000,
+        "score": 4,
+        "is_guarantor": false,
+        "garants": null,
+        "is_active": true
+    },
+    {
+        "id": 2,
+        "username": "janedoe",
+        "email": "janedoe@example.com",
+        "identification": 10987654321,
+        "gender": "F",
+        "validated": true,
+        "income": 75000,
+        "score": 5,
+        "is_guarantor": true,
+        "garants": 1,
+        "is_active": true
+    },
+    {
+        "id": 3,
+        "username": "robertsmith",
+        "email": "robertsmith@example.com",
+        "identification": 11223344556,
+        "gender": "M",
+        "validated": false,
+        "income": 42000,
+        "score": 3,
+        "is_guarantor": false,
+        "garants": null,
+        "is_active": false
+    },
+    {
+        "id": 4,
+        "username": "emilyjohnson",
+        "email": "emilyjohnson@example.com",
+        "identification": 22334455667,
+        "gender": "F",
+        "validated": true,
+        "income": 89000,
+        "score": 5,
+        "is_guarantor": false,
+        "garants": null,
+        "is_active": true
+    },
+    {
+        "id": 5,
+        "username": "davidbrown",
+        "email": "davidbrown@example.com",
+        "identification": 33445566778,
+        "gender": "M",
+        "validated": true,
+        "income": 65000,
+        "score": 4,
+        "is_guarantor": true,
+        "garants": 3,
+        "is_active": false
+    }
+]

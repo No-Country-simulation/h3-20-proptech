@@ -7,10 +7,10 @@ import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
 
 function CapitalizationCalculator() {
     const [principal, setPrincipal] = useState('');
-    const [termType, setTermType] = useState('years'); // Default is years
-    const [calcRate, setCalcRate] = useState(termType === "years" ? 20 : 1.531);
+    const [calcRate, setCalcRate] = useState('');
     const [numberOfPayments, setNumberOfPayments] = useState('');
     const [term, setTerm] = useState('');
+    const [termType, setTermType] = useState('years'); // Default is years
     const [monthlyReturn, setMonthlyReturn] = useState('');
     const [results, setResults] = useState([]);
     const [refuerzo, setRefuerzo] = useState(false);
@@ -37,16 +37,6 @@ function CapitalizationCalculator() {
         if (field === "term") setTerm(value);
         if (field === "monthlyReturn") setMonthlyReturn(value);
     };
-
-    const handleInputChangeTerm = (field, value) => {
-        if (field === "calcRate") {
-          setCalcRate(parseFloat(value)); // Ensure calcRate is updated as a number
-        }
-      };
-      useEffect(() => {
-        setCalcRate(termType === "years" ? 20 : 1.531);
-      }, [termType]);
-
 
     const calculateReturns = () => {
         const cuota = parseFloat(monthlyReturn);
@@ -168,13 +158,13 @@ function CapitalizationCalculator() {
                         className="input-field"
                     />
                 </div>
-                <div className="hidden">
+                <div>
                     <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'years' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
                     <input
                         type="number"
                         placeholder={`Ingrese la tasa ${termType === 'years' ? 'anual (TEA)' : 'nominal por mes'}`}
                         value={calcRate}
-                        onChange={(e) => handleInputChangeTerm("calcRate", e.target.value)}
+                        onChange={(e) => handleInputChange("calcRate", e.target.value)}
                         className="input-field"
                     />
                 </div>
@@ -230,7 +220,7 @@ function CapitalizationCalculator() {
                 <div className="mt-6">
                     <h3 className="text-xl font-semibold">Cuota Mensual: ${monthlyReturn}</h3>
                     <h3 className="text-xl font-semibold">Detalles de Capitalización:</h3>
-                    {/* <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button> */}
+                    <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button>
                     <table className=" w-full mt-2 border-collapse ">
                         <thead>
                             <tr>

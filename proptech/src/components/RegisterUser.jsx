@@ -3,19 +3,28 @@ import happyFamily from "../assets/familia-feliz.png";
 import { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 
-const Login = () => {
-  const { loginUser } = useContext(Context);
+const RegisterUser = () => {
+  const { registerUser } = useContext(Context);
 
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //const [validated, setValidated] = useState(false);
+  //const [isActive, setIsActive] = useState(false);
 
   const [errors, setErrors] = useState({
     email: null,
     password: null,
+    username: null,
+    //validated: null,
+    //isActive: null,
   }); // null: no validation yet, true: invalid, false: valid
   const [focus, setFocus] = useState({
     email: false,
     password: false,
+    username: false,
+    //validated: false,
+    //isActive: false,
   });
 
   useEffect(
@@ -23,7 +32,10 @@ const Login = () => {
       // console.log("Updated email:", email, "Updated password:", password);
     },
     [email],
-    [password]
+    [password],
+    [username]
+    //[validated],
+    //[isActive]
   );
 
   const validateField = (field, value) => {
@@ -32,6 +44,10 @@ const Login = () => {
       return !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(
         value
       );
+    if (field === "username")
+      return !/^[a-zA-Z][a-zA-Z0-9._]{2,19}(?<!\.)$/.test(value);
+    //if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
+    //if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
     return false;
   };
 
@@ -39,6 +55,9 @@ const Login = () => {
     // Update the state
     if (field === "email") setEmail(value);
     if (field === "password") setPassword(value);
+    if (field === "username") setUsername(value);
+    // if (field === "validated") setPassword(value);
+    // if (field === "isActive") setPassword(value);
 
     // Validate the field
     const isValid = !validateField(field, value);
@@ -57,13 +76,15 @@ const Login = () => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     const data = {
-      username: email,
+      username: username,
+      email: email,
       password: password,
     };
-    e.preventDefault();
+    console.log("DATA:::", data);
     try {
-      const result = await loginUser(data);
+      const result = await registerUser(data);
       console.log("Del envio:: ", result);
     } catch (error) {
       console.log("error", error);
@@ -71,37 +92,12 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-12 h-screen">
-        <div className="col-span-7 relative">
-          <img
-            src={happyFamily}
-            alt="Descripción de la imagen"
-            className="w-screen h-screen object-cover rounded-br-[50px]"
-          />
-          <div className="absolute bottom-16 ml-[15%] ">
-            <p className="text-white text-5xl font-bold">
-              El futuro que
-              <br /> deseas está a tu <br />
-              alcance.
-            </p>
-          </div>
-        </div>
-        <div className="col-span-5 content-center">
-          <p className="text-2xl font-bold text-center">
-            Tu futuro comienza ahora{" "}
-          </p>
-          <div className="w-[60%] mt-5 mx-auto">
-            <p className="text-center">
-              Por favor, ingresá los datos que recibiste en el correo
-              electrónico para que podamos iniciar el trámite de tu crédito. Si
-              necesitas ayuda durante el proceso, no dudes en contactarnos.
-            </p>
-          </div>
+      <div className="grid grid-cols-2 h-screen">
+        {/* <div className="col-span-5 content-center"> */}
 
           {/* Form */}
-          <div className="w-[70%] mx-auto mt-7">
-            <form onSubmit={onSubmit} className="flex flex-col gap-9">
+          <div className="w-[70%] mx-auto mt-2">
+            <form onSubmit={onSubmit} className="flex flex-col gap-2">
               <div className="flex flex-col gap-5 pb-3">
                 <div>
                   <label className="font-bold text-text-primary mb-2">
@@ -116,7 +112,7 @@ const Login = () => {
                         : "hidden"
                     }`}
                   >
-                    Inserta un email válido
+                    El email es incorrecto.
                   </p>
                   <input
                     type="text"
@@ -128,6 +124,35 @@ const Login = () => {
                     className="input-field "
                   />
                 </div>
+
+                <div>
+                  <label className="font-bold text-text-primary mb-2">
+                    Nombre de usuario
+                  </label>
+                  <p
+                    className={`text-sm mt-1 ${
+                      errors.username === true
+                        ? "text-text-messageError"
+                        : errors.username === false && focus.username
+                        ? "text-text-message"
+                        : "hidden"
+                    }`}
+                  >
+                    El nombre del usuario es incorrecto.
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="jonathan"
+                    value={username}
+                    onChange={(e) =>
+                      handleInputChange("username", e.target.value)
+                    }
+                    onBlur={() => handleBlur("username")}
+                    onFocus={() => handleFocus("username")}
+                    className="input-field "
+                  />
+                </div>
+
                 <div>
                   <label className="font-bold text-text-primary mb-2">
                     Password
@@ -141,7 +166,7 @@ const Login = () => {
                         : "hidden"
                     }`}
                   >
-                    Inserte una contraseña válida.
+                    La contraseña es incorrecta.
                   </p>
                   <input
                     type="password"
@@ -155,34 +180,24 @@ const Login = () => {
                     className="input-field "
                   />
                 </div>
+
               </div>
-              <a
-                className="text-sm text-l text-start -m-10 ml-3 mt-1 mb-1 text-info"
-                href="#"
-              >
-                ¿Olvidó su contraseña?
-              </a>
-              <div className="flex flex-col gap-4 card-actions">
-                <div className="flex justify-start gap-4 items-center">
-                  <button type="submit" className="btn-primary w-full ">
-                    Iniciar sesión
-                  </button>
-                  <div className="text-sm text-center ml-4">
-                    ¿Sin cuenta?{" "}
-                    <Link className="text-sm mx-2 text-primary" to="/register">
-                      Registrase
-                    </Link>
+
+              <div className="gap-4 items-center">
+
+                  <div className="col-span-6">
+                    <button type="submit" className="btn-primary w-full ">
+                      Registrar
+                    </button>
                   </div>
-                </div>
+
               </div>
             </form>
           </div>
-
           {/* End Form */}
         </div>
-      </div>
-    </>
+
   );
 };
 
-export default Login;
+export default RegisterUser;
