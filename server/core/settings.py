@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-eo(90nvc$*k24v2xx15t51kyg$z6g6!xxufcb^_z+0+8spu5yu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True  # Redirige automáticamente HTTP a HTTPS
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173"
 ]
@@ -37,9 +37,15 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://h3-20-proptech-production.up.railway.app'
+    'https://h3-20-proptech-production.up.railway.app',
+    'http://h3-20-proptech-production.up.railway.app'
 ]
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 
 MEDIA_URL = '/media/'
