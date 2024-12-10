@@ -66,7 +66,8 @@ function PreaprobacionDatosPersonales() {
     } catch (error) {
       console.error("Error al enviar los archivos:", error);
     }
-
+  }
+  
   return (
     <div className="w-full min-h-screen bg-white">
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
