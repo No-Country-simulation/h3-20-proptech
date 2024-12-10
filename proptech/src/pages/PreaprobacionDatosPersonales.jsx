@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionDatosPersonales() {
   const [files, setFiles] = useState([
+
     { label: "Recibo de sueldo 1", file: null, isUploaded: false, sueldoBruto: "", sueldoNeto: "" },
     { label: "Recibo de sueldo 2", file: null, isUploaded: false, sueldoBruto: "", sueldoNeto: "" },
     { label: "Recibo de sueldo 3", file: null, isUploaded: false, sueldoBruto: "", sueldoNeto: "" },
@@ -14,7 +16,6 @@ function PreaprobacionDatosPersonales() {
 
   const navigate = useNavigate();
 
-  // Handle file upload changes
   const handleFileChange = (index, file) => {
     const updatedFiles = [...files];
     updatedFiles[index].file = file;
@@ -28,28 +29,46 @@ function PreaprobacionDatosPersonales() {
     setFiles(updatedFiles);
   };
 
-  // Handle input field changes for Sueldo Bruto and Sueldo Neto
+
   const handleInputChange = (index, field, value) => {
     const updatedFiles = [...files];
     updatedFiles[index][field] = value;
     setFiles(updatedFiles);
   };
 
-  // Calculate the average of Sueldo Neto fields
   const averageSueldoNeto = () => {
     const netoValues = files.map((file) => parseFloat(file.sueldoNeto) || 0);
     const total = netoValues.reduce((sum, val) => sum + val, 0);
     return (total / files.length).toFixed(2); // Two decimal places
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/preaprobacionDatosServicios");
-  };
+
+    const formData = new FormData();
+    files.forEach((file, index) => {
+      if (file.file) {
+        formData.append(`file${index + 1}`, file.file);
+      }
+    });
+
+    try {
+      const response = await fetch("URL", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionDatosServicios");
+      } else {
+        console.error("Error al enviar los archivos al servidor");
+      }
+    } catch (error) {
+      console.error("Error al enviar los archivos:", error);
+    }
 
   return (
     <div className="w-full min-h-screen bg-white">
-      {/* <UserNavbar /> */}
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer
@@ -59,35 +78,35 @@ function PreaprobacionDatosPersonales() {
             maxHeight="80%"
           />
         </div>
-                 <div className="w-full md:w-1/2 py-8 pr-20 overflow-y-auto">
-           <ul className="steps steps-vertical lg:steps-horizontal w-full">
-             <li className="step ">Paso 1</li>
-             <li className="step">Paso 2</li>
-             <li className="step">Paso 3</li>
-             <li className="step">Paso 4</li>
-             <li className="step">Enviado</li>
-           </ul>
+               
 
-           <p className="mb-4">Pasos para completar la información</p>
 
-           <div class="tab-container items-center mb-4">
-             <button class="tab active">Personal</button>
-             <button class="tab">Garante uno</button>
-             <button class="tab">Garante dos</button>
-           </div>
+        <div className="w-full md:w-1/2 py-8 pr-16 overflow-y-auto m-2">
+          <ul className="steps steps-vertical lg:steps-horizontal w-full">
+            <li className="step ">Paso 1</li>
+            <li className="step">Paso 2</li>
+            <li className="step">Paso 3</li>
+            <li className="step">Paso 4</li>
+            <li className="step">Enviado</li>
+          </ul>
 
-           <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
-           <p className="mb-4">Se deben cargar:</p>
-           <ul className="list-disc pl-6 mb-8">
-             <li>Tres recibos de sueldo</li>
-             <li>Foto del documento frontal y trasera</li>
-             <li>Un servicio a tu nombre</li>
-           </ul>
+          <p className="mb-4">Pasos para completar la información</p>
 
+          <LinkPreaprobacion/>
+
+          <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
+          <p className="mb-4">Se deben cargar:</p>
+          <ul className="list-disc pl-6 mb-8">
+            <li>Tres recibos de sueldo</li>
+            <li>Foto del documento frontal y trasera</li>
+            <li>Un servicio a tu nombre</li>
+          </ul>
+  
           <h2 className="text-2xl font-bold mb-4">Últimos recibos de sueldo</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-4">
               {files.map((file, index) => (
+
                 <div key={index} className="space-y-4">
                       {/* File Upload Field */}
                       <FileUploadField
@@ -124,7 +143,6 @@ function PreaprobacionDatosPersonales() {
                       />
                     </div>
                   </div>
-
                 </div>
               ))}
             </div>

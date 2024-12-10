@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGaranteDatos() {
   const [files, setFiles] = useState([
@@ -27,15 +27,35 @@ function PreaprobacionGaranteDatos() {
     setFiles(updatedFiles);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    navigate("/preaprobacionGaranteServicios");
+
+    const formData = new FormData();
+    files.forEach((file, index) => {
+      if (file.file) {
+        formData.append(`file${index + 1}`, file.file);
+      }
+    });
+
+    try {
+      const response = await fetch("URL", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionGaranteServicios");
+      } else {
+        console.error("Error al enviar los archivos al servidor");
+      }
+    } catch (error) {
+      console.error("Error al enviar los archivos:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-      {/* <UserNavbar /> */}
+
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer
@@ -57,11 +77,7 @@ function PreaprobacionGaranteDatos() {
 
           <p className="mb-4">Pasos para completar la información</p>
 
-          <div class="tab-container items-center mb-4">
-            <button class="tab">Personal</button>
-            <button class="tab active">Garante uno</button>
-            <button class="tab">Garante dos</button>
-          </div>
+          <LinkPreaprobacion/>
 
           <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
           <p className="mb-4">Se deben cargar:</p>
