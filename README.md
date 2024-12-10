@@ -15,9 +15,10 @@ revalorización a mediano plazo.
 ## 🖥 Tech Stack 
 
  * **Project type:** `Fintech`
- * **QA Tester:** `Github projects` `Drive`.
- * **Backend:** `Python` `Django` `PostgreSql` `Docker`
+ * **QA Tester:** `Github projects` `Google Drive`.
+ * **Backend:** `Python` `Django` `PostgreSql` `Docker`.
  * **Frontend:** `HTML` `CSS` `JS` `React` `Vite` `Axios` `Tailwind` `MUI` `Daisyui`.
+ * **Design:** `Figma for prototypes and wireframes` `Adobe ai`.
 
 ## 📌 Team:
 
@@ -33,11 +34,14 @@ revalorización a mediano plazo.
 
 ## 🎥 Promotional Video
 
-[**Financia Video**](https://www.youtube.com/watch?v=financiaVideoUpload)
+[**Financia Video**](https://drive.google.com/file/d/1-GRJgjgiPKwtJshqZ5LrEGZXhxroi6kV/view?usp=drive_link)
+
+## 💻 UX-UI Documentation
+[**Financia Diseño Figma**](https://www.figma.com/design/2XBprm3Mx3RFyqmhk6ywyO/Hackaton---Fintech?node-id=1-3786&node-type=canvas&t=0eLL1JOL0EcKOUsD-0)
 
 ## 💻 QA Documentation
-
-📂[**Financia**](https://drive.google.com/drive/folders/1UHTC5PIY-nA50L7BCqkimUvDGaVeCUF1?usp=drive_link)
+[**Financia User Stories**](https://docs.google.com/spreadsheets/d/1CQBvHdRimW6HVcm7BoOWu-C-K5nD7nMLnsp3XO6EYdY/edit?usp=sharing)
+📂[**Financia Google drive**](https://drive.google.com/drive/folders/1UHTC5PIY-nA50L7BCqkimUvDGaVeCUF1?usp=drive_link)
 
 ## 💻 Thanks
 
