@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import happyFamily from "../assets/familia-feliz.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Context from "../context/Context";
 
 const Login = () => {
+  const { loginUser } = useContext(Context);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,7 +16,6 @@ const Login = () => {
   const [focus, setFocus] = useState({
     email: false,
     password: false,
-    term: false,
   });
 
   useEffect(
@@ -25,8 +27,11 @@ const Login = () => {
   );
 
   const validateField = (field, value) => {
-    if (field === "email") return !/^\d+$/.test(value);
-    if (field === "password") return !/^\d+(\.\d+)?$/.test(value);
+    if (field === "email") return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (field === "password")
+      return !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(
+        value
+      );
     return false;
   };
 
@@ -49,6 +54,20 @@ const Login = () => {
 
   const handleBlur = (field) => {
     setFocus((prevFocus) => ({ ...prevFocus, [field]: false }));
+  };
+
+  const onSubmit = async (e) => {
+    const data = {
+      username: email,
+      password: password,
+    };
+    e.preventDefault();
+    try {
+      const result = await loginUser(data);
+      console.log("Del envio:: ", result);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -82,7 +101,7 @@ const Login = () => {
 
           {/* Form */}
           <div className="w-[70%] mx-auto mt-7">
-            <form onSubmit="" className="flex flex-col gap-9">
+            <form onSubmit={onSubmit} className="flex flex-col gap-9">
               <div className="flex flex-col gap-5 pb-3">
                 <div>
                   <label className="font-bold text-text-primary mb-2">
@@ -97,7 +116,7 @@ const Login = () => {
                         : "hidden"
                     }`}
                   >
-                    Capital a solicitar en pesos.
+                    Inserta un email válido
                   </p>
                   <input
                     type="text"
@@ -122,7 +141,7 @@ const Login = () => {
                         : "hidden"
                     }`}
                   >
-                    Capital a solicitar en pesos.
+                    Inserte una contraseña válida.
                   </p>
                   <input
                     type="password"

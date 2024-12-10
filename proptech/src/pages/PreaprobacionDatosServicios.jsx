@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionDatosServicios() {
   const [files, setFiles] = useState([
@@ -27,15 +27,35 @@ function PreaprobacionDatosServicios() {
     setFiles(updatedFiles);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    navigate("/preaprobacionGarante");
+
+    const formData = new FormData();
+    files.forEach((file, index) => {
+      if (file.file) {
+        formData.append(`file${index + 1}`, file.file);
+      }
+    });
+
+    try {
+      const response = await fetch("url", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionGarante");
+      } else {
+        console.error("Error al enviar los archivos al servidor");
+      }
+    } catch (error) {
+      console.error("Error al enviar los archivos:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-    <UserNavbar />
+
     <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <IllustrationContainer
@@ -46,7 +66,7 @@ function PreaprobacionDatosServicios() {
         />
       </div>
 
-      <div className="w-full md:w-1/2 py-8 pr-20 overflow-y-auto">
+      <div className="w-full md:w-1/2 py-8 pr-16 overflow-y-auto">
         <ul className="steps steps-vertical lg:steps-horizontal w-full">
           <li className="step step-primary">Paso 1</li>
           <li className="step ">Paso 2</li>
@@ -57,11 +77,8 @@ function PreaprobacionDatosServicios() {
 
         <p className="mb-4">Pasos para completar la información</p>
 
-        <div class="tab-container items-center mb-4">
-            <button class="tab active">Personal</button>
-            <button class="tab">Garante uno</button>
-            <button class="tab">Garante dos</button>
-          </div>
+        <LinkPreaprobacion/>
+
 
         <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
         <p className="mb-4">Se deben cargar:</p>
@@ -88,7 +105,7 @@ function PreaprobacionDatosServicios() {
             ))}
           </div>
           <div className="flex gap-4 mt-auto">
-            <button type="submit" className="btn btn-primary flex-grow">
+            <button type="submit" className=" btn-primary flex-grow">
               Siguiente
             </button>
           </div>

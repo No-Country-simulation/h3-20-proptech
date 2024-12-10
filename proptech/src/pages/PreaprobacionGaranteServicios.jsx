@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import FileUploadField from "../components/FileUploadField";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGaranteServicios() {
   const [files, setFiles] = useState([
@@ -27,15 +27,39 @@ function PreaprobacionGaranteServicios() {
     setFiles(updatedFiles);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    navigate("/preaprobacionFin");
+    
+    const formData = new FormData();
+    
+    files.forEach((file, index) => {
+      if (file.file) {
+        formData.append(`file_${index}`, file.file);
+      }
+    });
+
+    try {
+      const response = await fetch(
+        "https://h3-20-proptech-production.up.railway.app/update-user-information/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        navigate("/preaprobacionFin");
+      } else {
+        console.error("Error al enviar los archivos:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-    <UserNavbar />
+
     <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <IllustrationContainer
@@ -57,11 +81,7 @@ function PreaprobacionGaranteServicios() {
 
         <p className="mb-4">Pasos para completar la información</p>
 
-        <div className="tab-container items-center">
-            <button className="tab">Personal</button>
-            <button className="tab">Garante uno</button>
-            <button className="tab active">Garante dos</button>
-          </div>
+        <LinkPreaprobacion/>
 
         <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
         <p className="mb-4">Se deben cargar:</p>
@@ -88,7 +108,7 @@ function PreaprobacionGaranteServicios() {
             ))}
           </div>
           <div className="flex gap-4 mt-auto">
-            <button type="submit" className="btn btn-primary flex-grow">
+            <button type="submit" className=" btn-primary flex-grow">
               Siguiente
             </button>
           </div>

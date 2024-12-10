@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import { PiTrash, PiNotePencil, PiNote } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { CheckBox } from "@mui/icons-material";
+import RegisterUserAdmin from "./RegisterUserAdmin";
 
 
 const AdministratorDashboard = ({ onRowSelect }) => {
@@ -205,39 +206,9 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 )}
 
                 {/* Add New Investment */}
-                <div className="mt-8">
-                    <h2 className="h2">Crear nueva inversión</h2>
-                    <input
-                        type="text"
-                        placeholder="Investor ID"
-                        value={newInvestment.investor}
-                        onChange={(e) => setNewInvestment({ ...newInvestment, investor: e.target.value })}
-                        className="input-field"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Principal"
-                        value={newInvestment.principal}
-                        onChange={(e) =>
-                            setNewInvestment({ ...newInvestment, principal: e.target.value })
-                        }
-                        className="input-field"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Interest Rate"
-                        value={newInvestment.interestRate}
-                        onChange={(e) =>
-                            setNewInvestment({ ...newInvestment, interestRate: e.target.value })
-                        }
-                        className="input-field"
-                    />
-                    <button
-                        className="bg-green-500 text-white px-4 py-2 rounded"
-                        onClick={handleCreate}
-                    >
-                        Crear Inversion
-                    </button>
+                <div className="mt-4">
+                    <h2 className="h2">Registrar nuevo usuario para inversión</h2>
+                    <RegisterUserAdmin/>
                 </div>
             </div>
         
