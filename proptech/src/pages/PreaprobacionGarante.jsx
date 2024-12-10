@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Ilustracion2 from "../assets/Preaprobacion2.png";
-import UserNavbar from "../components/UserNavbar";
 import IllustrationContainer from "../components/IllustrationContainer";
 import { useNavigate } from "react-router-dom"; 
+import LinkPreaprobacion from "../components/LinkPreaprobacion";
 
 function PreaprobacionGarante() {
   const [name, setName] = useState("");
@@ -11,19 +11,35 @@ function PreaprobacionGarante() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de envío de formulario
-    console.log("Nombre:", name);
-    console.log("Apellido:", lastName);
-    console.log("DNI:", dni);
 
-    navigate("/preaprobacionGaranteDatos");
+    const formData = new FormData();
+
+    // Solo se están enviando los tres campos requeridos
+    formData.append("first_name", name); // Enviar el nombre como first_name
+    formData.append("last_name", lastName); // Enviar el apellido como last_name
+    formData.append("identification", dni); // Enviar el DNI como identification
+
+    try {
+      const response = await fetch("https://h3-20-proptech-production.up.railway.app/update-user-information/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        navigate("/preaprobacionGaranteDatos");
+      } else {
+        console.error("Error al enviar los datos al servidor");
+      }
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
-      {/* <UserNavbar /> */}
+
       <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <IllustrationContainer
@@ -34,22 +50,18 @@ function PreaprobacionGarante() {
           />
         </div>
 
-        <div className="w-full md:w-1/2 py-8 pr-20 overflow-y-auto">
+        <div className="w-full md:w-1/2 py-8 pr-16 overflow-y-auto">
           <ul className="steps steps-vertical lg:steps-horizontal w-full">
             <li className="step step-primary">Paso 1</li>
             <li className="step step-primary">Paso 2</li>
-            <li className="step ">Paso 3</li>
+            <li className="step">Paso 3</li>
             <li className="step">Paso 4</li>
             <li className="step">Enviado</li>
           </ul>
 
-          <p className="mb-4">Pasos para completar la información</p>
+          <p className="my-4">Pasos para completar la información</p>
 
-          <div class="tab-container items-center mb-4">
-            <button class="tab ">Personal</button>
-            <button class="tab active">Garante uno</button>
-            <button class="tab">Garante dos</button>
-          </div>
+          <LinkPreaprobacion />
 
           <h2 className="text-2xl font-bold mb-4">Datos personales</h2>
           <p className="mb-4">Se deben ingresar:</p>
@@ -108,4 +120,5 @@ function PreaprobacionGarante() {
 }
 
 export default PreaprobacionGarante;
+
 

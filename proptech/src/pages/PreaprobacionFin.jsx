@@ -1,13 +1,11 @@
-import UserNavbar from "../components/UserNavbar";
 import Ilustracion3 from "../assets/Preaprobacion3.png";
-import ImagenDocumento from "../assets/ImagenDocumento.png";
 import IllustrationContainer from "../components/IllustrationContainer";
-import { Link } from "react-router-dom";
+
+import { Link } from "react-router-dom"; 
 
 function Preaprobacion() {
     return (
         <div className="w-full h-full bg-white">
-            {/* <UserNavbar /> */}
             <div className="flex flex-col md:flex-row h-[calc(100vh-72px)]">
                 <div className="w-full md:w-1/2 flex justify-center items-center">
                     <IllustrationContainer src={Ilustracion3} alt="Ilustración 3" />
@@ -42,7 +40,6 @@ function Preaprobacion() {
                         </p>
 
                         <div className="flex gap-4 mt-10">
-
                             <Link to="/" className="btn-tertiary flex-grow text-center">
                                 
                                     Volver al inicio
