@@ -5,7 +5,7 @@ import { saveAs } from "file-saver";
 import { PiTrash, PiNotePencil, PiNote } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { CheckBox } from "@mui/icons-material";
-import RegisterUser from "./RegisterUser";
+import RegisterUserAdmin from "./RegisterUserAdmin";
 
 
 const AdministratorDashboard = ({ onRowSelect }) => {
@@ -208,7 +208,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 {/* Add New Investment */}
                 <div className="mt-4">
                     <h2 className="h2">Registrar nuevo usuario para inversión</h2>
-                    <RegisterUser/>
+                    <RegisterUserAdmin/>
                 </div>
             </div>
         
