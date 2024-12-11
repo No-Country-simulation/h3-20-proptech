@@ -21,7 +21,7 @@ class Investment(models.Model):
     investor = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_created=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    calc_rate = models.DecimalField()
+    calc_rate = models.DecimalField(max_digits=10, decimal_places=5)
     interest_rate = models.DecimalField(max_digits=10, decimal_places=2)
     number_of_payments = models.PositiveSmallIntegerField()
     payments_amount = models.DecimalField(max_digits=10, decimal_places=2)
