@@ -17,6 +17,7 @@ class InvestmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Investment
         fields = '__all__'
+        read_only_fields = ['is_active']
 
     def get_results(self, obj):
         results = Result.objects.filter(investment=obj)
