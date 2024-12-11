@@ -25,7 +25,7 @@ class Investment(models.Model):
     interest_rate = models.DecimalField(max_digits=10, decimal_places=2)
     number_of_payments = models.PositiveSmallIntegerField()
     payments_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    monthly_return = models.DecimalField(max_digits=10, decimal_places=2)
+    monthly_return = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     term = models.PositiveSmallIntegerField()
     term_type = models.CharField(max_length=1, choices=TERM_OPTIONS)
     anual_rate = models.DecimalField(max_digits=10, decimal_places=2)
