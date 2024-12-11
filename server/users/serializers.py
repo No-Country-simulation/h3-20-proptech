@@ -23,7 +23,27 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             raise serializers.ValidationError("Invalid email or password")
         
         attrs["username"] = user.username  # Requiere el username para el flujo JWT
-        return super().validate(attrs)
+        validated_data = super().validate(attrs)
+
+        # Agrega información adicional al token de respuesta
+        validated_data["user_name"] = user.get_full_name() or user.username
+        validated_data["user_type"] = user.user_type if hasattr(user, "user_type") else None
+        validated_data["email"] = user.email
+
+        return validated_data
+    
+    
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Agrega claims personalizados al token
+        token['name'] = user.get_full_name() or user.username  # Nombre o Nick del usuario
+        token['user_type'] = user.user_type if hasattr(user, "user_type") else None  # Tipo de usuario
+        token['email'] = user.email  # Opcional
+
+        return token
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
