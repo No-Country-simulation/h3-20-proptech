@@ -13,6 +13,12 @@ class User(AbstractUser):
         ('F', 'female'),
         ('X', 'non-binary')
     ]
+    USER_TYPE_CHOICES = [
+        ('U', 'user'),
+        ('A', 'admin'),
+        ('I', 'investor'),
+        ('B', 'borrower'),
+    ]
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(unique=True, null=True)
     identification = models.PositiveBigIntegerField(null=True, blank=True)
@@ -24,6 +30,7 @@ class User(AbstractUser):
     score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=None, editable=False)
     is_guarantor = models.BooleanField(default=False)
     garants = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='guarantor')
+    user_type = models.CharField(max_length=1, choices=USER_TYPE_CHOICES, default='U')
     
     def clean(self):
         super().clean()
