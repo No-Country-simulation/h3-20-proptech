@@ -1,14 +1,16 @@
 //src/components/AdministratorDashboard.jsx
-import React, { useState, useEffect } from "react";
+import React, {  useContext, useState, useEffect } from "react";
 import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
 import { PiTrash, PiNotePencil } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import RegisterUserAdmin from "./RegisterUserAdmin";
 import axios from "axios";
+import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
 
 const AdministratorDashboard = ({ onRowSelect }) => {
+    const { getUsers} = useContext(Context);
     const [usersData, setUsersData] = useState([]);
     const [investmentData0, setInvestmentData0] = useState(investmentDataFile);
     const [investmentData, setInvestmentData] = useState(investmentData0);
@@ -20,27 +22,42 @@ const AdministratorDashboard = ({ onRowSelect }) => {
         numberOfPayments: "",
         monthlyReturn: "",
     });
-    const API_URL = "https://h3-20-proptech-production.up.railway.app";
+    // const API_URL = "https://h3-20-proptech-production.up.railway.app";
 
     // Fetch users data from API
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         try {
+    //             const response = await axios.get(`${API_URL}/api/all-users/`);
+    //             const users = response.data;
+    //             if (Array.isArray(users)) {
+    //                 setUsersData(users);
+    //             } else {
+    //                 throw new Error("Invalid users data format");
+    //             }
+    //         } catch (error) {
+    //             console.error("Error fetching users data:", error);
+    //             NotificationService.error("Error loading user data.", 3000);
+    //         }
+    //     };
+
+    //     fetchUsers();
+    // }, [API_URL]);
+
     useEffect(() => {
         const fetchUsers = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/api/all-users/`);
-                const users = response.data;
-                if (Array.isArray(users)) {
-                    setUsersData(users);
-                } else {
-                    throw new Error("Invalid users data format");
-                }
-            } catch (error) {
-                console.error("Error fetching users data:", error);
-                NotificationService.error("Error loading user data.", 3000);
-            }
+          try {
+            const response = await getUsers();
+            setUsersData(response.data);
+            // NotificationService.success("Success loading users.", 3000);
+            // console.log(usersData);
+          } catch (error) {
+            NotificationService.error("Error loading users.", 3000);
+          }
         };
-
         fetchUsers();
-    }, [API_URL]);
+      }, []);
+
 
     const getUsernameById = (id) => {
         const user = usersData.find((user) => user.id === id);

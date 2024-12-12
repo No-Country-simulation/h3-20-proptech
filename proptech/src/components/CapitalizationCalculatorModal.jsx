@@ -1,8 +1,9 @@
-import React, { useState, useEffect  } from "react";
+import React, { useContext, useState, useEffect  } from "react";
 import Select from "react-select"; // Ensure react-select is installed
 // import usersData from "../shared/data/usersData.json";
 import investmentData from "../shared/data/investmentData.json";
-import axios from "axios";
+// import axios from "axios";
+import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
 
 function CapitalizationCalculatorModal({
@@ -14,25 +15,38 @@ setInvestor,
   investorData,
   setInvestorData,
 }) {
+    const { getUsers, getUserById} = useContext(Context);
     const [usersData, setUsersData] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const API_URL = "https://h3-20-proptech-production.up.railway.app";
+    // const API_URL = "https://h3-20-proptech-production.up.railway.app";
 
-    useEffect(() => {
-      const fetchUsers = async () => {
-        try {
-          const response = await axios.get(`${API_URL}/api/all-users/`);
-          setUsersData(response.data);
-          NotificationService.success("Success loading users.", 3000);
-          console.log(usersData);
-        } catch (error) {
-          NotificationService.error("Error loading users.", 3000);
-        }
-      };
-      fetchUsers();
-    }, []);
+    // useEffect(() => {
+    //   const fetchUsers = async () => {
+    //     try {
+    //       const response = await axios.get(`${API_URL}/api/all-users/`);
+    //       setUsersData(response.data);
+    //       NotificationService.success("Success loading users.", 3000);
+    //       console.log(usersData);
+    //     } catch (error) {
+    //       NotificationService.error("Error loading users.", 3000);
+    //     }
+    //   };
+    //   fetchUsers();
+    // }, []);
     
-
+    useEffect(() => {
+        const fetchUsers = async () => {
+          try {
+            const response = await getUsers();
+            // const response = await getUserById(2);
+            setUsersData(response.data);
+            // NotificationService.success("Success loading users.", 3000);
+          } catch (error) {
+            NotificationService.error("Error loading users.", 3000);
+          }
+        };
+        fetchUsers();
+      }, []);
     
   // Transform usersData into options for react-select
   const options = usersData.map((user) => ({
