@@ -30,12 +30,9 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data),
         credentials: "include",
       });
-      console.log("Before SHOW:::", response);
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const result = await response.json();
       console.log("Registration successful:", result);
       navigate("/login");
@@ -65,7 +62,6 @@ export const ContextProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log("Response data:", data);
 
       if (data.access && data.refresh) {
         setIsAuthenticated(true);
@@ -101,7 +97,7 @@ export const ContextProvider = ({ children }) => {
     localStorage.clear();
     navigate("/");
   };
-//for register new user from Admin dashboard
+  //for register new user from Admin dashboard
   const registerUserAdmin = async (data) => {
     try {
       const url =
@@ -124,14 +120,13 @@ export const ContextProvider = ({ children }) => {
 
       const result = await response.json();
       console.log("Registration successful:", result);
-    //   navigate("/login");
+      //   navigate("/login");
       return result;
     } catch (error) {
       console.error("Registration error:", error.message);
       throw error;
     }
   };
-
 
   return (
     <Context.Provider

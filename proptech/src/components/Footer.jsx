@@ -3,15 +3,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import XIcon from "@mui/icons-material/X";
 import logo from "../assets/logo-white.png";
-import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer className="footer bg-background-footer text-center py-4">
       <aside className="ml-16">
-        <Link to={"/"}>
+        <a href="#home">
           <img src={logo} alt="Logo" className="h-8 ml-3" />
-        </Link>
+        </a>
         <div className="flex ml-3 mt-2">
           <InstagramIcon fontSize="large" />
           <XIcon fontSize="large" className="mr-2" />
@@ -21,7 +20,9 @@ function Footer() {
       </aside>
       <nav>
         <h6 className="footer-title">Nosotros</h6>
-        <a className="link link-hover">Sobre nosotros</a>
+        <a className="link link-hover" href="#nosotros">
+          Sobre nosotros
+        </a>
         <a className="link link-hover">Blog</a>
         <a className="link link-hover">Contactenos</a>
       </nav>
