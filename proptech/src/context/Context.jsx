@@ -6,6 +6,8 @@ export const Context = createContext();
 
 export default Context;
 
+const urlGlobal = "https://h3-20-proptech-production.up.railway.app/api/";
+
 export const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -18,8 +20,7 @@ export const ContextProvider = ({ children }) => {
   );
   const registerUser = async (data) => {
     try {
-      const url =
-        "https://h3-20-proptech-production.up.railway.app/api/register/";
+      const url = urlGlobal + "register/";
 
       const response = await fetch(url, {
         method: "POST",
@@ -45,7 +46,8 @@ export const ContextProvider = ({ children }) => {
 
   const loginUser = async (login_data) => {
     try {
-      const url = "https://h3-20-proptech-production.up.railway.app/api/login/";
+      const url = urlGlobal + "login/";
+      console.log(url);
 
       const response = await fetch(url, {
         method: "POST",
