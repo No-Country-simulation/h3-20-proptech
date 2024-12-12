@@ -29,7 +29,9 @@ schema_view = get_schema_view(
         description='Apis documentation',
     ),
     public=True, 
-    permission_classes=(permissions.AllowAny,)
+    permission_classes=(permissions.AllowAny,),
+    urlconf='core.urls',
+    url='https://h3-20-proptech-production.up.railway.app/',
 )
 
 urlpatterns = [
