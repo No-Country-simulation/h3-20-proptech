@@ -32,7 +32,6 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data),
         credentials: "include",
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -48,7 +47,10 @@ export const ContextProvider = ({ children }) => {
 
   const loginUser = async (login_data) => {
     try {
-      const response = await fetch(urlGlobal + "login/", {
+      const url = urlGlobal + "login/";
+      console.log(url);
+
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +70,6 @@ export const ContextProvider = ({ children }) => {
         setIsAuthenticated(true);
         localStorage.setItem("access", JSON.stringify(data.access));
         localStorage.setItem("refresh", JSON.stringify(data.refresh));
-        localStorage.setItem("rol", JSON.stringify(data.user_type));
         navigate("/");
         console.log("Login Success");
       } else {
@@ -80,8 +81,9 @@ export const ContextProvider = ({ children }) => {
   };
 
 //   const getUsers = async () => {
-//     try {
-//       const response = await axios.get("");
+//       try {
+//         const url = urlGlobal + "all-users/";
+//       const response = await axios.get(url);
 //       if (response.statusText === "OK") {
 //         if (users.length === 0) {
 //           setUsers(response.data);
@@ -94,7 +96,7 @@ export const ContextProvider = ({ children }) => {
 //     }
 //   };
 
-const getUsers = async () => {
+  const getUsers = async () => {
     try {
       const url =  urlGlobal + "all-users/"; // Ensure urlGlobal is correctly initialized in context.jsx
       const response = await axios.get(url);
@@ -132,7 +134,7 @@ const getUsers = async () => {
     localStorage.clear();
     navigate("/");
   };
-
+  
   //to register new user from Admin dashboard
   const registerUserAdmin = async (data) => {
     try {
@@ -163,7 +165,7 @@ const getUsers = async () => {
     }
   };
 
-  //to update user information 
+//to update user information 
 const updateUserInformation = async (data) => {
     try {
       const url = urlGlobal + "update-user-information/";

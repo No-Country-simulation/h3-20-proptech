@@ -94,7 +94,6 @@ const RegisterUserAdmin = () => {
         };
         try {
             const result = await registerUserAdmin(data);
-            console.log("Del envio:: ", result);
             NotificationService.success("Datos cargados exitosamente",3000);
         } catch (error) {
             NotificationService.error("Error en la carga de datos.",3000);

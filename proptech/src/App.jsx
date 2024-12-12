@@ -34,7 +34,7 @@ import CapitalizationCalculator from "./components/CapitalizationCalculator";
 import LoanForm from "./components/LoanForm";
 import PaymentForm from "./components/PaymentForm";
 import Payments from "./components/Payments";
-import AdministrationDashboard from "./components/AdministrationDashboard";
+import AdministratorDashboard from "./components/AdministratorDashboard";
 import CapitalizationCalculatorAdmin from "./components/CapitalizationCalculatorAdmin";
 import CapitalizationCalculatorEdit from "./components/CapitalizationCalculatorEdit";
 import Dashboard from "./components/Dashboard";
@@ -98,7 +98,7 @@ function App() {
         <Route path="/pagos" element={<Payments />} />
         <Route path="/loan" element={<LoanForm />} />
         <Route path="/payment" element={<PaymentForm />} />
-        <Route path="/adminDashboard" element={<AdministrationDashboard />} />
+        <Route path="/adminDashboard" element={<AdministratorDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/registerUserAdmin" element={<RegisterUserAdmin />} />
       </Route>
