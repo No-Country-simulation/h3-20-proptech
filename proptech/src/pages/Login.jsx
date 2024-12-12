@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import happyFamily from "../assets/familia-feliz.png";
 import { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
+import { PiEye, PiEyeSlash } from "react-icons/pi";
 
 const Login = () => {
   const { loginUser } = useContext(Context);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
   const [errors, setErrors] = useState({
     email: null,
@@ -57,17 +59,22 @@ const Login = () => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       username: email,
       password: password,
     };
-    e.preventDefault();
     try {
       const result = await loginUser(data);
       console.log("Del envio:: ", result);
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  //password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -128,7 +135,8 @@ const Login = () => {
                     className="input-field "
                   />
                 </div>
-                <div>
+
+                <div className="relative">
                   <label className="font-bold text-text-primary mb-2">
                     Password
                   </label>
@@ -144,7 +152,7 @@ const Login = () => {
                     Inserte una contraseña válida.
                   </p>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="********"
                     value={password}
                     onChange={(e) =>
@@ -154,6 +162,18 @@ const Login = () => {
                     onFocus={() => handleFocus("password")}
                     className="input-field "
                   />
+                  <span
+                    onClick={togglePasswordVisibility}
+                    className={`absolute right-3 cursor-pointer ${
+                      showPassword ? "mt-2" : "mt-2"
+                    }`}
+                  >
+                    {showPassword ? (
+                      <PiEyeSlash size={24} />
+                    ) : (
+                      <PiEye size={24} />
+                    )}
+                  </span>
                 </div>
               </div>
               <a
@@ -162,22 +182,20 @@ const Login = () => {
               >
                 ¿Olvidó su contraseña?
               </a>
-              <div className="flex flex-col gap-4 card-actions">
-                <div className="flex justify-start gap-4 items-center">
-                  <button type="submit" className="btn-primary w-full ">
-                    Iniciar sesión
-                  </button>
-                  <div className="text-sm text-center ml-4">
-                    ¿Sin cuenta?{" "}
-                    <Link className="text-sm mx-2 text-primary" to="/register">
-                      Registrase
-                    </Link>
-                  </div>
-                </div>
+
+              <div className="flex flex-col gap-4 card-actions mt-2">
+                <button type="submit" className="btn-primary w-full ">
+                  Iniciar sesión
+                </button>
+                <Link
+                  className="text-white text-center btn-secondary w-full"
+                  to="/register"
+                >
+                  Crear una cuenta
+                </Link>
               </div>
             </form>
           </div>
-
           {/* End Form */}
         </div>
       </div>

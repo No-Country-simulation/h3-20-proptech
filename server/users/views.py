@@ -11,7 +11,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from django.shortcuts import get_object_or_404
 
 from .models import PersonalInformationToValidate
-from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer, CustomTokenObtainPairSerializer, PersonalInformationToValidateSerializer
+from .serializers import RegisterSerializer, UserSerializer, RegisterWithKYCSerializer, UpdatePersonalDataSerializer, AddGarantorSerializer, CustomTokenObtainPairSerializer, PersonalInformationToValidateSerializer, CompleteUserSerializer
 
 User = get_user_model()
 
@@ -193,3 +193,10 @@ class UpdateUserInformationView(APIView):
             return Response(personal_info_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "User information updated successfully"}, status=status.HTTP_200_OK)
+    
+    
+    
+    
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = CompleteUserSerializer
