@@ -237,3 +237,8 @@ class UpdateUserInformationView(APIView):
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = CompleteUserSerializer
+    
+    
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = CompleteUserSerializer

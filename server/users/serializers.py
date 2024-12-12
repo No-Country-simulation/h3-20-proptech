@@ -228,6 +228,7 @@ class PersonalInformationToValidateSerializer(serializers.ModelSerializer):
         
         
 class CompleteUserSerializer(serializers.ModelSerializer):
+    personal_info = PersonalInformationToValidateSerializer(source='personalinformationtovalidate', read_only=True)
     class Meta:
         model = User
         exclude = ['password']
