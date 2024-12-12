@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function Navbar() {
   const [isAuth, setIsAuth] = useState(false);
+  const rol = localStorage.getItem("rol");
 
   useEffect(() => {
     const access = JSON.parse(localStorage.getItem("access"));
@@ -18,7 +19,7 @@ function Navbar() {
     localStorage.clear();
     window.location.href = "/";
   };
-
+  console.log(rol);
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -156,27 +157,31 @@ function Navbar() {
                   Quiénes somos
                 </a>
               </li>
-              <li className="dropdown">
-                <div tabIndex={0} className="dropdown-toggle cursor-pointer">
-                  Calculadoras
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-700 rounded-box w-52"
-                >
-                  <li>
-                    <Link to="/calculatorAdmin">ClientCalculator</Link>
-                  </li>
-                  <li>
-                    <Link to="/capitalizacionAdmin">
-                      CapitalizationCalculator
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard">Panel de control</Link>
-                  </li>
-                </ul>
-              </li>
+
+              {rol === "A" && (
+                <li className="dropdown">
+                  <div tabIndex={0} className="dropdown-toggle cursor-pointer">
+                    Calculadoras
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu p-2 shadow bg-base-700 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="/calculatorAdmin">ClientCalculator</Link>
+                    </li>
+                    <li>
+                      <Link to="/capitalizacionAdmin">
+                        CapitalizationCalculator
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard">Panel de control</Link>
+                    </li>
+                  </ul>
+                </li>
+              )}
+
               <li>
                 {isAuth ? (
                   <button onClick={logoutUser} className="btn-primary">
