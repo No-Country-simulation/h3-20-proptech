@@ -31,6 +31,7 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data),
         credentials: "include",
       });
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -46,10 +47,7 @@ export const ContextProvider = ({ children }) => {
 
   const loginUser = async (login_data) => {
     try {
-      const url = urlGlobal + "login/";
-      console.log(url);
-
-      const response = await fetch(url, {
+      const response = await fetch(urlGlobal + "login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,6 +67,7 @@ export const ContextProvider = ({ children }) => {
         setIsAuthenticated(true);
         localStorage.setItem("access", JSON.stringify(data.access));
         localStorage.setItem("refresh", JSON.stringify(data.refresh));
+        localStorage.setItem("rol", JSON.stringify(data.user_type));
         navigate("/");
         console.log("Login Success");
       } else {
