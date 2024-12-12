@@ -22,27 +22,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
         numberOfPayments: "",
         monthlyReturn: "",
     });
-    // const API_URL = "https://h3-20-proptech-production.up.railway.app";
-
-    // Fetch users data from API
-    // useEffect(() => {
-    //     const fetchUsers = async () => {
-    //         try {
-    //             const response = await axios.get(`${API_URL}/api/all-users/`);
-    //             const users = response.data;
-    //             if (Array.isArray(users)) {
-    //                 setUsersData(users);
-    //             } else {
-    //                 throw new Error("Invalid users data format");
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching users data:", error);
-    //             NotificationService.error("Error loading user data.", 3000);
-    //         }
-    //     };
-
-    //     fetchUsers();
-    // }, [API_URL]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -118,7 +98,20 @@ const AdministratorDashboard = ({ onRowSelect }) => {
 
     return (
         <div className="p-4">
-            <h2 className="h2">Administrator Dashboard</h2>
+            <div className="flex items-center justify-between pb-4 ">
+                <div className="text-center flex-grow" >
+            <h2 className="h2 ">Panel de control de Inversiones</h2>
+
+                </div>
+            <button
+                className="btn-primary ml-auto"
+                onClick={() => setIsModalOpen(true)}
+            >
+                Registrar nuevo usuario
+            </button>
+
+            </div>
+
 
             <table className="w-full border-collapse border border-gray-300">
                 <thead>
@@ -246,10 +239,29 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 </div>
             )}
 
-            <div className="mt-4">
+            {/* <div className="mt-4">
                 <h2 className="h2">Registrar nuevo usuario para inversión</h2>
                 <RegisterUserAdmin />
-            </div>
+            </div> */}
+
+
+
+            {isModalOpen && (
+                <div className="modal-custom-auto">
+                    <div className="modal-content">
+                        <button
+                            className="close-modal"
+                            onClick={() => setIsModalOpen(false)}
+                        >
+                            &times;
+                        </button>
+                        <h2 className="h2">Registrar nuevo usuario para inversión</h2>
+                        <RegisterUserAdmin />
+                    </div>
+                </div>
+            )}
+
+
         </div>
     );
 };

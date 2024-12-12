@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import investmentDataFile from "../shared/data/investmentData.json";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { useNavigate } from "react-router-dom"; // Assuming react-router is used
-import AdministrationDashboard from "./AdministrationDashboard";
+import AdministratorDashboard from "./AdministratorDashboard";
 import dashboardMan from "../assets/dashboardMan.png";
 
 function Dashboard() {
@@ -89,7 +89,7 @@ function Dashboard() {
             </div>
             {/* Administrator Dashboard */}
             <div>
-                <AdministrationDashboard onRowSelect={handleRowSelection} />
+                <AdministratorDashboard onRowSelect={handleRowSelection} />
             </div>
         </div>
     );
