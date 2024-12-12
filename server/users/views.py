@@ -167,6 +167,43 @@ class UpdateUserInformationView(APIView):
                 'third_income_receipt', openapi.IN_FORM, 
                 description="Tercer comprobante de ingreso", type=openapi.TYPE_FILE
             ),
+            openapi.Parameter(
+                'first_income_gross', openapi.IN_FORM, 
+                description="Ingreso bruto del primer periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'first_income_net', openapi.IN_FORM, 
+                description="Ingreso neto del primer periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'first_income_date', openapi.IN_FORM, 
+                description="Fecha del primer ingreso", type=openapi.TYPE_STRING, format=openapi.FORMAT_DATE
+            ),
+            openapi.Parameter(
+                'second_income_gross', openapi.IN_FORM, 
+                description="Ingreso bruto del segundo periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'second_income_net', openapi.IN_FORM, 
+                description="Ingreso neto del segundo periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'second_income_date', openapi.IN_FORM, 
+                description="Fecha del segundo ingreso", type=openapi.TYPE_STRING, format=openapi.FORMAT_DATE
+            ),
+            openapi.Parameter(
+                'third_income_gross', openapi.IN_FORM, 
+                description="Ingreso bruto del tercer periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'third_income_net', openapi.IN_FORM, 
+                description="Ingreso neto del tercer periodo", type=openapi.TYPE_NUMBER
+            ),
+            openapi.Parameter(
+                'third_income_date', openapi.IN_FORM, 
+                description="Fecha del tercer ingreso", type=openapi.TYPE_STRING, format=openapi.FORMAT_DATE
+            ),
+
         ],
         responses={
             200: openapi.Response("Información del usuario actualizada exitosamente"),

@@ -92,6 +92,15 @@ class RegisterWithKYCSerializer(serializers.Serializer):
             second_receipt = validated_data['second_receipt'],
             third_receipt = validated_data['third_receipt'],
             service_receipt = validated_data['service_receipt'],
+            first_income_gross = validated_data['first_income_gross'],
+            first_income_net = validated_data['first_income_net'],
+            first_income_date = validated_data['first_income_date'],
+            second_income_gross = validated_data['second_income_gross'],
+            second_income_net = validated_data['second_income_net'],
+            second_income_date = validated_data['second_income_date'],
+            third_income_gross = validated_data['third_income_gross'],
+            third_income_net = validated_data['third_income_net'],
+            third_income_date = validated_data['third_income_date'],
         )
         return personal_data
     
@@ -106,6 +115,15 @@ class RegisterWithKYCSerializer(serializers.Serializer):
             'second_receipt' : instance.second_receipt.url,
             'third_receipt' : instance.third_receipt.url,
             'service_receipt' : instance.service_receipt.url,
+            'first_income_gross': instance.first_income_gross,
+            'first_income_net': instance.first_income_net,
+            'first_income_date': instance.first_income_date,
+            'second_income_gross': instance.second_income_gross,
+            'second_income_net': instance.second_income_net,
+            'second_income_date': instance.second_income_date,
+            'third_income_gross': instance.third_income_gross,
+            'third_income_net': instance.third_income_net,
+            'third_income_date': instance.third_income_date,
         }
        
         return representation
@@ -132,6 +150,15 @@ class AddGarantorSerializer(serializers.Serializer):
     first_income_receipt = serializers.ImageField()
     second_income_receipt = serializers.ImageField()
     third_income_receipt = serializers.ImageField()
+    first_income_gross = serializers.FloatField()
+    first_income_net = serializers.FloatField()
+    first_income_date = serializers.DateField()
+    second_income_gross = serializers.FloatField()
+    second_income_net = serializers.FloatField()
+    second_income_date = serializers.DateField()
+    third_income_gross = serializers.FloatField()
+    third_income_net = serializers.FloatField()
+    third_income_date = serializers.DateField()
     
      
     @transaction.atomic
@@ -160,6 +187,15 @@ class AddGarantorSerializer(serializers.Serializer):
             first_income_receipt = validated_data['service_receipt'],
             second_income_receipt = validated_data['service_receipt'],
             third_income_receipt = validated_data['service_receipt'],
+            first_income_gross = validated_data['first_income_gross'],
+            first_income_net = validated_data['first_income_net'],
+            first_income_date = validated_data['first_income_date'],
+            second_income_gross = validated_data['second_income_gross'],
+            second_income_net = validated_data['second_income_net'],
+            second_income_date = validated_data['second_income_date'],
+            third_income_gross = validated_data['third_income_gross'],
+            third_income_net = validated_data['third_income_net'],
+            third_income_date = validated_data['third_income_date'],
         )
         return personal_data
     
@@ -178,7 +214,16 @@ class PersonalInformationToValidateSerializer(serializers.ModelSerializer):
             'service_receipt',
             'first_income_receipt',
             'second_income_receipt',
-            'third_income_receipt'
+            'third_income_receipt',
+            'first_income_gross',
+            'first_income_net',
+            'first_income_date',
+            'second_income_gross',
+            'second_income_net',
+            'second_income_date',
+            'third_income_gross',
+            'third_income_net',
+            'third_income_date',
         ]
         
         
