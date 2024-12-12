@@ -65,8 +65,7 @@ const Login = () => {
       password: password,
     };
     try {
-      const result = await loginUser(data);
-      console.log("Del envio:: ", result);
+      await loginUser(data);
     } catch (error) {
       console.log("error", error);
     }

@@ -81,10 +81,12 @@ function Content() {
             </div>
           </div>
         </div>
-        <InfoCards />
+        <span id="company">
+          <InfoCards />
+        </span>
       </section>
 
-      <section id="company">
+      <section>
         <h2 className="text-3xl font-bold text-center"> Nuestros aliados</h2>
 
         <div className="grid grid-cols-12 gap-4 mt-6">
