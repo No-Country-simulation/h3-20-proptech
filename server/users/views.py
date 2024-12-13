@@ -286,7 +286,7 @@ class UpdateUserStatusView(APIView):
         user_to_update = User.objects.get(pk=user_id)
         user_to_update.user_type = new_user_type[0].capitalize()
         if new_user_type == 'admin':
-            user_to_update.is_staff == True
+            user_to_update.is_staff = True
         user_to_update.save()
         
         return Response({'detail': f'User type updated to {new_user_type.capitalize()}'})
