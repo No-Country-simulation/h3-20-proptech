@@ -248,14 +248,18 @@ class UserDetailView(generics.RetrieveAPIView):
 class UpdateUserStatusView(APIView):
     permission_classes = [IsAuthenticated]
     @swagger_auto_schema(
-        operation_summary="Actualizar información del usuario",
-        operation_description="Permite actualizar la información personal y documentos del usuario autenticado.",
-        manual_parameters=[
-            openapi.Parameter(
-                'user_type', openapi.IN_FORM, 
-                description="New type of user (Admin, User, Investor, Borrower)", type=openapi.TYPE_STRING, required=True
-            ),
-        ],
+        operation_summary="Actualizar status del usuario",
+        operation_description="Permite actualizar el status.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'user_type': openapi.Schema(
+                    type=openapi.TYPE_STRING,
+                    description="New type of user (Admin, User, Investor, Borrower)",
+                )
+            },
+            required=['user_type'],
+        ),
         responses={
             400: openapi.Response("Errores en los datos enviados"),
         }
