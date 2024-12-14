@@ -242,3 +242,51 @@ class UserListView(generics.ListAPIView):
 class UserDetailView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = CompleteUserSerializer
+    
+    
+    
+class UpdateUserStatusView(APIView):
+    permission_classes = [IsAuthenticated]
+    @swagger_auto_schema(
+        operation_summary="Actualizar status del usuario",
+        operation_description="Permite actualizar el status.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'user_type': openapi.Schema(
+                    type=openapi.TYPE_STRING,
+                    description="New type of user (Admin, User, Investor, Borrower)",
+                )
+            },
+            required=['user_type'],
+        ),
+        responses={
+            400: openapi.Response("Errores en los datos enviados"),
+        }
+    )
+    def post(self, request, user_id, *args, **kwargs):
+        if not request.user.is_staff:
+            return Response(
+                {"detail": "User not allowed"},
+                status=status.HTTP_403_FORBIDDEN
+            )
+            
+            
+        new_user_type = request.data.get('user_type').lower()
+
+        # Validar el nuevo tipo de usuario (puedes ajustar estos valores según tus modelos/negocio)
+        valid_user_types = ['user', 'admin', 'investor', 'borrower']
+        if new_user_type not in valid_user_types:
+            return Response(
+                {"detail": f"user_type must be one of {', '.join(valid_user_types)}."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
+            
+        user_to_update = User.objects.get(pk=user_id)
+        user_to_update.user_type = new_user_type[0].capitalize()
+        if new_user_type == 'admin':
+            user_to_update.is_staff = True
+        user_to_update.save()
+        
+        return Response({'detail': f'User type updated to {new_user_type.capitalize()}'})
