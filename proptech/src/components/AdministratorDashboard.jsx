@@ -2,7 +2,7 @@
 import React, {  useContext, useState, useEffect } from "react";
 import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
-import { PiTrash, PiNotePencil } from "react-icons/pi";
+import { PiTrash, PiNotePencil, PiX } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import RegisterUserAdmin from "./RegisterUserAdmin";
 import axios from "axios";
@@ -11,9 +11,12 @@ import { NotificationService } from "../shared/notistack.service";
 
 const AdministratorDashboard = ({ onRowSelect }) => {
     const { getUsers} = useContext(Context);
+    const { getInvestments} = useContext(Context);
+
     const [usersData, setUsersData] = useState([]);
     const [investmentData0, setInvestmentData0] = useState(investmentDataFile);
     const [investmentData, setInvestmentData] = useState(investmentData0);
+    // const [investmentData, setInvestmentData] = useState(getInvestments);
     const [editingRow, setEditingRow] = useState(null);
     const [newInvestment, setNewInvestment] = useState({
         investor: "",
@@ -36,6 +39,18 @@ const AdministratorDashboard = ({ onRowSelect }) => {
           }
         };
         fetchUsers();
+    // const fetchInvestments = async () => {
+    //     try {
+    //       const response = await getInvestments();
+    //       setInvestmentData(response.data);
+    //       NotificationService.success("Success loading users.", 3000);
+    //       // console.log(usersData);
+    //     } catch (error) {
+    //       NotificationService.error("Error loading users.", 3000);
+    //     }
+    //   };        
+    //     fetchInvestments();
+
       }, []);
 
 
@@ -43,6 +58,10 @@ const AdministratorDashboard = ({ onRowSelect }) => {
         const user = usersData.find((user) => user.id === id);
         return user ? user.username : "Unknown User";
     };
+
+
+
+
 
     const navigate = useNavigate();
 
@@ -131,13 +150,14 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                         <tr
                             key={row.id}
                             className="hover:bg-gray-50 cursor-pointer"
-                            onDoubleClick={() => onRowSelect(row)}
+                            onClick={() => onRowSelect(row)}
                         >
                             <td className="border border-gray-300 px-4 py-2">{row.id}</td>
                             <td className="border border-gray-300 px-4 py-2">
                                 {getUsernameById(row.investor)}
                             </td>
                             <td className="border border-gray-300 px-4 py-2">{row.principal.toFixed(2)}</td>
+                            {/* <td className="border border-gray-300 px-4 py-2">{row.amount.toFixed(2)}</td> */}
                             <td className="border border-gray-300 px-4 py-2">
                                 {(row.interestRate * 100).toFixed(3)}%
                             </td>
@@ -239,23 +259,18 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 </div>
             )}
 
-            {/* <div className="mt-4">
-                <h2 className="h2">Registrar nuevo usuario para inversión</h2>
-                <RegisterUserAdmin />
-            </div> */}
-
-
-
             {isModalOpen && (
-                <div className="modal-custom-auto">
-                    <div className="modal-content">
-                        <button
-                            className="close-modal"
-                            onClick={() => setIsModalOpen(false)}
-                        >
-                            &times;
-                        </button>
-                        <h2 className="h2">Registrar nuevo usuario para inversión</h2>
+                <div className="modal-custom">
+                    <div >
+                        <div className="text-right">
+                            <button
+                                className="close-modal"
+                                onClick={() => setIsModalOpen(false)}
+                            >
+                                <PiX size={24} /> {/* &times; */}
+                            </button>
+                        </div>
+                        <h2 className="h2">Registrar nuevo usuario</h2>
                         <RegisterUserAdmin />
                     </div>
                 </div>

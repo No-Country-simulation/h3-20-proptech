@@ -122,9 +122,9 @@ function CapitalizationCalculator() {
             refuerzoMes,
             refuerzoValue,
             depositedCuota,
-            isActive,
             validated,
             estado,
+            isActive,
             results,
         };
         

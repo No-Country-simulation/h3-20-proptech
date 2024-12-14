@@ -4,6 +4,12 @@ import { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 import { PiEye, PiEyeSlash } from "react-icons/pi";
 import { NotificationService } from "../shared/notistack.service";
+import axios from "axios";
+
+
+const userTypeData = {
+    type: ["U", "A"]
+};
 
 const RegisterUserAdmin = () => {
     const { registerUserAdmin } = useContext(Context);
@@ -11,6 +17,7 @@ const RegisterUserAdmin = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [userType, setUserType] = useState("");
     //const [validated, setValidated] = useState(false);
     //const [isActive, setIsActive] = useState(false);
     const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
@@ -20,6 +27,7 @@ const RegisterUserAdmin = () => {
         email: null,
         password: null,
         username: null,
+        userType: null,
         //validated: null,
         //isActive: null,
     }); // null: no validation yet, true: invalid, false: valid
@@ -27,6 +35,7 @@ const RegisterUserAdmin = () => {
         email: false,
         password: false,
         username: false,
+        userType: false,
         //validated: false,
         //isActive: false,
     });
@@ -37,7 +46,8 @@ const RegisterUserAdmin = () => {
         },
         [email],
         [password],
-        [username]
+        [username],
+        [userType]
         //[validated],
         //[isActive]
     );
@@ -50,7 +60,7 @@ const RegisterUserAdmin = () => {
             );
         if (field === "username")
             return !/^[a-zA-Z][a-zA-Z0-9 ._]{2,19}(?<![.\s])$/.test(value);
-            // return !/^[a-zA-Z][a-zA-Z0-9._]{2,19}(?<!\.)$/.test(value);
+        // return !/^[a-zA-Z][a-zA-Z0-9._]{2,19}(?<!\.)$/.test(value);
         //if (field === "validated") return !/^\d+(\.\d+)?$/.test(value);
         //if (field === "isActive") return !/^\d+(\.\d+)?$/.test(value);
         return false;
@@ -61,6 +71,8 @@ const RegisterUserAdmin = () => {
         if (field === "email") setEmail(value);
         if (field === "password") setPassword(value);
         if (field === "username") setUsername(value);
+        if (field === "userType") setUserType(value);
+
         // if (field === "validated") setPassword(value);
         // if (field === "isActive") setPassword(value);
 
@@ -85,6 +97,26 @@ const RegisterUserAdmin = () => {
         setShowPassword((prev) => !prev);
     };
 
+const updateUserType = async (user_id) => {
+    e.preventDefault();
+    const data = {
+        userType: userType,
+    };
+    try {
+
+        const result = await axios.post(`${API_URL}/api/update-status/${user_id}/`, data, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+        });
+
+        NotificationService.success("Usuario " + {userType}, 3000);
+    } catch (error) {
+        NotificationService.error("Error en la carga de datos.", 3000);
+    }
+}
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -94,18 +126,18 @@ const RegisterUserAdmin = () => {
         };
         try {
             const result = await registerUserAdmin(data);
-            NotificationService.success("Datos cargados exitosamente",3000);
+            NotificationService.success("Datos cargados exitosamente", 3000);
         } catch (error) {
-            NotificationService.error("Error en la carga de datos.",3000);
+            NotificationService.error("Error en la carga de datos.", 3000);
         }
     };
 
     return (
-        <div className="grid grid-cols-1">
+        <div className="grid grid-cols-2 h-screen">
             {/* <div className="col-span-5 content-center"> */}
 
             {/* Form */}
-            <div className="w-[90%] mx-auto mt-2">
+            <div className="w-[70%] mx-auto mt-2">
                 <form onSubmit={onSubmit} className="flex flex-col gap-2">
                     <div className="flex flex-col gap-5 pb-3">
                         <div>
@@ -114,13 +146,13 @@ const RegisterUserAdmin = () => {
                             </label>
                             <p
                                 className={`text-sm mt-1 ${errors.email === true
-                                        ? "text-text-messageError"
-                                        : errors.email === false && focus.email
-                                            ? "text-text-message"
-                                            : "hidden"
+                                    ? "text-text-messageError"
+                                    : errors.email === false && focus.email
+                                        ? "text-text-message"
+                                        : "hidden"
                                     }`}
                             >
-                                El email es {errors.email === true? "incorrecto." : "correcto."}
+                                El email es {errors.email === true ? "incorrecto." : "correcto."}
                             </p>
                             <input
                                 type="text"
@@ -139,13 +171,13 @@ const RegisterUserAdmin = () => {
                             </label>
                             <p
                                 className={`text-sm mt-1 ${errors.username === true
-                                        ? "text-text-messageError"
-                                        : errors.username === false && focus.username
-                                            ? "text-text-message"
-                                            : "hidden"
+                                    ? "text-text-messageError"
+                                    : errors.username === false && focus.username
+                                        ? "text-text-message"
+                                        : "hidden"
                                     }`}
                             >
-                                El nombre del usuario es {errors.username === true? "incorrecto." : "correcto."}
+                                El nombre del usuario es {errors.username === true ? "incorrecto." : "correcto."}
                             </p>
                             <input
                                 type="text"
@@ -166,13 +198,13 @@ const RegisterUserAdmin = () => {
                             </label>
                             <p
                                 className={`text-sm mt-1 ${errors.password === true
-                                        ? "text-text-messageError"
-                                        : errors.password === false && focus.password
-                                            ? "text-text-message"
-                                            : "hidden"
+                                    ? "text-text-messageError"
+                                    : errors.password === false && focus.password
+                                        ? "text-text-message"
+                                        : "hidden"
                                     }`}
                             >
-                                La contraseña es {errors.password === true? "incorrecta." : "correcta."}
+                                La contraseña es {errors.password === true ? "incorrecta." : "correcta."}
                             </p>
                             <div className="relative">
                                 <input
@@ -190,11 +222,26 @@ const RegisterUserAdmin = () => {
                                     onClick={togglePasswordVisibility}
                                     className="absolute right-3 top-3 cursor-pointer"
                                 >
-                                    {showPassword ? <PiEyeSlash size={24}/> : <PiEye size={24}/>}
+                                    {showPassword ? <PiEyeSlash size={24} /> : <PiEye size={24} />}
                                 </span>
                             </div>
                         </div>
-
+                        <div>
+                            <select
+                                value={userType}
+                                onChange={(e) => setUserType(e.target.value)}
+                                className="select"
+                            // value={annualRate}
+                            // onChange={(e) => setAnnualRate(parseFloat(e.target.value))}
+                            // className="select"
+                            >
+                                {userTypeData.type.map((type, idx) => (
+                                    <option key={idx} value={type}>
+                                        {type}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
 
                     <div className="gap-4 items-center">

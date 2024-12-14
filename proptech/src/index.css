@@ -271,9 +271,11 @@ all: unset;
     @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-[1001];
     max-width: 90%; /* Prevents the modal from being too wide */
     max-height: 90%; /* Ensures it doesn't overflow the viewport vertically */
+    overflow-x: auto; /* Adds scrolling if the content overflows horizontally */
     overflow-y: auto; /* Adds scrolling if the content overflows vertically */
     width: auto; /* Auto adjusts based on content */
     height: auto; /* Auto adjusts based on content */
+    box-sizing: border-box; /* Includes padding and border in width/height calculations */
 }
 
 
