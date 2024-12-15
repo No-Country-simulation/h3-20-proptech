@@ -31,6 +31,7 @@ class Investment(models.Model):
     anual_rate = models.DecimalField(max_digits=20, decimal_places=6)
     enforcement = models.BooleanField(default=True)
     monthly_enforcement = models.PositiveIntegerField(default=0)
+    value_enforcement = models.DecimalField(max_digits=20, decimal_places=6, default=0.0, blank=True)
     deposited_cuota = models.DecimalField(max_digits=20, decimal_places=6, default=0.0, blank=True)
     validated = models.BooleanField(default=None, blank=True, null=True)
     state = models.TextField(default='', blank=True, null=True)
