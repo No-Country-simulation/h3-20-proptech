@@ -158,7 +158,8 @@ function Navbar() {
                 </a>
               </li>
 
-              {rol === "A" && (
+              {/* {rol === "A" && ( */}
+              {isAuth && (rol != "U") && (
                 <li className="dropdown">
                   <div tabIndex={0} className="dropdown-toggle cursor-pointer">
                     Calculadoras

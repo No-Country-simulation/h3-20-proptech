@@ -2,15 +2,49 @@ import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
 import productCapitalizationData from "../shared/data/productCapitalizationData.json";
 import usersData from "../shared/data/usersData.json";
-import investmentData from "../shared/data/investmentData.json";
+// import investmentData from "../shared/data/investmentData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
+import { NotificationService } from "../shared/notistack.service";
+
+const keyMapForPost = {
+    dateOfGeneration: "date",
+    principal: "amount",
+    calcRate: "calc_rate",
+    interestRate: "interest_rate",
+    numberOfPayments: "number_of_payments",
+    monthlyReturn: "monthly_return",
+    term: "term",
+    termType: "term_type",
+    annualRate: "anual_rate",
+    refuerzo: "enforcement",
+    refuerzoMes: "monthly_enforcement",
+    refuerzoValue: "value_enforcement",
+    depositedCuota: "deposited_cuota",
+    validated: "validated",
+    estado: "state",
+    isActive: "is_active",
+    results: "results",
+    investor: "investor",
+    id: "id",
+};
+
+const transformDataForPost = (data, keyMap) => {
+    const transformed = {};
+    for (const [appKey, apiKey] of Object.entries(keyMap)) {
+        transformed[apiKey] = data[appKey];
+    }
+    return transformed;
+};
+
 
 function CapitalizationCalculator() {
+    const [dateOfGeneration, setDateofGeneration] = useState('');
+    const [investor, setInvestor] = useState('');
     const [principal, setPrincipal] = useState('');
     const [calcRate, setCalcRate] = useState('');
     const [numberOfPayments, setNumberOfPayments] = useState('');
     const [term, setTerm] = useState('');
-    const [termType, setTermType] = useState('years'); // Default is years
+    const [termType, setTermType] = useState('Y'); // Default is Y
     const [monthlyReturn, setMonthlyReturn] = useState('');
     const [results, setResults] = useState([]);
     const [refuerzo, setRefuerzo] = useState(false);
@@ -29,7 +63,8 @@ function CapitalizationCalculator() {
     const [showModal, setShowModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [newInvestmentData, setNewInvestmentData] = useState([]);
-    const [investorData, setInvestorData]=useState(investmentData);
+    // const [investorData, setInvestorData]=useState(investmentData);
+    const [investorData, setInvestorData]=useState([]);
 
     const handleInputChange = (field, value) => {
         if (field === "principal") setPrincipal(value);
@@ -42,7 +77,7 @@ function CapitalizationCalculator() {
         const cuota = parseFloat(monthlyReturn);
         const calcRateValue = parseFloat(calcRate);
         const termValue = parseInt(term);
-        const isYears = termType === 'years';
+        const isYears = termType === 'Y';
 
         if (!cuota || !calcRateValue || !termValue) {
             alert("Por favor ingrese valores válidos.");
@@ -99,38 +134,82 @@ function CapitalizationCalculator() {
             if (refuerzo && i % 6 === 0) {
                 currentCuota = cuota;
             }
+            
             setPrincipal(capitalizacion);
         }
 
         setResults(details);
     };
 
+    
+    const data = {
+        dateOfGeneration,
+        principal,
+        calcRate,
+        interestRate,
+        numberOfPayments,
+        monthlyReturn,
+        term,
+        termType,
+        annualRate,
+        refuerzo,
+        refuerzoMes,
+        refuerzoValue,
+        depositedCuota,
+        validated,
+        estado,
+        isActive,
+        results,
+    };
+
+    const payload ={
+        date: data.dateOfGeneration,
+        amount: data.principal,
+        calc_rate: data.calcRate,
+        interest_rate: data.interestRate,
+        number_of_payments: data.numberOfPayments,
+        monthly_return: data.monthlyReturn,
+        term: data.term,
+        term_type: data.termType,
+        anual_rate: data.annualRate,
+        enforcement: data.refuerzo,
+        monthly_enforcement: data.refuerzoMes,
+        value_enforcement: data.refuerzoValue,
+        deposited_cuota: data.depositedCuota,
+        validated: data.validated,
+        state: data.estado,
+        is_active: data.isActive,
+        results: data.results,
+    }
+
     // generate json data
     const generateJSON = () => {
-        const dateOfGeneration = new Date().toISOString();
-        const data = {
-            dateOfGeneration,
-            principal,
-            calcRate,
-            interestRate,
-            numberOfPayments,
-            monthlyReturn,
-            term,
-            termType,
-            annualRate,
-            refuerzo,
-            refuerzoMes,
-            refuerzoValue,
-            depositedCuota,
-            isActive,
-            validated,
-            estado,
-            results,
-        };
+        // const dateOfGeneration = new Date().toISOString();
+        payload;
+        // const data = {
+        //     dateOfGeneration,
+        //     principal,
+        //     calcRate,
+        //     interestRate,
+        //     numberOfPayments,
+        //     monthlyReturn,
+        //     term,
+        //     termType,
+        //     annualRate,
+        //     refuerzo,
+        //     refuerzoMes,
+        //     refuerzoValue,
+        //     depositedCuota,
+        //     validated,
+        //     estado,
+        //     isActive,
+        //     results,
+        // };
         
         //select user for investment data
         setNewInvestmentData(data); // Store data in state for use after user selection
-        console.log("Generating JSON and opening modal..." + data);
+        console.log("Generating JSON and opening modal... data" + payload);
+        // console.log("Generating JSON and opening modal... payload" + payload);
         setShowModal(true); // Open the modal to select the user
 
     };
@@ -141,7 +220,7 @@ function CapitalizationCalculator() {
         setTerm('');
         setMonthlyReturn('');
         setResults([]);
-        setTermType('years'); // Reset to default
+        setTermType('Y'); // Reset to default
     };
 
     return (
@@ -159,20 +238,20 @@ function CapitalizationCalculator() {
                     />
                 </div>
                 <div>
-                    <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'years' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
+                    <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'Y' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
                     <input
                         type="number"
-                        placeholder={`Ingrese la tasa ${termType === 'years' ? 'anual (TEA)' : 'nominal por mes'}`}
+                        placeholder={`Ingrese la tasa ${termType === 'Y' ? 'anual (TEA)' : 'nominal por mes'}`}
                         value={calcRate}
                         onChange={(e) => handleInputChange("calcRate", e.target.value)}
                         className="input-field"
                     />
                 </div>
                 <div>
-                    <label className="font-bold text-text-primary mb-1">Plazo en {termType === 'years' ? 'años' : 'meses'}</label>
+                    <label className="font-bold text-text-primary mb-1">Plazo en {termType === 'Y' ? 'años' : 'meses'}</label>
                     <input
                         type="number"
-                        placeholder={`Ingrese plazo en ${termType === 'years' ? 'años' : 'meses'}`}
+                        placeholder={`Ingrese plazo en ${termType === 'Y' ? 'años' : 'meses'}`}
                         value={term}
                         onChange={(e) => handleInputChange("term", e.target.value)}
                         className="input-field"
@@ -182,8 +261,8 @@ function CapitalizationCalculator() {
                             <input
                                 type="checkbox"
                                 name="termType"
-                                value="years"
-                                checked={termType === 'years'}
+                                value="Y"
+                                checked={termType === 'Y'}
                                 onChange={(e) => setTermType(e.target.value)}
                                 className="mr-2 checkbox-custom "
                             />
@@ -193,8 +272,8 @@ function CapitalizationCalculator() {
                             <input
                                 type="checkbox"
                                 name="termType"
-                                value="months"
-                                checked={termType === 'months'}
+                                value="M"
+                                checked={termType === 'M'}
                                 onChange={(e) => setTermType(e.target.value)}
                                 className="mr-2 checkbox-custom"
                             />

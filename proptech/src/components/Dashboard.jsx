@@ -65,7 +65,7 @@ function Dashboard() {
                 {/* Investment Details Box */}
                 <div className="investment-details-box">
                     <h3 className="font-bold">Detalle de la inversión</h3>
-                    <p className="text-primary font-bold">Dinero invertido: $ {selectedRow ? selectedRow.principal.toFixed(2) : ""}</p>
+                    <p className="text-primary font-bold">Dinero invertido: $ {selectedRow ? (selectedRow.principal).toFixed(2) : ""}</p>
                     <div className="chart-container">
                         <LineChart
                             width={600}

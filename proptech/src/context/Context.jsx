@@ -12,6 +12,7 @@ export const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
+  const [investments, setInvestments] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [authTokens, setAuthTokens] = useState(() =>
@@ -168,13 +169,18 @@ const updateUserInformation = async (data) => {
     try {
       const url = urlGlobal + "update-user-information/";
 
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+
       const response = await fetch(url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(data),
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   Accept: "application/json",
+        // },
+        body: formData, // FormData automatically sets the correct headers
         credentials: "include",
       });
       console.log("Before SHOW:::", response);
@@ -192,6 +198,52 @@ const updateUserInformation = async (data) => {
     }
   };
 
+  const getInvestments = async () => {
+    try {
+      const url =  urlGlobal + "investment-list-create/"; // Ensure urlGlobal is correctly initialized in context.jsx
+      const response = await axios.get(url);
+      
+      if (response.status === 200) { // Use response.status instead of statusText for better reliability
+        setInvestments(response.data); // Directly set the data
+        return response;
+      } else {
+        console.error("Error fetching investments:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching investments:", error); // Improved error logging
+    }
+  };
+
+    //to post a new investment 
+    const postInvestment = async (data) => {
+        try {
+          const url = urlGlobal + "investment-list-create/";
+    
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+          });
+          console.log("Before SHOW:::", response);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const result = await response.json();
+          console.log("New Investment successful:", result);
+    
+          return result;
+        } catch (error) {
+          console.error("Investment data error:", error.message);
+          throw error;
+        }
+      };
+
   return (
     <Context.Provider
       value={{
@@ -206,6 +258,8 @@ const updateUserInformation = async (data) => {
         registerUser,
         registerUserAdmin,
         updateUserInformation,
+        getInvestments,
+        postInvestment,
         isAuthenticated,
       }}
     >

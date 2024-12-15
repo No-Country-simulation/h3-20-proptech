@@ -78,8 +78,8 @@ function CapitalizationCalculator() {
             };
 
         setNumberOfPayments(isYears ? termValue * 12 : termValue);
-        setInterestRate(monthlyRate);
-        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate) );
+        setInterestRate(monthlyRate.toFixed(6));
+        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate).toFixed(6) );
 
         const details = [];
         let capitalizacion = 0;
@@ -109,7 +109,7 @@ function CapitalizationCalculator() {
             if (refuerzo && i % 6 === 0) {
                 currentCuota = cuota;
             }
-            setPrincipal(capitalizacion);
+            setPrincipal(capitalizacion.toFixed(2));
         }
 
         setResults(details);
