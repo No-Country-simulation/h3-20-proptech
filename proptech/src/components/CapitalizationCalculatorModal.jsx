@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect  } from "react";
 import Select from "react-select"; // Ensure react-select is installed
 // import usersData from "../shared/data/usersData.json";
-import investmentData from "../shared/data/investmentData.json";
+// import investmentData from "../shared/data/investmentData.json";
 // import axios from "axios";
 import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
@@ -107,7 +107,8 @@ function CapitalizationCalculatorModal({
 
         // Close modal and alert success
         setShowModal(false);
-        alert("Investment data saved successfully!");
+        // alert("Investment data saved successfully!");
+        NotificationService.success("Success saving data.", 3000);
     };
 
 
@@ -146,7 +147,7 @@ function CapitalizationCalculatorModal({
                           <input
                               className="input-field"
                               type="text"
-                              value={newInvestmentData.principal.toFixed(2)}
+                              value={newInvestmentData.principal}
                               readOnly
                           />
                       </div>
@@ -183,13 +184,13 @@ function CapitalizationCalculatorModal({
           {/* Modal buttons */}
           <div className="mt-6 flex justify-end gap-4">
             <button
-              className="btn-tertiary px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+              className="btn-tertiary px-4 py-2 "
               onClick={() => setShowModal(false)}
             >
               Cancelar
             </button>
             <button
-              className="btn-primary px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="btn-primary px-4 py-2"
               onClick={saveInvestmentData}
             >
               Guardar Inversion

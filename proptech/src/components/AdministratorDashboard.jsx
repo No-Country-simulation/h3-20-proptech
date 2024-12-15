@@ -1,6 +1,6 @@
 //src/components/AdministratorDashboard.jsx
 import React, {  useContext, useState, useEffect } from "react";
-import investmentDataFile from "../shared/data/investmentData.json";
+// import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
 import { PiTrash, PiNotePencil, PiX } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
@@ -9,14 +9,47 @@ import axios from "axios";
 import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
 
+const keyMap = {
+    id: "id",
+    investor: "investor",
+    date: "dateOfGeneration",
+    amount: "principal",
+    calc_rate: "calcRate",
+    interest_rate: "interestRate",
+    number_of_payments: "numberOfPayments",
+    monthly_return: "monthlyReturn",
+    term: "term",
+    term_type: "termType",
+    anual_rate: "annualRate",
+    enforcement: "refuerzo",
+    monthly_enforcement: "refuerzoMes",
+    value_enforcement: "refuerzoValue",
+    deposited_cuota: "depositedCuota",
+    validated: "validated",
+    state: "estado",
+    is_active: "isActive",
+    results: "results",
+};
+
+const transformResponseWithMap = (payload, keyMap) => {
+    return payload.map((item) => {
+        const transformed = {};
+        for (const [key, value] of Object.entries(keyMap)) {
+            transformed[value] = item[key];
+        }
+        return transformed;
+    });
+};
+
+
 const AdministratorDashboard = ({ onRowSelect }) => {
     const { getUsers} = useContext(Context);
     const { getInvestments} = useContext(Context);
 
     const [usersData, setUsersData] = useState([]);
-    const [investmentData0, setInvestmentData0] = useState(investmentDataFile);
-    const [investmentData, setInvestmentData] = useState(investmentData0);
-    // const [investmentData, setInvestmentData] = useState(getInvestments);
+    // const [investmentData0, setInvestmentData0] = useState(investmentDataFile);
+    // const [investmentData, setInvestmentData] = useState(investmentData0);
+    const [investmentData, setInvestmentData] = useState([]);
     const [editingRow, setEditingRow] = useState(null);
     const [newInvestment, setNewInvestment] = useState({
         investor: "",
@@ -29,39 +62,37 @@ const AdministratorDashboard = ({ onRowSelect }) => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-          try {
-            const response = await getUsers();
-            setUsersData(response.data);
-            // NotificationService.success("Success loading users.", 3000);
-            // console.log(usersData);
-          } catch (error) {
-            NotificationService.error("Error loading users.", 3000);
-          }
+            try {
+                const response = await getUsers();
+                setUsersData(response.data);
+                // NotificationService.success("Success loading users.", 3000);
+                // console.log(usersData);
+            } catch (error) {
+                NotificationService.error("Error loading users.", 3000);
+            }
         };
         fetchUsers();
-    // const fetchInvestments = async () => {
-    //     try {
-    //       const response = await getInvestments();
-    //       setInvestmentData(response.data);
-    //       NotificationService.success("Success loading users.", 3000);
-    //       // console.log(usersData);
-    //     } catch (error) {
-    //       NotificationService.error("Error loading users.", 3000);
-    //     }
-    //   };        
-    //     fetchInvestments();
-
-      }, []);
+        const fetchInvestments = async () => {
+            try {
+                const response = await getInvestments();
+                const transformed = transformResponseWithMap(response.data, keyMap);
+                setInvestmentData(transformed);
+                NotificationService.success("Success loading investments.", 3000);
+                // console.log(usersData);
+                console.log("response: ", response.data);
+                console.log("data: ", data);
+            } catch (error) {
+                NotificationService.error("Error loading investments.", 3000);
+            }
+        };
+        fetchInvestments();
+    }, []);
 
 
     const getUsernameById = (id) => {
         const user = usersData.find((user) => user.id === id);
         return user ? user.username : "Unknown User";
     };
-
-
-
-
 
     const navigate = useNavigate();
 
@@ -76,6 +107,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
     };
 
     const handleUpdate = (rowId, updatedData) => {
+        console.log("updateddata: ",updatedData);
         const updatedInvestmentData = investmentData.map((item) =>
             item.id === rowId ? { ...item, ...updatedData } : item
         );
@@ -156,8 +188,8 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                             <td className="border border-gray-300 px-4 py-2">
                                 {getUsernameById(row.investor)}
                             </td>
-                            <td className="border border-gray-300 px-4 py-2">{row.principal.toFixed(2)}</td>
-                            {/* <td className="border border-gray-300 px-4 py-2">{row.amount.toFixed(2)}</td> */}
+                            {/* <td className="border border-gray-300 px-4 py-2">{row.principal.toFixed(2)}</td> */}
+                            <td className="border border-gray-300 px-4 py-2">{row.principal}</td>
                             <td className="border border-gray-300 px-4 py-2">
                                 {(row.interestRate * 100).toFixed(3)}%
                             </td>
@@ -197,7 +229,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                         <h2 className="h2">Editar Inversión</h2>
                         <input
                             type="text"
-                            placeholder="Principal"
+                            placeholder="principal"
                             value={editingRow.principal}
                             onChange={(e) =>
                                 setEditingRow({ ...editingRow, principal: e.target.value })
@@ -250,7 +282,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                             className="btn-primary"
                             onClick={() => {
                                 handleUpdate(editingRow.id, editingRow);
-                                setEditingRow(null);
+                                // setEditingRow(null);
                             }}
                         >
                             Save

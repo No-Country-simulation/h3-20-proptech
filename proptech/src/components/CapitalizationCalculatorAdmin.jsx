@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
 import productCapitalizationData from "../shared/data/productCapitalizationData.json";
 import usersData from "../shared/data/usersData.json";
-import investmentData from "../shared/data/investmentData.json";
+// import investmentData from "../shared/data/investmentData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
+import { NotificationService } from "../shared/notistack.service";
 
 function CapitalizationCalculator() {
     const [principal, setPrincipal] = useState('');
@@ -29,7 +30,8 @@ function CapitalizationCalculator() {
     const [showModal, setShowModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [newInvestmentData, setNewInvestmentData] = useState([]);
-    const [investorData, setInvestorData]=useState(investmentData);
+    // const [investorData, setInvestorData]=useState(investmentData);
+    const [investorData, setInvestorData]=useState([]);
 
     const handleInputChange = (field, value) => {
         if (field === "principal") setPrincipal(value);
@@ -105,32 +107,75 @@ function CapitalizationCalculator() {
         setResults(details);
     };
 
+    
+    const data = {
+        dateOfGeneration,
+        principal,
+        calcRate,
+        interestRate,
+        numberOfPayments,
+        monthlyReturn,
+        term,
+        termType,
+        annualRate,
+        refuerzo,
+        refuerzoMes,
+        refuerzoValue,
+        depositedCuota,
+        validated,
+        estado,
+        isActive,
+        results,
+    };
+
+    const payload ={
+        date: data.dateOfGeneration,
+        amount: data.principal,
+        calc_rate: data.calcRate,
+        interest_rate: data.interestRate,
+        number_of_payments: data.numberOfPayments,
+        monthly_return: data.monthlyReturn,
+        term: data.term,
+        term_type: data.termType,
+        anual_rate: data.annualRate,
+        enforcement: data.refuerzo,
+        monthly_enforcement: data.refuerzoMes,
+        value_enforcement: data.refuerzoValue,
+        deposited_cuota: data.depositedCuota,
+        validated: data.validated,
+        state: data.estado,
+        is_active: data.isActive,
+        results: data.results,
+    }
+
     // generate json data
     const generateJSON = () => {
-        const dateOfGeneration = new Date().toISOString();
-        const data = {
-            dateOfGeneration,
-            principal,
-            calcRate,
-            interestRate,
-            numberOfPayments,
-            monthlyReturn,
-            term,
-            termType,
-            annualRate,
-            refuerzo,
-            refuerzoMes,
-            refuerzoValue,
-            depositedCuota,
-            validated,
-            estado,
-            isActive,
-            results,
-        };
+        // const dateOfGeneration = new Date().toISOString();
+        payload;
+        // const data = {
+        //     dateOfGeneration,
+        //     principal,
+        //     calcRate,
+        //     interestRate,
+        //     numberOfPayments,
+        //     monthlyReturn,
+        //     term,
+        //     termType,
+        //     annualRate,
+        //     refuerzo,
+        //     refuerzoMes,
+        //     refuerzoValue,
+        //     depositedCuota,
+        //     validated,
+        //     estado,
+        //     isActive,
+        //     results,
+        // };
         
         //select user for investment data
         setNewInvestmentData(data); // Store data in state for use after user selection
-        console.log("Generating JSON and opening modal..." + data);
+        console.log("Generating JSON and opening modal... data" + payload);
+        // console.log("Generating JSON and opening modal... payload" + payload);
         setShowModal(true); // Open the modal to select the user
 
     };
