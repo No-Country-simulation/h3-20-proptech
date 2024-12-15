@@ -6,6 +6,39 @@ import Select from "react-select"; // Ensure react-select is installed
 import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
 
+const keyMapForPost = {
+    dateOfGeneration: "date",
+    principal: "amount",
+    calcRate: "calc_rate",
+    interestRate: "interest_rate",
+    numberOfPayments: "number_of_payments",
+    monthlyReturn: "monthly_return",
+    term: "term",
+    termType: "term_type",
+    annualRate: "anual_rate",
+    refuerzo: "enforcement",
+    refuerzoMes: "monthly_enforcement",
+    refuerzoValue: "value_enforcement",
+    depositedCuota: "deposited_cuota",
+    validated: "validated",
+    estado: "state",
+    isActive: "is_active",
+    results: "results",
+    investor: "investor",
+    id: "id",
+};
+
+const transformDataForPost = (data, keyMap) => {
+    const transformed = {};
+    for (const [appKey, apiKey] of Object.entries(keyMap)) {
+        transformed[apiKey] = data[appKey];
+    }
+    return transformed;
+};
+
+
+
+
 function CapitalizationCalculatorModal({
     setInvestor,
     showModal,
@@ -15,24 +48,9 @@ function CapitalizationCalculatorModal({
     investorData,
     setInvestorData,
 }) {
-    const { getUsers, getUserById} = useContext(Context);
+    const { getUsers, getUserById, postInvestment} = useContext(Context);
     const [usersData, setUsersData] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    // const API_URL = "https://h3-20-proptech-production.up.railway.app";
-
-    // useEffect(() => {
-    //   const fetchUsers = async () => {
-    //     try {
-    //       const response = await axios.get(`${API_URL}/api/all-users/`);
-    //       setUsersData(response.data);
-    //       NotificationService.success("Success loading users.", 3000);
-    //       console.log(usersData);
-    //     } catch (error) {
-    //       NotificationService.error("Error loading users.", 3000);
-    //     }
-    //   };
-    //   fetchUsers();
-    // }, []);
     
     useEffect(() => {
         const fetchUsers = async () => {
@@ -76,29 +94,36 @@ function CapitalizationCalculatorModal({
             investor: selectedUser, // Set the selected user's ID
             ...newInvestmentData,
         };
+        const payload = transformDataForPost(finalizedData, keyMapForPost);
+
         // Append to the existing data array
-        const updatedData = [...dataArray, finalizedData];
+        const updatedData = [...dataArray, payload];
+
+console.log("payload: ",payload);
+
+
+
         // Save the updated data as a JSON file
         const blob = new Blob([JSON.stringify(updatedData, null, 2)], {
             type: "application/json",
         });
         saveAs(blob, "investmentData.json");
 
-// // Convert to CSV format
-// const jsonToCsv = (data) => {
-//     if (!data || !data.length) return "";
+            // // Convert to CSV format
+            // const jsonToCsv = (data) => {
+            //     if (!data || !data.length) return "";
 
-//     const keys = Object.keys(data[0]); // Extract headers from the first object
-//     const csvRows = data.map((row) =>
-//         keys.map((key) => (row[key] !== undefined ? `"${row[key]}"` : "")).join(",")
-//     );
-//     return [keys.join(","), ...csvRows].join("\n");
-// };
+            //     const keys = Object.keys(data[0]); // Extract headers from the first object
+            //     const csvRows = data.map((row) =>
+            //         keys.map((key) => (row[key] !== undefined ? `"${row[key]}"` : "")).join(",")
+            //     );
+            //     return [keys.join(","), ...csvRows].join("\n");
+            // };
 
-// // Generate CSV Blob
-// const csvData = jsonToCsv(updatedData);
-// const csvBlob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
-// saveAs(csvBlob, "investmentData.csv");
+            // // Generate CSV Blob
+            // const csvData = jsonToCsv(updatedData);
+            // const csvBlob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+            // saveAs(csvBlob, "investmentData.csv");
 
 
         // Simulate saving to JSON file (you can connect this to an API if needed)
@@ -111,7 +136,29 @@ function CapitalizationCalculatorModal({
         NotificationService.success("Success saving data.", 3000);
     };
 
+    const postInvestmentData = async () => {
+        if (!selectedUser) {
+            alert("Please select an investor.");
+            return;
+        }
+        const finalizedData = {
+            investor: selectedUser,
+            dateOfGeneration: new Date().toISOString(),
 
+            ...newInvestmentData,
+        };
+
+        const payload = transformDataForPost(finalizedData, keyMapForPost);
+console.log("payload: ",payload);
+        try {
+            await postInvestment(payload);
+            NotificationService.success("Investment data posted successfully.", 3000);
+            setShowModal(false);
+        } catch (error) {
+            NotificationService.error("Failed to post investment data.", 3000);
+            console.error("Error posting investment data:", error);
+        }
+    };
 
 
 
@@ -195,6 +242,12 @@ function CapitalizationCalculatorModal({
             >
               Guardar Inversion
             </button>
+            <button
+                        className="btn-secondary px-4 py-2"
+                        onClick={postInvestmentData}
+                    >
+                        Publicar Inversión
+                    </button>
           </div>
         </div>
       </div>

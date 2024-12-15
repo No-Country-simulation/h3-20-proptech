@@ -77,7 +77,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 const response = await getInvestments();
                 const transformed = transformResponseWithMap(response.data, keyMap);
                 setInvestmentData(transformed);
-                NotificationService.success("Success loading investments.", 3000);
+                // NotificationService.success("Success loading investments.", 3000);
                 // console.log(usersData);
                 console.log("response: ", response.data);
                 console.log("data: ", data);
@@ -182,25 +182,26 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                         <tr
                             key={row.id}
                             className="hover:bg-gray-50 cursor-pointer"
-                            onClick={() => onRowSelect(row)}
+                            onDoubleClick={() => onRowSelect(row)}
                         >
                             <td className="border border-gray-300 px-4 py-2">{row.id}</td>
                             <td className="border border-gray-300 px-4 py-2">
                                 {getUsernameById(row.investor)}
                             </td>
                             {/* <td className="border border-gray-300 px-4 py-2">{row.principal.toFixed(2)}</td> */}
-                            <td className="border border-gray-300 px-4 py-2">{row.principal}</td>
+                            <td className="border border-gray-300 px-4 py-2">{(row.principal*1).toFixed(2)}</td>
                             <td className="border border-gray-300 px-4 py-2">
                                 {(row.interestRate * 100).toFixed(3)}%
                             </td>
                             <td className="border border-gray-300 px-4 py-2">
                                 {row.numberOfPayments}
                             </td>
-                            <td className="border border-gray-300 px-4 py-2">{row.monthlyReturn}</td>
+                            <td className="border border-gray-300 px-4 py-2">{(row.monthlyReturn*1).toFixed(2)}</td>
                             <td className="border border-gray-300 px-4 py-2">
                                 <input
                                     type="checkbox"
                                     checked={row.isActive}
+                                    onChange={(e) => setChecked(e.target.checked)}
                                     className="checkbox-custom"
                                 />
                             </td>

@@ -18,24 +18,24 @@ function CapitalizationCalculatorEdit() {
         setRowData(location.state);
       }
     }, [location.state]);
-    const [principal, setPrincipal] = useState(rowData.amount); //"principal"
-    const [calcRate, setCalcRate] = useState(rowData.calc_rate); //"calcRate"
-    const [numberOfPayments, setNumberOfPayments] = useState(rowData.number_of_payments); //"numberOfPayments"
+    const [principal, setPrincipal] = useState(rowData.principal); //"principal"
+    const [calcRate, setCalcRate] = useState(rowData.calcRate); //"calcRate"
+    const [numberOfPayments, setNumberOfPayments] = useState(rowData.numberOfPayments); //"numberOfPayments"
     const [term, setTerm] = useState(rowData.term); //"term"
-    const [termType, setTermType] = useState(rowData.term_type);  //"termType"
-    const [monthlyReturn, setMonthlyReturn] = useState(rowData.monthly_return); //"monthlyReturn"
+    const [termType, setTermType] = useState(rowData.termType);  //"termType"
+    const [monthlyReturn, setMonthlyReturn] = useState(rowData.monthlyReturn); //"monthlyReturn"
     const [results, setResults] = useState([]); //"[ results ]"
-    const [refuerzo, setRefuerzo] = useState(rowData.enforcement); //"refuerzo"
-    const [refuerzoMes, setRefuerzoMes] = useState(rowData.monthly_enforcement); //"refuerzoMes"
-    const [refuerzoValue, setRefuerzoValue] = useState(rowData.value_enforcement); //"refuerzoValue"
+    const [refuerzo, setRefuerzo] = useState(rowData.refuerzo); //"refuerzo"
+    const [refuerzoMes, setRefuerzoMes] = useState(rowData.refuerzoMes); //"refuerzoMes"
+    const [refuerzoValue, setRefuerzoValue] = useState(rowData.refuerzoValue || 6); //"refuerzoValue"
     
-    const [interestRate, setInterestRate] = useState(rowData.interest_rate); //"interestRate"
-    const [annualRate, setAnnualRate] = useState(rowData.anual_rate); //"annualRate"
-    const [depositedCuota, setDepositedCuota] = useState(rowData.deposited_cuota); //"depositedCuota"
+    const [interestRate, setInterestRate] = useState(rowData.interestRate); //"interestRate"
+    const [annualRate, setAnnualRate] = useState(rowData.annualRate); //"annualRate"
+    const [depositedCuota, setDepositedCuota] = useState(rowData.depositedCuota); //"depositedCuota"
 
-    const [isActive, setIsActive] = useState(rowData.is_active); //"isActive"
+    const [isActive, setIsActive] = useState(rowData.isActive); //"isActive"
     const [validated, setValidated] = useState(rowData.validated); //"validated"
-    const [estado, setEstado] = useState(rowData.state); //"estado"
+    const [estado, setEstado] = useState(rowData.estado); //"estado"
 
 
     //select user for investment data
@@ -83,8 +83,8 @@ function CapitalizationCalculatorEdit() {
             };
 
         setNumberOfPayments(isYears ? termValue * 12 : termValue);
-        setInterestRate(monthlyRate);
-        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate) );
+        setInterestRate(monthlyRate.toFixed(6));
+        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate).toFixed(6) );
 
         const details = [];
         let capitalizacion = 0;
@@ -114,7 +114,7 @@ function CapitalizationCalculatorEdit() {
             if (refuerzo && i % 6 === 0) {
                 currentCuota = cuota;
             }
-            setPrincipal(capitalizacion);
+            setPrincipal(capitalizacion.toFixed(2));
             console.log(principal);
         }
 

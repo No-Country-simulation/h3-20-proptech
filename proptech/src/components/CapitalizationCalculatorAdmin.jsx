@@ -6,12 +6,45 @@ import usersData from "../shared/data/usersData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
 import { NotificationService } from "../shared/notistack.service";
 
+const keyMapForPost = {
+    dateOfGeneration: "date",
+    principal: "amount",
+    calcRate: "calc_rate",
+    interestRate: "interest_rate",
+    numberOfPayments: "number_of_payments",
+    monthlyReturn: "monthly_return",
+    term: "term",
+    termType: "term_type",
+    annualRate: "anual_rate",
+    refuerzo: "enforcement",
+    refuerzoMes: "monthly_enforcement",
+    refuerzoValue: "value_enforcement",
+    depositedCuota: "deposited_cuota",
+    validated: "validated",
+    estado: "state",
+    isActive: "is_active",
+    results: "results",
+    investor: "investor",
+    id: "id",
+};
+
+const transformDataForPost = (data, keyMap) => {
+    const transformed = {};
+    for (const [appKey, apiKey] of Object.entries(keyMap)) {
+        transformed[apiKey] = data[appKey];
+    }
+    return transformed;
+};
+
+
 function CapitalizationCalculator() {
+    const [dateOfGeneration, setDateofGeneration] = useState('');
+    const [investor, setInvestor] = useState('');
     const [principal, setPrincipal] = useState('');
     const [calcRate, setCalcRate] = useState('');
     const [numberOfPayments, setNumberOfPayments] = useState('');
     const [term, setTerm] = useState('');
-    const [termType, setTermType] = useState('years'); // Default is years
+    const [termType, setTermType] = useState('Y'); // Default is Y
     const [monthlyReturn, setMonthlyReturn] = useState('');
     const [results, setResults] = useState([]);
     const [refuerzo, setRefuerzo] = useState(false);
@@ -44,7 +77,7 @@ function CapitalizationCalculator() {
         const cuota = parseFloat(monthlyReturn);
         const calcRateValue = parseFloat(calcRate);
         const termValue = parseInt(term);
-        const isYears = termType === 'years';
+        const isYears = termType === 'Y';
 
         if (!cuota || !calcRateValue || !termValue) {
             alert("Por favor ingrese valores válidos.");
@@ -101,6 +134,7 @@ function CapitalizationCalculator() {
             if (refuerzo && i % 6 === 0) {
                 currentCuota = cuota;
             }
+            
             setPrincipal(capitalizacion);
         }
 
@@ -186,7 +220,7 @@ function CapitalizationCalculator() {
         setTerm('');
         setMonthlyReturn('');
         setResults([]);
-        setTermType('years'); // Reset to default
+        setTermType('Y'); // Reset to default
     };
 
     return (
@@ -204,20 +238,20 @@ function CapitalizationCalculator() {
                     />
                 </div>
                 <div>
-                    <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'years' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
+                    <label className="font-bold text-text-primary mb-1">Tasa de Interés {termType === 'Y' ? 'anual (TEA)' : 'nominal por mes'} (%)</label>
                     <input
                         type="number"
-                        placeholder={`Ingrese la tasa ${termType === 'years' ? 'anual (TEA)' : 'nominal por mes'}`}
+                        placeholder={`Ingrese la tasa ${termType === 'Y' ? 'anual (TEA)' : 'nominal por mes'}`}
                         value={calcRate}
                         onChange={(e) => handleInputChange("calcRate", e.target.value)}
                         className="input-field"
                     />
                 </div>
                 <div>
-                    <label className="font-bold text-text-primary mb-1">Plazo en {termType === 'years' ? 'años' : 'meses'}</label>
+                    <label className="font-bold text-text-primary mb-1">Plazo en {termType === 'Y' ? 'años' : 'meses'}</label>
                     <input
                         type="number"
-                        placeholder={`Ingrese plazo en ${termType === 'years' ? 'años' : 'meses'}`}
+                        placeholder={`Ingrese plazo en ${termType === 'Y' ? 'años' : 'meses'}`}
                         value={term}
                         onChange={(e) => handleInputChange("term", e.target.value)}
                         className="input-field"
@@ -227,8 +261,8 @@ function CapitalizationCalculator() {
                             <input
                                 type="checkbox"
                                 name="termType"
-                                value="years"
-                                checked={termType === 'years'}
+                                value="Y"
+                                checked={termType === 'Y'}
                                 onChange={(e) => setTermType(e.target.value)}
                                 className="mr-2 checkbox-custom "
                             />
@@ -238,8 +272,8 @@ function CapitalizationCalculator() {
                             <input
                                 type="checkbox"
                                 name="termType"
-                                value="months"
-                                checked={termType === 'months'}
+                                value="M"
+                                checked={termType === 'M'}
                                 onChange={(e) => setTermType(e.target.value)}
                                 className="mr-2 checkbox-custom"
                             />

@@ -214,6 +214,35 @@ const updateUserInformation = async (data) => {
     }
   };
 
+    //to post a new investment 
+    const postInvestment = async (data) => {
+        try {
+          const url = urlGlobal + "investment-list-create/";
+    
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+          });
+          console.log("Before SHOW:::", response);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const result = await response.json();
+          console.log("New Investment successful:", result);
+    
+          return result;
+        } catch (error) {
+          console.error("Investment data error:", error.message);
+          throw error;
+        }
+      };
 
   return (
     <Context.Provider
@@ -230,6 +259,7 @@ const updateUserInformation = async (data) => {
         registerUserAdmin,
         updateUserInformation,
         getInvestments,
+        postInvestment,
         isAuthenticated,
       }}
     >
