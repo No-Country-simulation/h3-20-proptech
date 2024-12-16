@@ -5,6 +5,9 @@ import usersData from "../shared/data/usersData.json";
 // import investmentData from "../shared/data/investmentData.json";
 import CapitalizationCalculatorModal from './CapitalizationCalculatorModal';
 import { NotificationService } from "../shared/notistack.service";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const keyMapForPost = {
     dateOfGeneration: "date",
@@ -65,6 +68,7 @@ function CapitalizationCalculator() {
     const [newInvestmentData, setNewInvestmentData] = useState([]);
     // const [investorData, setInvestorData]=useState(investmentData);
     const [investorData, setInvestorData]=useState([]);
+    const navigate = useNavigate();
 
     const handleInputChange = (field, value) => {
         if (field === "principal") setPrincipal(value);
@@ -298,7 +302,10 @@ function CapitalizationCalculator() {
                 <div className="mt-6">
                     <h3 className="text-xl font-semibold">Cuota Mensual: ${monthlyReturn}</h3>
                     <h3 className="text-xl font-semibold">Detalles de Capitalización:</h3>
+                    <div className="flex space-x-4">
+                    <button onClick={() => navigate('/Dashboard')}  className="btn-tertiary w-full">Volver</button>
                     <button onClick={generateJSON} className="btn-secondary w-full">Generar Capitalización</button>
+                    </div>
                     <table className=" w-full mt-2 border-collapse ">
                         <thead>
                             <tr>

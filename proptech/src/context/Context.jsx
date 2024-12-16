@@ -274,6 +274,64 @@ const updateUserInformation = async (data) => {
         }
       };
 
+    const deleteInvestment = async (id) => {
+        try {
+            const url = urlGlobal + "investment-detail/" + id + "/";
+
+            const response = await fetch(url, {
+                method: "DELETE",
+                credentials: "include",
+            });
+            console.log("Before SHOW:::", response);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // Handle 204 No Content case
+            if (response.status === 204) {
+                console.log("Delete Investment successful: No Content");
+                return { message: "Investment deleted successfully." };
+            }
+            // For non-204 responses with content
+            const result = await response.json();
+            console.log("Delete Investment successful:", result);
+            return result;
+
+        } catch (error) {
+            console.error("Delete Investment data error:", error.message);
+            throw error;
+        }
+    };
+
+      const patchInvestmentValidate = async (id, data) => {
+        try {
+          const url = urlGlobal + "investment-detail/" + id + "/";
+    
+          const response = await fetch(url, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+          });
+          console.log("Before SHOW:::", response);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const result = await response.json();
+          console.log("Validate Investment successful:", result);
+    
+          return result;
+        } catch (error) {
+          console.error("Validate Investment data error:", error.message);
+          throw error;
+        }
+      };
+
+
   return (
     <Context.Provider
       value={{
@@ -291,6 +349,8 @@ const updateUserInformation = async (data) => {
         getInvestments,
         postInvestment,
         putInvestment,
+        deleteInvestment,
+        patchInvestmentValidate,
         isAuthenticated,
       }}
     >

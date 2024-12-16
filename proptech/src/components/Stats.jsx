@@ -1,11 +1,71 @@
+import React, {  useContext, useState, useEffect } from "react";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import investmentDataFile from "../shared/data/investmentData.json";
+import Context from "../context/Context";
+// import investmentDataFile from "../shared/data/investmentData.json";
+import { NotificationService } from "../shared/notistack.service";
+
+const keyMap = {
+    id: "id",
+    investor: "investor",
+    date: "dateOfGeneration",
+    amount: "principal",
+    calc_rate: "calcRate",
+    interest_rate: "interestRate",
+    number_of_payments: "numberOfPayments",
+    monthly_return: "monthlyReturn",
+    term: "term",
+    term_type: "termType",
+    anual_rate: "annualRate",
+    enforcement: "refuerzo",
+    monthly_enforcement: "refuerzoMes",
+    value_enforcement: "refuerzoValue",
+    deposited_cuota: "depositedCuota",
+    validated: "validated",
+    state: "estado",
+    is_active: "isActive",
+    results: "results",
+};
+
+const transformResponseWithMap = (payload, keyMap) => {
+    return payload.map((item) => {
+        const transformed = {};
+        for (const [key, value] of Object.entries(keyMap)) {
+            transformed[value] = item[key];
+        }
+        return transformed;
+    });
+};
+
 
 function Stats() {
-    const totalBalance = investmentDataFile.reduce((sum, investment) => sum + investment.principal, 0);
-
+    const { getInvestments} = useContext(Context);
+    const [investmentData, setInvestmentData] = useState([]);
+    const fetchInvestments = async () => {
+        try {
+            const response = await getInvestments();
+            const transformed = transformResponseWithMap(response.data, keyMap);
+            setInvestmentData(transformed);
+            // console.log(investmentData);
+            // Pass data to Dashboard via onDataLoad
+            if (onDataLoad) {
+                onDataLoad(transformed);
+            }
+            // NotificationService.success("Success loading investments.", 3000);
+            // console.log(usersData);
+            
+        } catch (error) {
+            // NotificationService.error("Error loading investments.", 2000);
+        }
+    };
+    useEffect(() => {
+        fetchInvestments();
+    }, []);
+    const totalBalance = investmentData.reduce(
+        (sum, investment) => sum + (parseFloat(investment.principal) || 100),
+        0
+    );
   const stats = [
     {
       id: 1,
@@ -16,7 +76,7 @@ function Stats() {
     {
       id: 2,
       name: "Invertidos en el mercado",
-      value: `${totalBalance.toFixed(2)}`,
+      value: `$${totalBalance}`,
       icon: <AttachMoneyIcon />,
     },
     {

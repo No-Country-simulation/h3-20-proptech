@@ -177,14 +177,13 @@ console.log("payload: ",payload);
         };
 
         const payload = transformDataForPost(finalizedData, keyMapForPost);
-console.log("payload: ",payload);
+        // console.log("payload: ",payload);
         try {
             await putInvestment(rowId,payload);
             NotificationService.success("Investment data updated successfully.", 3000);
             setShowModal(false);
         } catch (error) {
             NotificationService.error("Failed to update investment data.", 3000);
-            console.error("Error posting investment data:", error);
         }
     };
 

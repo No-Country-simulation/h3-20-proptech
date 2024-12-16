@@ -1,3 +1,4 @@
+import React from "react";
 import InvestorReturnCalculator from "./InvestorReturnCalculator";
 import { Link } from "react-router-dom";
 
@@ -11,6 +12,7 @@ import grupoPhoto from "../assets/grupo.png";
 import p4Photo from "../assets/p4.png";
 import proacoPhoto from "../assets/proaco.png";
 import CapitalizationCalculator from "./CapitalizationCalculator";
+import Dashboard from "./Dashboard";
 
 function Content() {
   return (
@@ -45,7 +47,7 @@ function Content() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold">
             Impulsando el mercado con
-            <br /> cifras que inspiran
+            <br /> cifras que inspiran 
           </h2>
           <Stats />
         </div>
