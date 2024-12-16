@@ -165,6 +165,40 @@ const getUsers = async () => {
   };
 
   //to update user information 
+  const updateUserStatus = async (id, data) => {
+    try {
+      const url = urlGlobal + "api/update-status/" + data + id + "/";
+
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+
+      const response = await fetch(url, {
+        method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   Accept: "application/json",
+        // },
+        body: formData, // FormData automatically sets the correct headers
+        credentials: "include",
+      });
+      console.log("Before SHOW:::", response);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Registration successful:", result);
+      return result;
+    } catch (error) {
+      console.error("Registration error:", error.message);
+      throw error;
+    }
+  };
+
+  //to update user information 
 const updateUserInformation = async (data) => {
     try {
       const url = urlGlobal + "update-user-information/";
@@ -345,6 +379,7 @@ const updateUserInformation = async (data) => {
         logoutUser,
         registerUser,
         registerUserAdmin,
+        updateUserStatus,
         updateUserInformation,
         getInvestments,
         postInvestment,

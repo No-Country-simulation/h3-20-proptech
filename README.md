@@ -32,6 +32,12 @@ revalorización a mediano plazo.
 | 5  | Tania Soto | [**taniasotoarq/**](https://www.linkedin.com/in/taniasotoarq) | <img src="https://avatars.githubusercontent.com/u/134714893?s=64&v=4" width="50" height="50" style="border-radius: 50%;"> | [**tanisoto**](https://github.com/tanisoto) | UX-UI   |
 | 6  | Rodrigo Ruiz| [**uirodriruiz/**](https://www.linkedin.com/in/uirodriruiz)| <img src="https://avatars.githubusercontent.com/u/122314817?s=64&v=4" width="50" height="50" style="border-radius: 50%;"> | [**UI-Rodrigo**](https://github.com/UI-Rodrigo) | UX-UI   |
 
+## 🖥 Deployment 
+
+ * **Frontend:** https://nch3.vercel.app/ 
+ * **Backend:** https://h3-20-proptech-production.up.railway.app
+
+
 ## 🎥 Promotional Video
 
 [**Financia Video**](https://drive.google.com/file/d/1-GRJgjgiPKwtJshqZ5LrEGZXhxroi6kV/view?usp=drive_link)
@@ -41,7 +47,10 @@ revalorización a mediano plazo.
 
 ## 💻 QA Documentation
 [**Financia User Stories**](https://docs.google.com/spreadsheets/d/1CQBvHdRimW6HVcm7BoOWu-C-K5nD7nMLnsp3XO6EYdY/edit?usp=sharing)
+
 📂[**Financia Google drive**](https://drive.google.com/drive/folders/1UHTC5PIY-nA50L7BCqkimUvDGaVeCUF1?usp=drive_link)
+
+[**Financia Swagger**](https://h3-20-proptech-production.up.railway.app/swagger/)
 
 ## 💻 Thanks
 
