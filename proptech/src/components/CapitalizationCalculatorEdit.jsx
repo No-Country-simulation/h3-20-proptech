@@ -18,6 +18,8 @@ function CapitalizationCalculatorEdit() {
         setRowData(location.state);
       }
     }, [location.state]);
+    const [rowId, setRowId] = useState(rowData.id);
+    console.log("rowData: ", rowData.id);
     const [principal, setPrincipal] = useState(rowData.principal); //"principal"
     const [calcRate, setCalcRate] = useState(rowData.calcRate); //"calcRate"
     const [numberOfPayments, setNumberOfPayments] = useState(rowData.numberOfPayments); //"numberOfPayments"
@@ -271,6 +273,7 @@ function CapitalizationCalculatorEdit() {
 
             {showModal && (
                 <CapitalizationCalculatorModal
+                rowId={rowId}
                 showModal={showModal}
                 setShowModal={setShowModal}
                 newInvestmentData={newInvestmentData}

@@ -42,8 +42,8 @@ const transformResponseWithMap = (payload, keyMap) => {
 };
 
 
-const AdministratorDashboard = ({ onRowSelect }) => {
-    const { getUsers} = useContext(Context);
+const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
+    const { getUsers, deleteInvestment, patchInvestmentValidate} = useContext(Context);
     const { getInvestments} = useContext(Context);
 
     const [usersData, setUsersData] = useState([]);
@@ -68,7 +68,8 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 // NotificationService.success("Success loading users.", 3000);
                 // console.log(usersData);
             } catch (error) {
-                NotificationService.error("Error loading users.", 3000);
+                console.log(error);
+                NotificationService.error("Error loading users.", 1000);
             }
         };
         fetchUsers();
@@ -77,12 +78,17 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                 const response = await getInvestments();
                 const transformed = transformResponseWithMap(response.data, keyMap);
                 setInvestmentData(transformed);
+                // Pass data to Dashboard via onDataLoad
+                if (onDataLoad) {
+                    onDataLoad(transformed);
+                }
                 // NotificationService.success("Success loading investments.", 3000);
                 // console.log(usersData);
                 console.log("response: ", response.data);
                 console.log("data: ", data);
             } catch (error) {
-                NotificationService.error("Error loading investments.", 3000);
+                console.log(error);
+                // NotificationService.error("Error loading investments.", 2000);
             }
         };
         fetchInvestments();
@@ -115,11 +121,41 @@ const AdministratorDashboard = ({ onRowSelect }) => {
         saveDataToFile(updatedInvestmentData);
     };
 
-    const handleDelete = (rowId) => {
+    const handleDelete = async (rowId) => {
+        //Delete existing Investment
+            try {
+                await deleteInvestment(rowId);
+                NotificationService.success("Investment data deleted successfully.", 2000);
+                setShowModal(false);
+            } catch (error) {
+                NotificationService.error("Failed to delete investment data.", 3000);
+            }
         const updatedInvestmentData = investmentData.filter((item) => item.id !== rowId);
         setInvestmentData(updatedInvestmentData);
-        saveDataToFile(updatedInvestmentData);
+        // saveDataToFile(updatedInvestmentData);
     };
+
+    const handleValidate = async (rowId, isChecked) => {
+        //Validate existing Investment
+        try {
+            const payload = { validated: isChecked };
+            const response = await patchInvestmentValidate(rowId, payload);
+            if (!response.ok) {
+                throw new Error(`Failed to validate investment. Status: ${response.status}`);
+            }
+
+            NotificationService.success("Investment Validated successfully.", 2000);
+        } catch (error) {
+            // NotificationService.error("Failed to validate investment data.", 1000);
+        }
+
+        // Update the local state to reflect the change
+        const updatedInvestmentData = investmentData.map((item) =>
+            item.id === rowId ? { ...item, validated: isChecked } : item
+        );
+        setInvestmentData(updatedInvestmentData);
+    };
+
 
     const handleCreate = () => {
         const newId =
@@ -174,6 +210,7 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                         <th className="border border-gray-300 px-4 py-2">Cuotas</th>
                         <th className="border border-gray-300 px-4 py-2">Cuota mensual</th>
                         <th className="border border-gray-300 px-4 py-2">Activo</th>
+                        <th className="border border-gray-300 px-4 py-2">Valid</th>
                         <th className="border border-gray-300 px-4 py-2">Acciones</th>
                     </tr>
                 </thead>
@@ -202,6 +239,15 @@ const AdministratorDashboard = ({ onRowSelect }) => {
                                     type="checkbox"
                                     checked={row.isActive}
                                     onChange={(e) => setChecked(e.target.checked)}
+                                    className="checkbox-custom"
+                                />
+                            </td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                <input
+                                    type="checkbox"
+                                    checked={row.validated}
+                                    onChange={(e) => handleValidate(row.id, e.target.checked)} // Pass row ID and checked status
+                                    // onChange={(e) => setChecked(e.target.checked)}
                                     className="checkbox-custom"
                                 />
                             </td>

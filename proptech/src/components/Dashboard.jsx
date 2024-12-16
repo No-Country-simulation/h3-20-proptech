@@ -4,18 +4,30 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "r
 import { useNavigate } from "react-router-dom"; // Assuming react-router is used
 import AdministratorDashboard from "./AdministratorDashboard";
 import dashboardMan from "../assets/dashboardMan.png";
+import Stats from "./Stats";
+import Content from "./Content";
 
 function Dashboard() {
     const [selectedRow, setSelectedRow] = useState(null); // To handle selected investment details
+    const [investmentData, setInvestmentData] = useState([]); // Add state for investment data
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     // Calculate Balance Total
-    const totalBalance = investmentDataFile.reduce((sum, investment) => sum + investment.principal, 0);
+    const totalBalance = investmentData.reduce(
+        (sum, investment) => sum + (parseFloat(investment.principal) || 0),
+        0
+    );
+
 
     // Handle Row Selection
     const handleRowSelection = (row) => {
         console.log("Selected Row Data:", row);
         setSelectedRow(row);
+    };
+    // Handle data load from AdministratorDashboard
+    const handleDataLoad = (data) => {
+        console.log("Received Investment Data:", data);
+        setInvestmentData(data);
     };
 
     // Prepare Graph Data
@@ -89,7 +101,7 @@ function Dashboard() {
             </div>
             {/* Administrator Dashboard */}
             <div>
-                <AdministratorDashboard onRowSelect={handleRowSelection} />
+                <AdministratorDashboard onRowSelect={handleRowSelection} onDataLoad={handleDataLoad} />
             </div>
         </div>
     );
