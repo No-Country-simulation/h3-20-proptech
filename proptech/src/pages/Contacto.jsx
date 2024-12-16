@@ -1,12 +1,9 @@
 function Contacto() {
-  
-    return (
-      <>
-        <h1 className="text-2xl">
-          Contacto
-        </h1>
-      </>
-    )
-  }
+  return (
+    <>
+      <div>Contact</div>
+    </>
+  );
+}
 
-export default Contacto
+export default Contacto;

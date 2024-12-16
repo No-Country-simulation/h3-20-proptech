@@ -12,7 +12,6 @@ export const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
-  const [investments, setInvestments] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [authTokens, setAuthTokens] = useState(() =>
@@ -33,7 +32,6 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data),
         credentials: "include",
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -49,7 +47,10 @@ export const ContextProvider = ({ children }) => {
 
   const loginUser = async (login_data) => {
     try {
-      const response = await fetch(urlGlobal + "login/", {
+      const url = urlGlobal + "login/";
+      console.log(url);
+
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +70,6 @@ export const ContextProvider = ({ children }) => {
         setIsAuthenticated(true);
         localStorage.setItem("access", JSON.stringify(data.access));
         localStorage.setItem("refresh", JSON.stringify(data.refresh));
-        localStorage.setItem("rol", JSON.stringify(data.user_type));
         navigate("/");
         console.log("Login Success");
       } else {
@@ -81,8 +81,9 @@ export const ContextProvider = ({ children }) => {
   };
 
 //   const getUsers = async () => {
-//     try {
-//       const response = await axios.get("");
+//       try {
+//         const url = urlGlobal + "all-users/";
+//       const response = await axios.get(url);
 //       if (response.statusText === "OK") {
 //         if (users.length === 0) {
 //           setUsers(response.data);
@@ -95,7 +96,7 @@ export const ContextProvider = ({ children }) => {
 //     }
 //   };
 
-const getUsers = async () => {
+  const getUsers = async () => {
     try {
       const url =  urlGlobal + "all-users/"; // Ensure urlGlobal is correctly initialized in context.jsx
       const response = await axios.get(url);
@@ -133,7 +134,7 @@ const getUsers = async () => {
     localStorage.clear();
     navigate("/");
   };
-
+  
   //to register new user from Admin dashboard
   const registerUserAdmin = async (data) => {
     try {
@@ -164,23 +165,18 @@ const getUsers = async () => {
     }
   };
 
-  //to update user information 
+//to update user information 
 const updateUserInformation = async (data) => {
     try {
       const url = urlGlobal + "update-user-information/";
 
-      const formData = new FormData();
-      Object.keys(data).forEach((key) => {
-        formData.append(key, data[key]);
-      });
-
       const response = await fetch(url, {
         method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   Accept: "application/json",
-        // },
-        body: formData, // FormData automatically sets the correct headers
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
         credentials: "include",
       });
       console.log("Before SHOW:::", response);
@@ -198,140 +194,6 @@ const updateUserInformation = async (data) => {
     }
   };
 
-  const getInvestments = async () => {
-    try {
-      const url =  urlGlobal + "investment-list-create/"; // Ensure urlGlobal is correctly initialized in context.jsx
-      const response = await axios.get(url);
-      
-      if (response.status === 200) { // Use response.status instead of statusText for better reliability
-        setInvestments(response.data); // Directly set the data
-        return response;
-      } else {
-        console.error("Error fetching investments:", response);
-      }
-    } catch (error) {
-      console.error("Error fetching investments:", error); // Improved error logging
-    }
-  };
-
-    //to post a new investment 
-    const postInvestment = async (data) => {
-        try {
-          const url = urlGlobal + "investment-list-create/";
-    
-          const response = await fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-            credentials: "include",
-          });
-          console.log("Before SHOW:::", response);
-    
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-    
-          const result = await response.json();
-          console.log("New Investment successful:", result);
-    
-          return result;
-        } catch (error) {
-          console.error("Investment data error:", error.message);
-          throw error;
-        }
-      };
-
-    //to update an existing investment 
-    const putInvestment = async (id, data) => {
-        try {
-          const url = urlGlobal + "investment-detail/" + id + "/";
-    
-          const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-            credentials: "include",
-          });
-          console.log("Before SHOW:::", response);
-    
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-    
-          const result = await response.json();
-          console.log("Update Investment successful:", result);
-    
-          return result;
-        } catch (error) {
-          console.error("Update Investment data error:", error.message);
-          throw error;
-        }
-      };
-
-    const deleteInvestment = async (id) => {
-        try {
-            const url = urlGlobal + "investment-detail/" + id + "/";
-
-            const response = await fetch(url, {
-                method: "DELETE",
-                credentials: "include",
-            });
-            console.log("Before SHOW:::", response);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            // Handle 204 No Content case
-            if (response.status === 204) {
-                console.log("Delete Investment successful: No Content");
-                return { message: "Investment deleted successfully." };
-            }
-            // For non-204 responses with content
-            const result = await response.json();
-            console.log("Delete Investment successful:", result);
-            return result;
-
-        } catch (error) {
-            console.error("Delete Investment data error:", error.message);
-            throw error;
-        }
-    };
-
-      const patchInvestmentValidate = async (id, data) => {
-        try {
-          const url = urlGlobal + "investment-detail/" + id + "/";
-    
-          const response = await fetch(url, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-            credentials: "include",
-          });
-          console.log("Before SHOW:::", response);
-    
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-    
-          const result = await response.json();
-          console.log("Validate Investment successful:", result);
-    
-          return result;
-        } catch (error) {
-          console.error("Validate Investment data error:", error.message);
-          throw error;
-        }
-      };
-
-
   return (
     <Context.Provider
       value={{
@@ -346,11 +208,6 @@ const updateUserInformation = async (data) => {
         registerUser,
         registerUserAdmin,
         updateUserInformation,
-        getInvestments,
-        postInvestment,
-        putInvestment,
-        deleteInvestment,
-        patchInvestmentValidate,
         isAuthenticated,
       }}
     >
