@@ -53,7 +53,7 @@ function CapitalizationCalculator() {
     
     const [interestRate, setInterestRate] = useState('');
     const [annualRate, setAnnualRate] = useState('');
-    const [depositedCuota, setDepositedCuota] = useState('');
+    const [depositedCuota, setDepositedCuota] = useState(0);
 
     const [isActive, setIsActive] = useState('');
     const [validated, setValidated] = useState('');
@@ -103,8 +103,8 @@ function CapitalizationCalculator() {
             };
 
         setNumberOfPayments(isYears ? termValue * 12 : termValue);
-        setInterestRate(monthlyRate);
-        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate) );
+        setInterestRate(monthlyRate.toFixed(6));
+        setAnnualRate(isYears ? calcRate : calculateTEA(calcRate).toFixed(6) );
 
         const details = [];
         let capitalizacion = 0;
@@ -135,80 +135,79 @@ function CapitalizationCalculator() {
                 currentCuota = cuota;
             }
             
-            setPrincipal(capitalizacion);
+            setPrincipal(capitalizacion.toFixed(2));
         }
 
         setResults(details);
     };
 
     
-    const data = {
-        dateOfGeneration,
-        principal,
-        calcRate,
-        interestRate,
-        numberOfPayments,
-        monthlyReturn,
-        term,
-        termType,
-        annualRate,
-        refuerzo,
-        refuerzoMes,
-        refuerzoValue,
-        depositedCuota,
-        validated,
-        estado,
-        isActive,
-        results,
-    };
+    // const data = {
+    //     dateOfGeneration,
+    //     principal,
+    //     calcRate,
+    //     interestRate,
+    //     numberOfPayments,
+    //     monthlyReturn,
+    //     term,
+    //     termType,
+    //     annualRate,
+    //     refuerzo,
+    //     refuerzoMes,
+    //     refuerzoValue,
+    //     depositedCuota,
+    //     validated,
+    //     estado,
+    //     isActive,
+    //     results,
+    // };
 
-    const payload ={
-        date: data.dateOfGeneration,
-        amount: data.principal,
-        calc_rate: data.calcRate,
-        interest_rate: data.interestRate,
-        number_of_payments: data.numberOfPayments,
-        monthly_return: data.monthlyReturn,
-        term: data.term,
-        term_type: data.termType,
-        anual_rate: data.annualRate,
-        enforcement: data.refuerzo,
-        monthly_enforcement: data.refuerzoMes,
-        value_enforcement: data.refuerzoValue,
-        deposited_cuota: data.depositedCuota,
-        validated: data.validated,
-        state: data.estado,
-        is_active: data.isActive,
-        results: data.results,
-    }
+    // const payload ={
+    //     date: data.dateOfGeneration,
+    //     amount: data.principal,
+    //     calc_rate: data.calcRate,
+    //     interest_rate: data.interestRate,
+    //     number_of_payments: data.numberOfPayments,
+    //     monthly_return: data.monthlyReturn,
+    //     term: data.term,
+    //     term_type: data.termType,
+    //     anual_rate: data.annualRate,
+    //     enforcement: data.refuerzo,
+    //     monthly_enforcement: data.refuerzoMes,
+    //     value_enforcement: data.refuerzoValue,
+    //     deposited_cuota: data.depositedCuota,
+    //     validated: data.validated,
+    //     state: data.estado,
+    //     is_active: data.isActive,
+    //     results: data.results,
+    // }
 
     // generate json data
     const generateJSON = () => {
-        // const dateOfGeneration = new Date().toISOString();
-        payload;
-        // const data = {
-        //     dateOfGeneration,
-        //     principal,
-        //     calcRate,
-        //     interestRate,
-        //     numberOfPayments,
-        //     monthlyReturn,
-        //     term,
-        //     termType,
-        //     annualRate,
-        //     refuerzo,
-        //     refuerzoMes,
-        //     refuerzoValue,
-        //     depositedCuota,
-        //     validated,
-        //     estado,
-        //     isActive,
-        //     results,
-        // };
+        const dateOfGeneration = new Date().toISOString();
+        const data = {
+            dateOfGeneration,
+            principal,
+            calcRate,
+            interestRate,
+            numberOfPayments,
+            monthlyReturn,
+            term,
+            termType,
+            annualRate,
+            refuerzo,
+            refuerzoMes,
+            refuerzoValue,
+            depositedCuota,
+            validated,
+            estado,
+            isActive,
+            results,
+        };
         
         //select user for investment data
         setNewInvestmentData(data); // Store data in state for use after user selection
-        console.log("Generating JSON and opening modal... data" + payload);
+        console.log("Generating JSON and opening modal... data" + data);
         // console.log("Generating JSON and opening modal... payload" + payload);
         setShowModal(true); // Open the modal to select the user
 

@@ -244,6 +244,36 @@ const updateUserInformation = async (data) => {
         }
       };
 
+    //to update an existing investment 
+    const putInvestment = async (id, data) => {
+        try {
+          const url = urlGlobal + "investment-detail/" + id + "/";
+    
+          const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+          });
+          console.log("Before SHOW:::", response);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const result = await response.json();
+          console.log("Update Investment successful:", result);
+    
+          return result;
+        } catch (error) {
+          console.error("Update Investment data error:", error.message);
+          throw error;
+        }
+      };
+
   return (
     <Context.Provider
       value={{
@@ -260,6 +290,7 @@ const updateUserInformation = async (data) => {
         updateUserInformation,
         getInvestments,
         postInvestment,
+        putInvestment,
         isAuthenticated,
       }}
     >

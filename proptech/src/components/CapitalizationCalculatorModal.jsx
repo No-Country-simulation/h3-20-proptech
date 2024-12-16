@@ -40,6 +40,7 @@ const transformDataForPost = (data, keyMap) => {
 
 
 function CapitalizationCalculatorModal({
+    rowId,
     setInvestor,
     showModal,
     setShowModal,
@@ -48,9 +49,10 @@ function CapitalizationCalculatorModal({
     investorData,
     setInvestorData,
 }) {
-    const { getUsers, getUserById, postInvestment} = useContext(Context);
+    const { getUsers, getUserById, postInvestment, putInvestment} = useContext(Context);
     const [usersData, setUsersData] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [saveInvestment, setSaveInvestment] = useState(false);
     
     useEffect(() => {
         const fetchUsers = async () => {
@@ -136,7 +138,33 @@ console.log("payload: ",payload);
         NotificationService.success("Success saving data.", 3000);
     };
 
+     //Create new Investment
     const postInvestmentData = async () => {
+        if (!selectedUser) {
+            alert("Please select an investor.");
+            return;
+        }
+        const finalizedData = {
+            investor: selectedUser,
+            dateOfGeneration: new Date().toISOString(),
+
+            ...newInvestmentData,
+        };
+
+        const payload = transformDataForPost(finalizedData, keyMapForPost);
+        console.log("payload: ",payload);
+        try {
+            await postInvestment(payload);
+            NotificationService.success("Investment data posted successfully.", 3000);
+            setShowModal(false);
+        } catch (error) {
+            NotificationService.error("Failed to post investment data.", 3000);
+            console.error("Error posting investment data:", error);
+        }
+    };
+
+    //Update existing Investment
+    const putInvestmentData = async () => {
         if (!selectedUser) {
             alert("Please select an investor.");
             return;
@@ -151,16 +179,14 @@ console.log("payload: ",payload);
         const payload = transformDataForPost(finalizedData, keyMapForPost);
 console.log("payload: ",payload);
         try {
-            await postInvestment(payload);
-            NotificationService.success("Investment data posted successfully.", 3000);
+            await putInvestment(rowId,payload);
+            NotificationService.success("Investment data updated successfully.", 3000);
             setShowModal(false);
         } catch (error) {
-            NotificationService.error("Failed to post investment data.", 3000);
+            NotificationService.error("Failed to update investment data.", 3000);
             console.error("Error posting investment data:", error);
         }
     };
-
-
 
 
 
@@ -228,27 +254,74 @@ console.log("payload: ",payload);
                   </div>
           )}
 
-          {/* Modal buttons */}
-          <div className="mt-6 flex justify-end gap-4">
-            <button
-              className="btn-tertiary px-4 py-2 "
-              onClick={() => setShowModal(false)}
-            >
-              Cancelar
-            </button>
-            <button
-              className="btn-primary px-4 py-2"
-              onClick={saveInvestmentData}
-            >
-              Guardar Inversion
-            </button>
-            <button
-                        className="btn-secondary px-4 py-2"
-                        onClick={postInvestmentData}
-                    >
-                        Publicar Inversión
-                    </button>
-          </div>
+              {/* Modal buttons */}
+              <div className="mt-6 flex justify-end gap-4">
+    {/* Guardar Inversión Checkmark */}
+    <div className="flex items-center gap-2">
+        <input
+            type="checkbox"
+            id="saveInvestmentCheckbox"
+            className="w-5 h-5"
+            onChange={(e) => setSaveInvestment(e.target.checked)}
+            />
+        <label htmlFor="saveInvestmentCheckbox" className="text-primary font-medium">
+            Guardar Inversión
+        </label>
+    </div>
+
+            {/* Cancel Button */}
+    <button
+        className="btn-tertiary px-4 py-2"
+        onClick={() => setShowModal(false)}
+    >
+        Cancelar
+    </button>
+
+    {/* Publicar Inversión Button */}
+    {rowId ? (
+        <button
+            className="btn-secondary px-4 py-2"
+            onClick={() => {
+                if (saveInvestment) saveInvestmentData();
+                putInvestmentData();
+            }}
+        >
+            Editar Inversión
+        </button>
+    ) : (
+        <button
+            className="btn-secondary px-4 py-2"
+            onClick={() => {
+                if (saveInvestment) saveInvestmentData();
+                postInvestmentData();
+            }}
+        >
+            Nueva Inversión
+        </button>
+    )}
+
+
+
+
+                  {/* <button
+                      className="btn-tertiary px-4 py-2 "
+                      onClick={() => setShowModal(false)}
+                  >
+                      Cancelar
+                  </button>
+                  <button
+                      className="btn-primary px-4 py-2"
+                      onClick={saveInvestmentData}
+                  >
+                      Guardar Inversion
+                  </button>
+                  <button
+                      className="btn-secondary px-4 py-2"
+                      onClick={postInvestmentData}
+                  >
+                      Publicar Inversión
+                  </button> */}
+              </div>
         </div>
       </div>
   );
