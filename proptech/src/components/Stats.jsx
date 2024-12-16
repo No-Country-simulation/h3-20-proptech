@@ -76,7 +76,7 @@ function Stats() {
     {
       id: 2,
       name: "Invertidos en el mercado",
-      value: `$${totalBalance}`,
+      value: `$${totalBalance.toFixed(2)}`,
       icon: <AttachMoneyIcon />,
     },
     {

@@ -29,7 +29,7 @@ function CapitalizationCalculatorEdit() {
     const [results, setResults] = useState([]); //"[ results ]"
     const [refuerzo, setRefuerzo] = useState(rowData.refuerzo); //"refuerzo"
     const [refuerzoMes, setRefuerzoMes] = useState(rowData.refuerzoMes); //"refuerzoMes"
-    const [refuerzoValue, setRefuerzoValue] = useState(rowData.refuerzoValue || 6); //"refuerzoValue"
+    const [refuerzoValue, setRefuerzoValue] = useState(rowData.refuerzoValue); //"refuerzoValue"
     
     const [interestRate, setInterestRate] = useState(rowData.interestRate); //"interestRate"
     const [annualRate, setAnnualRate] = useState(rowData.annualRate); //"annualRate"

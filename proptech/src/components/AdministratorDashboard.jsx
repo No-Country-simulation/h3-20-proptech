@@ -2,12 +2,16 @@
 import React, {  useContext, useState, useEffect } from "react";
 // import investmentDataFile from "../shared/data/investmentData.json";
 import { saveAs } from "file-saver";
-import { PiTrash, PiNotePencil, PiX } from "react-icons/pi";
+import { PiTrash, PiNotePencil, PiX,PiClipboardText } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import RegisterUserAdmin from "./RegisterUserAdmin";
 import axios from "axios";
 import Context from "../context/Context";
 import { NotificationService } from "../shared/notistack.service";
+
+import { MenuItem, Modal } from "@mui/material";
+import CapitalizationCalculatorViewer from "./CapitalizationCalculatorViewer";
+
 
 const keyMap = {
     id: "id",
@@ -42,9 +46,14 @@ const transformResponseWithMap = (payload, keyMap) => {
 };
 
 
-const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
+const AdministratorDashboard = ({ onRowSelect, onDataLoad, onResultsUpdate}) => {
     const { getUsers, deleteInvestment, patchInvestmentValidate} = useContext(Context);
     const { getInvestments} = useContext(Context);
+//viewer
+    const [pivot, setPivot] = useState([]);
+    const [viewerData, setViewerData] = useState([]);
+    const [showViewer, setShowViewer] = useState(false);
+    const [investmentDetails, setInvestmentDetails] = useState([]);
 
     const [usersData, setUsersData] = useState([]);
     // const [investmentData0, setInvestmentData0] = useState(investmentDataFile);
@@ -183,6 +192,15 @@ const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
         saveAs(blob, "investmentData.json");
     };
 
+// Viewer
+    const handleRowDoubleClick = (rowData) => {
+        // navigate("/capitalizacionView", { state: rowData });
+        setViewerData(rowData);
+        // setShowViewer(true); // Open the viewer modal
+        console.log("dd viewdata",viewerData);
+    };
+
+
     return (
         <div className="p-4">
             <div className="flex items-center justify-between pb-4 ">
@@ -219,7 +237,9 @@ const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
                         <tr
                             key={row.id}
                             className="hover:bg-gray-50 cursor-pointer"
-                            onDoubleClick={() => onRowSelect(row)}
+                            onDoubleClick={() => onRowSelect(row)}  //graph
+                            // onDoubleClick={() => handleRowDoubleClick(row) }
+                            
                         >
                             <td className="border border-gray-300 px-4 py-2">{row.id}</td>
                             <td className="border border-gray-300 px-4 py-2">
@@ -251,20 +271,34 @@ const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
                                     className="checkbox-custom"
                                 />
                             </td>
+
                             <td className="border border-gray-300 px-4 py-2 flex gap-2">
-                                <button
-                                    className="bg-blue-500 text-white px-2 py-1 rounded"
-                                    onClick={() => handleRowLoadEdit(row.id)}
-                                >
-                                    <PiNotePencil />
-                                </button>
-                                <button
-                                    className="bg-red-500 text-white px-2 py-1 rounded"
-                                    onClick={() => handleDelete(row.id)}
-                                >
-                                    <PiTrash />
-                                </button>
-                            </td>
+                                <div className="flex">
+                                    <button
+                                        className="bg-blue-500 text-white px-2 py-1 rounded"
+                                        onClick={() => handleRowLoadEdit(row.id)}
+                                    >
+                                        <PiNotePencil />
+                                    </button>
+                                    <button
+                                        className="bg-red-500 text-white px-2 py-1 rounded"
+                                        onClick={() => handleDelete(row.id)}
+                                    >
+                                        <PiTrash />
+                                    </button>
+                                    <button
+                                        className="bg-green-500 text-white px-2 py-1 rounded"
+                                        onClick={() => {
+                                            setViewerData(row); // Pass row data to the viewer
+                                            setShowViewer(true); // Open the viewer modal
+                                        }}
+                                    >
+                                        <PiClipboardText />
+                                    </button>
+                                </div>
+                        </td>
+
+
                         </tr>
                     ))}
                 </tbody>
@@ -352,6 +386,24 @@ const AdministratorDashboard = ({ onRowSelect, onDataLoad }) => {
                         <h2 className="h2">Registrar nuevo usuario</h2>
                         <RegisterUserAdmin />
                     </div>
+                </div>
+            )}
+
+            {showViewer && (
+                <div className="modal-custom-auto">
+
+            <button
+                onClick={() => setShowViewer(false)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-black focus:outline-none"
+            >
+                ✕
+            </button>
+            <CapitalizationCalculatorViewer
+                rowData={viewerData}
+                onUpdatePivot={(details) => setPivot(details)}
+                onResultsUpdate={(details) => setInvestmentDetails(details)} // Capture results
+            />
+
                 </div>
             )}
 

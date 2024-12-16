@@ -109,7 +109,7 @@ const Footer = () => {
 
       {/* Modal Contact */}
       <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-gray-800 text-white">
+        <div className="modal-custom-auto text-text-primary">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -118,12 +118,12 @@ const Footer = () => {
           </form>
           <h3 className="font-bold text-lg">Contactar</h3>
           <div className="py-4">
-            <div className="w-[70%] mx-auto mt-7">
+            <div className="w-[70%] mx-auto mt-2">
               <form onSubmit={onSubmit} className="flex flex-col gap-9">
-                <div className="flex flex-col gap-5 pb-3">
+                <div className="flex flex-col gap-5">
                   <div>
-                    <div className="label">
-                      <span className="label-text text-text-white">Email</span>
+                    <div className="">
+                      <label className="label">Email</label>
                     </div>
                     <p
                       className={`text-sm mt-1 ${
@@ -150,8 +150,8 @@ const Footer = () => {
                   </div>
 
                   <div>
-                    <div className="label">
-                      <span className="label-text text-text-white">Tema</span>
+                    <div className="">
+                      <label className="label">Tema</label>
                     </div>
 
                     <p
@@ -179,10 +179,10 @@ const Footer = () => {
                   </div>
                   <div>
                     <label className="form-control">
-                      <div className="label">
-                        <span className="label-text text-text-white">
+                      <div className="">
+                        <label className="label">
                           Message
-                        </span>
+                        </label>
                       </div>
                       <textarea
                         rows="4"
@@ -197,7 +197,7 @@ const Footer = () => {
                     </label>
                   </div>
                 </div>
-                <div className="flex flex-col gap-4 card-actions mt-2">
+                <div className="flex flex-col gap-4 card-actions">
                   <button type="submit" className="btn-primary w-full ">
                     Enviar
                   </button>

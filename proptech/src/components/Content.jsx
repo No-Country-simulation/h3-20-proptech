@@ -13,8 +13,19 @@ import p4Photo from "../assets/p4.png";
 import proacoPhoto from "../assets/proaco.png";
 import CapitalizationCalculator from "./CapitalizationCalculator";
 import Dashboard from "./Dashboard";
+import { useNavigate } from "react-router-dom";
 
 function Content() {
+    const navigate = useNavigate();
+
+    const handleNavigation = (hash) => {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Small delay for smooth scrolling
+    };
   return (
     <div>
       <section id="startInfo">
@@ -34,10 +45,10 @@ function Content() {
               <br /> nosotros
             </p>
             <div className="flex px-2 mt-10">
-              <button className="py-2 btn-tertiary text-white rounded mr-5">
+              <button onClick={() => handleNavigation("quieroFinanciamiento")} className="py-2 btn-tertiary text-white rounded mr-5">
                 Quiero Financiamiento
               </button>
-              <button className="btn-primary">Quiero Invertir</button>
+              <button onClick={() => handleNavigation("quieroInvertir")} className="btn-primary">Quiero Invertir</button>
             </div>
           </div>
         </div>
@@ -123,7 +134,7 @@ function Content() {
         </div>
       </section>
 
-      <section>
+      <section id="quieroInvertir" >
         <div className=" p-6 rounded-lg shadow-lg">
           <div>
             <h2 className="text-3xl font-bold text-text-primary text-center p-6">
@@ -137,7 +148,7 @@ function Content() {
         </div>
       </section>
 
-      <section className="bg-base-200 text-center my-14 py-8 mx-14 rounded-2xl flex items-center justify-center">
+      <section id="quieroFinanciamiento" className="bg-base-200 text-center my-14 py-8 mx-14 rounded-2xl flex items-center justify-center">
         <div className="max-w-xl text-center m-4">
           <h2 className="text-xl font-bold my-2">
             Si estás interesado, solicita una pre aprobación.

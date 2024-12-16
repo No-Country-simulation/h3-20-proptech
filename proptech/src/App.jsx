@@ -39,6 +39,7 @@ import CapitalizationCalculatorAdmin from "./components/CapitalizationCalculator
 import CapitalizationCalculatorEdit from "./components/CapitalizationCalculatorEdit";
 import Dashboard from "./components/Dashboard";
 import RegisterUserAdmin from "./components/RegisterUserAdmin";
+import CapitalizationCalculatorViewer from "./components/CapitalizationCalculatorViewer";
 
 function App() {
   return (
@@ -101,6 +102,7 @@ function App() {
         <Route path="/adminDashboard" element={<AdministratorDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/registerUserAdmin" element={<RegisterUserAdmin />} />
+        <Route path="/capitalizacionView" element={<CapitalizationCalculatorViewer />} />
       </Route>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<ErrorPage />} />
